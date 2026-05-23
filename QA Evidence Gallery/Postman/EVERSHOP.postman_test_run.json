@@ -1,0 +1,88 @@
+{
+	"id": "3284779b-ed72-4dc0-801e-72ec2b8128d6",
+	"name": "EVERSHOP",
+	"timestamp": "2026-05-20T08:27:31.573Z",
+	"collection_id": "51202975-8d15cf65-208f-4fee-b11d-a334b973636b",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 0,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2026-05-20T08:27:28.437Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "07c71401-a7b7-4e25-acc7-0b1c4fb979cd",
+			"name": "Search - Stainless Steel Thermos",
+			"url": "https://demo.evershop.io/api/graphql",
+			"time": 1312,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				1312
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "edf38f5f-d6bd-44c3-bb54-3761e3306787",
+			"name": "AddToCart",
+			"url": "https://demo.evershop.io/api/cart/44d0e2c0-47c6-4f78-9e40-0294e87e37ed/items",
+			"time": 391,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				391
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "89861e0a-5e41-48bd-be87-ab272ab228cc",
+			"name": "MyCart",
+			"url": "https://demo.evershop.io/api/graphql",
+			"time": 287,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				287
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 1990,
+	"collection": {
+		"requests": [
+			{
+				"id": "07c71401-a7b7-4e25-acc7-0b1c4fb979cd",
+				"method": "POST"
+			},
+			{
+				"id": "edf38f5f-d6bd-44c3-bb54-3761e3306787",
+				"method": "POST"
+			},
+			{
+				"id": "89861e0a-5e41-48bd-be87-ab272ab228cc",
+				"method": "POST"
+			}
+		]
+	}
+}

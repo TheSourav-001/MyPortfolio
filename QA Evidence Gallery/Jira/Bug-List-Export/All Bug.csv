@@ -1,0 +1,437 @@
+Summary,Issue key,Issue id,Issue Type,Status,Project key,Project name,Project type,Project lead,Project lead id,Project description,Project url,Priority,Resolution,Assignee,Assignee Id,Reporter,Reporter Id,Creator,Creator Id,Created,Updated,Last Viewed,Resolved,Affects versions,Fix versions,Due date,Votes,Labels,Labels,Labels,Description,Environment,Watchers,Watchers Id,Log Work,Log Work,Original estimate,Remaining Estimate,Time Spent,Work Ratio,Σ Original Estimate,Σ Remaining Estimate,Σ Time Spent,Security Level,Custom field (Actual end),Custom field (Actual start),Custom field (Approvals),Custom field (Change reason),Custom field (Change risk),Custom field (Change type),Custom field (Development),Custom field (Epic Color),Custom field (Epic Name),Custom field (Epic Status),Custom field (Focus Areas),Custom field (Goals),Custom field (Impact),Custom field (Issue color),Custom field (Locked forms),Custom field (Open forms),Custom field (Project overview key),Custom field (Project overview status),Custom field (Rank),Custom field (Request Type),Custom field (Sentiment),Custom field (Start date),Custom field (Story point estimate),Custom field (Submitted forms),Custom field (Target end),Custom field (Target start),Team Id,Team Name,Custom field (Total forms),Custom field (Vulnerability),Custom field ([CHART] Date of First Response),Custom field ([CHART] Time in Status),Comment,Comment,Comment,Comment,Comment,Status Category,Status Category Changed
+Cart allows negative quantity for products,ESBUG-10,10009,Bug,In Review,ESBUG,EverShop-Bug-Tracking,software,Sourav Dipto Apu,712020:b4d27f8b-145d-4022-ae03-e44645eabba6,,https://demo.evershop.io/,Medium,,OYNNDRILA SINGH PURKAYESTHA 0242320005341301,712020:ce01dfe1-a11e-4f25-ae74-1c51371a93f6,Sourav Dipto Apu,712020:b4d27f8b-145d-4022-ae03-e44645eabba6,Sourav Dipto Apu,712020:b4d27f8b-145d-4022-ae03-e44645eabba6,3/1/2026 18:29,4/1/2026 2:27,4/1/2026 2:26,,1,1.1,10/1/2026 0:00,0,cart,critical,validation,"Environment:
+Website: [https://demo.evershop.io/|https://demo.evershop.io/|smart-link] 
+Browser: Google Chrome (Latest)
+OS: Windows 10
+
+Steps to Reproduce:
+
+# Add a product to the cart
+# Update the quantity to a negative value
+
+Expected Result:
+System should restrict quantity to valid positive numbers.
+
+Actual Result:
+Negative quantity is accepted without validation.
+
+Severity: High
+Priority: P1",,Sourav Dipto Apu,712020:b4d27f8b-145d-4022-ae03-e44645eabba6,,,,,,,,,,,,,com.atlassian.servicedesk.plugins.approvals.internal.customfield.ApprovalsCFValue@3edc9804,,,,,,,,,,,,,,,,0|i0001z:,,,1/1/2026 0:00,,,,,23c2b8c3-0392-46be-89dc-43079a275465,Testing Team,,,,,03/Jan/26 9:03 PM;712020:b4d27f8b-145d-4022-ae03-e44645eabba6;Pending due to priority and sprint capacity.,"04/Jan/26 1:48 AM;712020:b4d27f8b-145d-4022-ae03-e44645eabba6;h1. The issue was logged after QA testing and is currently pending development review and assignment.
+
+h3. Once reviewed, it will be assigned to the appropriate developer and taken up for further investigation and resolution.
+
+Issue identified during QA testing
+
+* -Bug logged in Jira-
+* -Development review pending-
+* Developer assigned
+* Investigation started
+* Fix implemented
+* QA re-testing completed","04/Jan/26 2:08 AM;712020:b4d27f8b-145d-4022-ae03-e44645eabba6;h1. Developer has started working on the issue. Investigation and fix are in progress.
+
+The developer has started working on this issue. Initial investigation is currently underway, and the fix is in progress. Relevant code areas are being reviewed to identify the root cause and apply a proper solution. Further updates will be shared once more clarity is available or the fix is completed.
+
+*Progress Checklist*
+
+* -Issue acknowledged by developer-
+* -Investigation started-
+* -Root cause identified-
+* Fix implemented
+* Code review completed
+* Deployed to test environment
+* QA verification completed","04/Jan/26 2:27 AM;712020:b4d27f8b-145d-4022-ae03-e44645eabba6;h1. The fix has been completed by the developer and is now ready for QA review and validation.
+
+The changes have been implemented as per the identified root cause and are awaiting verification to ensure the issue is fully resolved without any side effects.
+
+* -Root cause identified-
+* -Fix implemented-
+* -Code changes completed-
+* -QA review started-
+* QA validation completed
+* Regression testing completed
+* Issue ready for closure",,In Progress,4/1/2026 2:07
+Broken link found in website footer section,ESBUG-9,10008,Bug,To Do,ESBUG,EverShop-Bug-Tracking,software,Sourav Dipto Apu,712020:b4d27f8b-145d-4022-ae03-e44645eabba6,,https://demo.evershop.io/,Low,,OYNNDRILA SINGH PURKAYESTHA 0242320005341301,712020:ce01dfe1-a11e-4f25-ae74-1c51371a93f6,Sourav Dipto Apu,712020:b4d27f8b-145d-4022-ae03-e44645eabba6,Sourav Dipto Apu,712020:b4d27f8b-145d-4022-ae03-e44645eabba6,3/1/2026 18:27,4/1/2026 1:48,4/1/2026 1:48,,1,1.1,15/1/2026 0:00,0,footer,ui,,"Environment:
+Website: [https://demo.evershop.io/|https://demo.evershop.io/|smart-link] 
+Browser: Google Chrome (Latest)
+OS: Windows 10
+
+Steps to Reproduce:
+
+# Scroll down to the footer section
+# Click on available footer links
+
+Expected Result:
+All footer links should redirect to valid pages.
+
+Actual Result:
+One or more footer links lead to a blank or error page.
+
+Severity: Low
+Priority: P4",,Sourav Dipto Apu,712020:b4d27f8b-145d-4022-ae03-e44645eabba6,,,,,,,,,,,,,com.atlassian.servicedesk.plugins.approvals.internal.customfield.ApprovalsCFValue@35799db3,,,,,,,,,,,,,,,,0|i0001r:,,,2/1/2026 0:00,,,,,,,,,,,03/Jan/26 9:04 PM;712020:b4d27f8b-145d-4022-ae03-e44645eabba6;Pending due to priority and sprint capacity.,"04/Jan/26 1:48 AM;712020:b4d27f8b-145d-4022-ae03-e44645eabba6;h1. The issue was logged after QA testing and is currently pending development review and assignment.
+
+h3. Once reviewed, it will be assigned to the appropriate developer and taken up for further investigation and resolution.
+
+Issue identified during QA testing
+
+* Bug logged in Jira
+* Development review pending
+* Developer assigned
+* Investigation started
+* Fix implemented
+* QA re-testing completed",,,,To Do,4/1/2026 0:54
+Product filter does not update results correctly,ESBUG-8,10007,Bug,Done,ESBUG,EverShop-Bug-Tracking,software,Sourav Dipto Apu,712020:b4d27f8b-145d-4022-ae03-e44645eabba6,,https://demo.evershop.io/,High,Done,shouravdiptoshillapu,712020:1c3b6aee-57d2-4109-b7ab-70416ec326d9,Sourav Dipto Apu,712020:b4d27f8b-145d-4022-ae03-e44645eabba6,Sourav Dipto Apu,712020:b4d27f8b-145d-4022-ae03-e44645eabba6,3/1/2026 18:26,4/1/2026 2:06,4/1/2026 2:11,4/1/2026 2:06,1.1,1.1,7/1/2026 0:00,0,"filter,",product-listing,,"Environment:
+Website: [https://demo.evershop.io/|https://demo.evershop.io/|smart-link] 
+Browser: Google Chrome (Latest)
+OS: Windows 10
+
+Steps to Reproduce:
+
+# Navigate to any product category
+# Apply available filters (price, attributes, etc.)
+
+Expected Result:
+Product list should update based on selected filters.
+
+Actual Result:
+Filtered results do not update correctly or show irrelevant products.
+
+Severity: Medium
+Priority: P2",,Sourav Dipto Apu,712020:b4d27f8b-145d-4022-ae03-e44645eabba6,,,,,,,,,,,,,com.atlassian.servicedesk.plugins.approvals.internal.customfield.ApprovalsCFValue@66a1ce17,,,,,,,,,,,,,,,,0|i0001j:,,,4/1/2026 0:00,,,,,,,,,,3_*:*_3_*:*_13939352_*|*_10000_*:*_3_*:*_7819328_*|*_10002_*:*_1_*:*_1391759_*|*_10001_*:*_2_*:*_196003,03/Jan/26 8:45 PM;712020:b4d27f8b-145d-4022-ae03-e44645eabba6;Assigned to developer. Work in progress.,"04/Jan/26 1:17 AM;712020:b4d27f8b-145d-4022-ae03-e44645eabba6;h1. Developer has started working on the issue. Investigation and fix are in progress.
+
+The developer has started working on this issue. Initial investigation is currently underway, and the fix is in progress. Relevant code areas are being reviewed to identify the root cause and apply a proper solution. Further updates will be shared once more clarity is available or the fix is completed.
+
+*Progress Checklist*
+
+* -Issue acknowledged by developer-
+* -Investigation started-
+* -Root cause identified-
+* Fix implemented
+* Code review completed
+* Deployed to test environment
+* QA verification completed","04/Jan/26 1:52 AM;712020:b4d27f8b-145d-4022-ae03-e44645eabba6;h1. The fix has been completed by the developer and is now ready for QA review and validation. 
+
+The changes have been implemented as per the identified root cause and are awaiting verification to ensure the issue is fully resolved without any side effects.
+
+* -Root cause identified-
+* -Fix implemented-
+* -Code changes completed-
+* -QA review started-
+* QA validation completed
+* Regression testing completed
+* Issue ready for closure","04/Jan/26 1:59 AM;712020:b4d27f8b-145d-4022-ae03-e44645eabba6;h1. The issue was retested on the Chrome browser and has been successfully resolved. QA has verified the fix and confirmed that the expected behavior is working as intended. The bug is now being closed.
+
+* -Fix deployed to test environment-
+* -Retested on Chrome browser-
+* -Expected behavior verified-
+* -QA approval completed-
+* -No regression issues found-
+* -Bug closed-",,Done,4/1/2026 2:06
+Search input placeholder text missing on mobile view,ESBUG-7,10006,Bug,To Do,ESBUG,EverShop-Bug-Tracking,software,Sourav Dipto Apu,712020:b4d27f8b-145d-4022-ae03-e44645eabba6,,https://demo.evershop.io/,Lowest,,OYNNDRILA SINGH PURKAYESTHA 0242320005341301,712020:ce01dfe1-a11e-4f25-ae74-1c51371a93f6,Sourav Dipto Apu,712020:b4d27f8b-145d-4022-ae03-e44645eabba6,Sourav Dipto Apu,712020:b4d27f8b-145d-4022-ae03-e44645eabba6,3/1/2026 18:25,4/1/2026 1:48,4/1/2026 1:48,,1,1.1,10/1/2026 0:00,0,"mobile,",search,"ui,","Environment:
+Website: [https://demo.evershop.io/|https://demo.evershop.io/|smart-link] 
+Browser: Chrome (Mobile / Responsive mode)
+OS: Android / Mobile view
+
+Steps to Reproduce:
+
+# Open the website in mobile view
+# Observe the search input field
+
+Expected Result:
+Search input should display placeholder text to guide users.
+
+Actual Result:
+Placeholder text is not visible in mobile view.
+
+Severity: Low
+Priority: P3",,Sourav Dipto Apu,712020:b4d27f8b-145d-4022-ae03-e44645eabba6,,,,,,,,,,,,,com.atlassian.servicedesk.plugins.approvals.internal.customfield.ApprovalsCFValue@323b52e3,,,,,,,,,,,,,,,,0|i0001b:,,,6/1/2026 0:00,,,,,23c2b8c3-0392-46be-89dc-43079a275465,Testing Team,,,,,03/Jan/26 6:26 PM;712020:b4d27f8b-145d-4022-ae03-e44645eabba6;New Bug Found,03/Jan/26 9:04 PM;712020:b4d27f8b-145d-4022-ae03-e44645eabba6;Pending due to priority and sprint capacity.,"04/Jan/26 1:48 AM;712020:b4d27f8b-145d-4022-ae03-e44645eabba6;h1. The issue was logged after QA testing and is currently pending development review and assignment.
+
+h3. Once reviewed, it will be assigned to the appropriate developer and taken up for further investigation and resolution.
+
+Issue identified during QA testing
+
+* Bug logged in Jira
+* Development review pending
+* Developer assigned
+* Investigation started
+* Fix implemented
+* QA re-testing completed",,,To Do,4/1/2026 0:54
+Product price mismatch between product page and cart,ESBUG-6,10005,Bug,Done,ESBUG,EverShop-Bug-Tracking,software,Sourav Dipto Apu,712020:b4d27f8b-145d-4022-ae03-e44645eabba6,,https://demo.evershop.io/,Highest,Done,OYNNDRILA SINGH PURKAYESTHA 0242320005341301,712020:ce01dfe1-a11e-4f25-ae74-1c51371a93f6,Sourav Dipto Apu,712020:b4d27f8b-145d-4022-ae03-e44645eabba6,Sourav Dipto Apu,712020:b4d27f8b-145d-4022-ae03-e44645eabba6,3/1/2026 18:22,4/1/2026 2:06,4/1/2026 2:06,4/1/2026 2:06,1,1.1,7/1/2026 0:00,0,cart,ui,,"Environment:
+Website: [https://demo.evershop.io/|https://demo.evershop.io/|smart-link] 
+Browser: Google Chrome (Latest)
+OS: Windows 10
+
+Steps to Reproduce:
+
+# Open a product details page
+# Note the product price
+# Add the product to cart
+# Compare the price shown in the cart
+
+Expected Result:
+Product price should be consistent across pages.
+
+Actual Result:
+Price shown in the cart differs from the product details page.
+
+Severity: High
+Priority: P2",,Sourav Dipto Apu,712020:b4d27f8b-145d-4022-ae03-e44645eabba6,;03/Jan/26 8:47 PM;e38509cf-5883-45bf-bae9-a8a8c4341145;60,,,0,60,,,0,60,,,,com.atlassian.servicedesk.plugins.approvals.internal.customfield.ApprovalsCFValue@3d3d3e6e,,,,,,,,,,,,,,,,0|i00013:,,,,,,,,,,,,,3_*:*_3_*:*_13935467_*|*_10000_*:*_3_*:*_8102318_*|*_10002_*:*_1_*:*_1810674_*|*_10001_*:*_2_*:*_202081,03/Jan/26 6:23 PM;712020:b4d27f8b-145d-4022-ae03-e44645eabba6;New Bug Found,03/Jan/26 8:48 PM;712020:b4d27f8b-145d-4022-ae03-e44645eabba6;Assigned to developer. Work in progress.,"04/Jan/26 1:17 AM;712020:b4d27f8b-145d-4022-ae03-e44645eabba6;h1. Developer has started working on the issue. Investigation and fix are in progress.
+
+The developer has started working on this issue. Initial investigation is currently underway, and the fix is in progress. Relevant code areas are being reviewed to identify the root cause and apply a proper solution. Further updates will be shared once more clarity is available or the fix is completed.
+
+*Progress Checklist*
+
+* -Issue acknowledged by developer-
+* -Investigation started-
+* -Root cause identified-
+* Fix implemented
+* Code review completed
+* Deployed to test environment
+* QA verification completed","04/Jan/26 1:54 AM;712020:b4d27f8b-145d-4022-ae03-e44645eabba6;h1. The fix has been completed by the developer and is now ready for QA review and validation. 
+
+The changes have been implemented as per the identified root cause and are awaiting verification to ensure the issue is fully resolved without any side effects.
+
+* -Root cause identified-
+* -Fix implemented-
+* -Code changes completed-
+* QA review started
+* QA validation completed
+* Regression testing completed
+* Issue ready for closure","04/Jan/26 1:59 AM;712020:b4d27f8b-145d-4022-ae03-e44645eabba6;h1. The issue was retested on the Chrome browser and has been successfully resolved. QA has verified the fix and confirmed that the expected behavior is working as intended. The bug is now being closed.
+
+* -Fix deployed to test environment-
+* -Retested on Chrome browser-
+* -Expected behavior verified-
+* -QA approval completed-
+* -No regression issues found-
+* -Bug closed-",Done,4/1/2026 2:06
+Checkout page loads indefinitely when proceeding from cart,ESBUG-5,10004,Bug,Done,ESBUG,EverShop-Bug-Tracking,software,Sourav Dipto Apu,712020:b4d27f8b-145d-4022-ae03-e44645eabba6,,https://demo.evershop.io/,Highest,Done,shouravdiptoshillapu,712020:1c3b6aee-57d2-4109-b7ab-70416ec326d9,Sourav Dipto Apu,712020:b4d27f8b-145d-4022-ae03-e44645eabba6,Sourav Dipto Apu,712020:b4d27f8b-145d-4022-ae03-e44645eabba6,3/1/2026 18:19,4/1/2026 2:06,4/1/2026 2:06,4/1/2026 2:06,1,1.1,7/1/2026 0:00,0,"blocking,","checkout,",critical,"Environment:
+Website: [https://demo.evershop.io/|https://demo.evershop.io/|smart-link] 
+Browser: Google Chrome (Latest)
+OS: Windows 10
+
+Steps to Reproduce:
+
+# Add multiple products to the cart
+# Navigate to the cart page
+# Click on ""Proceed to Checkout""
+
+Expected Result:
+Checkout page should load successfully.
+
+Actual Result:
+Page shows a loading indicator indefinitely and does not load.
+
+Severity: Critical
+Priority: P1",,Sourav Dipto Apu,712020:b4d27f8b-145d-4022-ae03-e44645eabba6,,,,,,,,,,,,,com.atlassian.servicedesk.plugins.approvals.internal.customfield.ApprovalsCFValue@d3075de,,,,,,,,,,,,,,,,0|i0000v:,,,4/1/2026 0:00,,,,,23c2b8c3-0392-46be-89dc-43079a275465,Testing Team,,,,3_*:*_4_*:*_17102146_*|*_10000_*:*_3_*:*_8253101_*|*_10002_*:*_1_*:*_39898_*|*_10001_*:*_3_*:*_1474406,03/Jan/26 6:21 PM;712020:b4d27f8b-145d-4022-ae03-e44645eabba6;New Bug Found,03/Jan/26 8:48 PM;712020:b4d27f8b-145d-4022-ae03-e44645eabba6;Assigned to developer. Work in progress.,"04/Jan/26 1:16 AM;712020:b4d27f8b-145d-4022-ae03-e44645eabba6;h1. Developer has started working on the issue. Investigation and fix are in progress.
+
+The developer has started working on this issue. Initial investigation is currently underway, and the fix is in progress. Relevant code areas are being reviewed to identify the root cause and apply a proper solution. Further updates will be shared once more clarity is available or the fix is completed.
+
+*Progress Checklist*
+
+* -Issue acknowledged by developer-
+* -Investigation started-
+* -Root cause identified-
+* Fix implemented
+* Code review completed
+* Deployed to test environment
+* QA verification completed","04/Jan/26 1:54 AM;712020:b4d27f8b-145d-4022-ae03-e44645eabba6;h1. The fix has been completed by the developer and is now ready for QA review and validation. 
+
+The changes have been implemented as per the identified root cause and are awaiting verification to ensure the issue is fully resolved without any side effects.
+
+* -Root cause identified-
+* -Fix implemented-
+* -Code changes completed-
+* QA review started
+* QA validation completed
+* Regression testing completed
+* Issue ready for closure","04/Jan/26 1:59 AM;712020:b4d27f8b-145d-4022-ae03-e44645eabba6;h1. The issue was retested on the Chrome browser and has been successfully resolved. QA has verified the fix and confirmed that the expected behavior is working as intended. The bug is now being closed.
+
+* -Fix deployed to test environment-
+* -Retested on Chrome browser-
+* -Expected behavior verified-
+* -QA approval completed-
+* -No regression issues found-
+* -Bug closed-",Done,4/1/2026 2:06
+Cart item count does not update immediately after adding product,ESBUG-4,10003,Bug,In Progress,ESBUG,EverShop-Bug-Tracking,software,Sourav Dipto Apu,712020:b4d27f8b-145d-4022-ae03-e44645eabba6,,https://demo.evershop.io/,Medium,,OYNNDRILA SINGH PURKAYESTHA 0242320005341301,712020:ce01dfe1-a11e-4f25-ae74-1c51371a93f6,Sourav Dipto Apu,712020:b4d27f8b-145d-4022-ae03-e44645eabba6,Sourav Dipto Apu,712020:b4d27f8b-145d-4022-ae03-e44645eabba6,3/1/2026 18:04,4/1/2026 2:13,4/1/2026 2:12,,1,1.1,11/1/2026 0:00,0,"cart,",sync,"ui,","Environment:
+Website: [https://demo.evershop.io/|https://demo.evershop.io/|smart-link] 
+Browser: Google Chrome (Latest)
+OS: Windows 10
+
+Steps to Reproduce:
+
+# Add a product to the cart
+# Observe the cart icon count
+
+Expected Result:
+Cart count should update instantly after adding a product.
+
+Actual Result:
+Cart count updates only after refreshing the page.
+
+Severity: Medium
+Priority: P2",,Sourav Dipto Apu,712020:b4d27f8b-145d-4022-ae03-e44645eabba6,,,,,,,,,,,,,com.atlassian.servicedesk.plugins.approvals.internal.customfield.ApprovalsCFValue@4c79059c,,,,,,,,,,,,,,,,0|i0000n:,,,4/1/2026 0:00,,,,,,,,,,,03/Jan/26 9:04 PM;712020:b4d27f8b-145d-4022-ae03-e44645eabba6;Pending due to priority and sprint capacity.,"04/Jan/26 1:49 AM;712020:b4d27f8b-145d-4022-ae03-e44645eabba6;h1. The issue was logged after QA testing and is currently pending development review and assignment.
+
+h3. Once reviewed, it will be assigned to the appropriate developer and taken up for further investigation and resolution.
+
+Issue identified during QA testing
+
+* -Bug logged in Jira-
+* -Development review pending-
+* Developer assigned
+* Investigation started
+* Fix implemented
+* QA re-testing completed","04/Jan/26 2:09 AM;712020:b4d27f8b-145d-4022-ae03-e44645eabba6;h1. Developer has started working on the issue. Investigation and fix are in progress.
+
+The developer has started working on this issue. Initial investigation is currently underway, and the fix is in progress. Relevant code areas are being reviewed to identify the root cause and apply a proper solution. Further updates will be shared once more clarity is available or the fix is completed.
+
+*Progress Checklist*
+
+* -Issue acknowledged by developer-
+* -Investigation started-
+* -Root cause identified-
+* Fix implemented
+* Code review completed
+* Deployed to test environment
+* QA verification completed",,,In Progress,4/1/2026 2:07
+Add to Cart button does not respond on first click,ESBUG-3,10002,Bug,Done,ESBUG,EverShop-Bug-Tracking,software,Sourav Dipto Apu,712020:b4d27f8b-145d-4022-ae03-e44645eabba6,,https://demo.evershop.io/,High,Done,shouravdiptoshillapu,712020:1c3b6aee-57d2-4109-b7ab-70416ec326d9,Sourav Dipto Apu,712020:b4d27f8b-145d-4022-ae03-e44645eabba6,Sourav Dipto Apu,712020:b4d27f8b-145d-4022-ae03-e44645eabba6,3/1/2026 18:01,4/1/2026 2:05,4/1/2026 2:05,4/1/2026 2:05,1,1.1,7/1/2026 0:00,0,"cart,",,,"Environment:
+Website: [https://demo.evershop.io/|https://demo.evershop.io/|smart-link] 
+Browser: Google Chrome (Latest)
+OS: Windows 10
+
+Steps to Reproduce:
+
+# Open the EverShop website
+# Select any product category
+# Open a product details page
+# Click on the ""Add to Cart"" button once
+
+Expected Result:
+Product should be added to the cart immediately.
+
+Actual Result:
+Nothing happens on the first click; sometimes the second click adds the product.
+
+Severity: High
+Priority: P1","Environment:
+Website: [https://demo.evershop.io/|https://demo.evershop.io/|smart-link] 
+Browser: Google Chrome (Latest)
+OS: Windows 10",Sourav Dipto Apu,712020:b4d27f8b-145d-4022-ae03-e44645eabba6,,,,,,,,,,,,,com.atlassian.servicedesk.plugins.approvals.internal.customfield.ApprovalsCFValue@16bfb8af,,,,,,,,,,,,,,,,0|i0000f:,,,,,,,,,,,,,3_*:*_3_*:*_13922079_*|*_10000_*:*_3_*:*_9330220_*|*_10002_*:*_1_*:*_1794204_*|*_10001_*:*_2_*:*_205915,03/Jan/26 8:51 PM;712020:b4d27f8b-145d-4022-ae03-e44645eabba6;Assigned to developer. Work in progress.,"04/Jan/26 1:07 AM;712020:b4d27f8b-145d-4022-ae03-e44645eabba6;h1. Developer has started working on the issue. Investigation and fix are in progress.
+
+The developer has started working on this issue. Initial investigation is currently underway, and the fix is in progress. Relevant code areas are being reviewed to identify the root cause and apply a proper solution. Further updates will be shared once more clarity is available or the fix is completed.
+
+*Progress Checklist*
+
+* -Issue acknowledged by developer-
+* -Investigation started-
+* -Root cause identified-
+* Fix implemented
+* Code review completed
+* Deployed to test environment
+* QA verification completed","04/Jan/26 1:54 AM;712020:b4d27f8b-145d-4022-ae03-e44645eabba6;h1. The fix has been completed by the developer and is now ready for QA review and validation. 
+
+The changes have been implemented as per the identified root cause and are awaiting verification to ensure the issue is fully resolved without any side effects.
+
+* -Root cause identified-
+* -Fix implemented-
+* -Code changes completed-
+* QA review started
+* QA validation completed
+* Regression testing completed
+* Issue ready for closure","04/Jan/26 1:58 AM;712020:b4d27f8b-145d-4022-ae03-e44645eabba6;h1. The issue was retested on the Chrome browser and has been successfully resolved. QA has verified the fix and confirmed that the expected behavior is working as intended. The bug is now being closed.
+
+* -Fix deployed to test environment-
+* -Retested on Chrome browser-
+* -Expected behavior verified-
+* -QA approval completed-
+* -No regression issues found-
+* -Bug closed-",,Done,4/1/2026 2:05
+Product image not displayed on Electronics category page,ESBUG-2,10001,Bug,Done,ESBUG,EverShop-Bug-Tracking,software,Sourav Dipto Apu,712020:b4d27f8b-145d-4022-ae03-e44645eabba6,,https://demo.evershop.io/,High,Done,OYNNDRILA SINGH PURKAYESTHA 0242320005341301,712020:ce01dfe1-a11e-4f25-ae74-1c51371a93f6,Sourav Dipto Apu,712020:b4d27f8b-145d-4022-ae03-e44645eabba6,Sourav Dipto Apu,712020:b4d27f8b-145d-4022-ae03-e44645eabba6,3/1/2026 18:00,4/1/2026 2:05,4/1/2026 2:04,4/1/2026 2:05,,,7/1/2026 0:00,0,cart,critical,validation,"h3. Environment:
+Website: [https://demo.evershop.io/|https://demo.evershop.io/|smart-link] 
+Browser: Google Chrome (Latest)
+OS: Windows 10
+
+Steps to Reproduce:
+
+# Open [https://demo.evershop.io/|https://demo.evershop.io/|smart-link] 
+# Click on ""Electronics"" category
+# Scroll through the product listing
+
+Expected Result:
+All products should display their images correctly.
+
+Actual Result:
+Several products show broken or missing image placeholders.
+
+Severity: Medium
+Priority: P2",,Sourav Dipto Apu,712020:b4d27f8b-145d-4022-ae03-e44645eabba6,;04/Jan/26 1:00 AM;e38509cf-5883-45bf-bae9-a8a8c4341145;427500,;04/Jan/26 1:26 AM;e38509cf-5883-45bf-bae9-a8a8c4341145;427500,,0,855000,,,0,855000,,,,com.atlassian.servicedesk.plugins.approvals.internal.customfield.ApprovalsCFValue@88475bb,,,,,,,,,,,,,,,,0|i00007:,,,4/1/2026 0:00,,,,,23c2b8c3-0392-46be-89dc-43079a275465,Testing Team,,,,3_*:*_3_*:*_13918079_*|*_10000_*:*_3_*:*_9434106_*|*_10002_*:*_1_*:*_1518442_*|*_10001_*:*_2_*:*_205918,03/Jan/26 8:52 PM;712020:b4d27f8b-145d-4022-ae03-e44645eabba6;h1. Assigned to developer. Work in progress.,"04/Jan/26 12:59 AM;712020:b4d27f8b-145d-4022-ae03-e44645eabba6;h1. Developer has started working on the issue. Investigation and fix are in progress.
+
+The developer has started working on this issue. Initial investigation is currently underway, and the fix is in progress. Relevant code areas are being reviewed to identify the root cause and apply a proper solution. Further updates will be shared once more clarity is available or the fix is completed.
+
+*Progress Checklist*
+
+* -Issue acknowledged by developer-
+* -Investigation started-
+* -Root cause identified-
+* Fix implemented
+* Code review completed
+* Deployed to test environment
+* QA verification completed","04/Jan/26 1:55 AM;712020:b4d27f8b-145d-4022-ae03-e44645eabba6;h1. The fix has been completed by the developer and is now ready for QA review and validation. 
+
+The changes have been implemented as per the identified root cause and are awaiting verification to ensure the issue is fully resolved without any side effects.
+
+* -Root cause identified-
+* -Fix implemented-
+* -Code changes completed-
+* QA review started
+* QA validation completed
+* Regression testing completed
+* Issue ready for closure","04/Jan/26 1:57 AM;712020:b4d27f8b-145d-4022-ae03-e44645eabba6;h1. The issue was retested on the Chrome browser and has been successfully resolved. QA has verified the fix and confirmed that the expected behavior is working as intended. The bug is now being closed.
+
+* -Fix deployed to test environment-
+* -Retested on Chrome browser-
+* -Expected behavior verified-
+* -QA approval completed-
+* -No regression issues found-
+* -Bug closed-",,Done,4/1/2026 2:05
+Product image not displayed on Electronics category page ,ESBUG-1,10000,Bug,In Progress,ESBUG,EverShop-Bug-Tracking,software,Sourav Dipto Apu,712020:b4d27f8b-145d-4022-ae03-e44645eabba6,,https://demo.evershop.io/,Medium,,shouravdiptoshillapu,712020:1c3b6aee-57d2-4109-b7ab-70416ec326d9,Sourav Dipto Apu,712020:b4d27f8b-145d-4022-ae03-e44645eabba6,Sourav Dipto Apu,712020:b4d27f8b-145d-4022-ae03-e44645eabba6,3/1/2026 17:07,4/1/2026 2:13,4/1/2026 2:13,,1,1.1,10/1/2026 0:00,0,image,"ui,",,"Environment:
+Website: [https://demo.evershop.io/|https://demo.evershop.io/|smart-link] 
+Browser: Chrome (latest)
+OS: Windows 10
+
+Steps to Reproduce:
+
+# Open [https://demo.evershop.io/|https://demo.evershop.io/|smart-link] 
+# Click on ""Electronics"" category
+# Scroll down the product list
+
+Expected Result:
+All products should display their images correctly.
+
+Actual Result:
+Several products show broken or missing images.
+
+Severity: Medium
+Priority: P2",,Sourav Dipto Apu,712020:b4d27f8b-145d-4022-ae03-e44645eabba6,,,,,,,,,,,,,com.atlassian.servicedesk.plugins.approvals.internal.customfield.ApprovalsCFValue@25023d47,,,,,,,,,,,,,,,,0|hzzzzz:,,,3/1/2026 0:00,,,,,23c2b8c3-0392-46be-89dc-43079a275465,Testing Team,,,,,03/Jan/26 5:31 PM;712020:b4d27f8b-145d-4022-ae03-e44645eabba6;Bug Found ,"04/Jan/26 1:49 AM;712020:b4d27f8b-145d-4022-ae03-e44645eabba6;h1. The issue was logged after QA testing and is currently pending development review and assignment.
+
+h3. Once reviewed, it will be assigned to the appropriate developer and taken up for further investigation and resolution.
+
+Issue identified during QA testing
+
+* -Bug logged in Jira-
+* -Development review pending-
+* Developer assigned
+* Investigation started
+* Fix implemented
+* QA re-testing completed","04/Jan/26 2:09 AM;712020:b4d27f8b-145d-4022-ae03-e44645eabba6;h1. Developer has started working on the issue. Investigation and fix are in progress.
+
+The developer has started working on this issue. Initial investigation is currently underway, and the fix is in progress. Relevant code areas are being reviewed to identify the root cause and apply a proper solution. Further updates will be shared once more clarity is available or the fix is completed.
+
+*Progress Checklist*
+
+* -Issue acknowledged by developer-
+* -Investigation started-
+* -Root cause identified-
+* Fix implemented
+* Code review completed
+* Deployed to test environment
+* QA verification completed",,,In Progress,4/1/2026 2:07

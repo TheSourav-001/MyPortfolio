@@ -1,0 +1,654 @@
+﻿{
+    "name":  "QA Evidence Gallery",
+    "type":  "folder",
+    "children":  [
+                     {
+                         "name":  "All Bug report",
+                         "type":  "folder",
+                         "children":  [
+                                          {
+                                              "name":  "All Bug.csv",
+                                              "type":  "file",
+                                              "ext":  ".csv",
+                                              "path":  "QA Evidence Gallery\\All Bug report\\All Bug.csv"
+                                          },
+                                          {
+                                              "name":  "All Bug.png",
+                                              "type":  "file",
+                                              "ext":  ".png",
+                                              "path":  "QA Evidence Gallery\\All Bug report\\All Bug.png"
+                                          },
+                                          {
+                                              "name":  "Bug list detlais.pdf",
+                                              "type":  "file",
+                                              "ext":  ".pdf",
+                                              "path":  "QA Evidence Gallery\\All Bug report\\Bug list detlais.pdf"
+                                          }
+                                      ]
+                     },
+                     {
+                         "name":  "All TestCase",
+                         "type":  "folder",
+                         "children":  [
+                                          {
+                                              "name":  "(TestCase and Execution).xlsx",
+                                              "type":  "file",
+                                              "ext":  ".xlsx",
+                                              "path":  "QA Evidence Gallery\\All TestCase\\(TestCase and Execution).xlsx"
+                                          },
+                                          {
+                                              "name":  "Test Analysis Feedback.docx",
+                                              "type":  "file",
+                                              "ext":  ".docx",
+                                              "path":  "QA Evidence Gallery\\All TestCase\\Test Analysis Feedback.docx"
+                                          },
+                                          {
+                                              "name":  "Test_Cases_Petstore_v1.0.pdf",
+                                              "type":  "file",
+                                              "ext":  ".pdf",
+                                              "path":  "QA Evidence Gallery\\All TestCase\\Test_Cases_Petstore_v1.0.pdf"
+                                          },
+                                          {
+                                              "name":  "Testrail-activity-01-01-2026.xlsx",
+                                              "type":  "file",
+                                              "ext":  ".xlsx",
+                                              "path":  "QA Evidence Gallery\\All TestCase\\Testrail-activity-01-01-2026.xlsx"
+                                          }
+                                      ]
+                     },
+                     {
+                         "name":  "Jira",
+                         "type":  "folder",
+                         "children":  [
+                                          {
+                                              "name":  "Bug-List-Export",
+                                              "type":  "folder",
+                                              "children":  [
+                                                               {
+                                                                   "name":  "All Bug.csv",
+                                                                   "type":  "file",
+                                                                   "ext":  ".csv",
+                                                                   "path":  "QA Evidence Gallery\\Jira\\Bug-List-Export\\All Bug.csv"
+                                                               },
+                                                               {
+                                                                   "name":  "All Bug.png",
+                                                                   "type":  "file",
+                                                                   "ext":  ".png",
+                                                                   "path":  "QA Evidence Gallery\\Jira\\Bug-List-Export\\All Bug.png"
+                                                               },
+                                                               {
+                                                                   "name":  "Bug list detlais.pdf",
+                                                                   "type":  "file",
+                                                                   "ext":  ".pdf",
+                                                                   "path":  "QA Evidence Gallery\\Jira\\Bug-List-Export\\Bug list detlais.pdf"
+                                                               }
+                                                           ]
+                                          },
+                                          {
+                                              "name":  "Reports",
+                                              "type":  "folder",
+                                              "children":  [
+                                                               {
+                                                                   "name":  "Deployment frequency - Jira.pdf",
+                                                                   "type":  "file",
+                                                                   "ext":  ".pdf",
+                                                                   "path":  "QA Evidence Gallery\\Jira\\Reports\\Deployment frequency - Jira.pdf"
+                                                               },
+                                                               {
+                                                                   "name":  "Report - Created vs Resolved Issues Report - Jira.pdf",
+                                                                   "type":  "file",
+                                                                   "ext":  ".pdf",
+                                                                   "path":  "QA Evidence Gallery\\Jira\\Reports\\Report - Created vs Resolved Issues Report - Jira.pdf"
+                                                               },
+                                                               {
+                                                                   "name":  "Report - Pie Chart Assigne Report - Jira.pdf",
+                                                                   "type":  "file",
+                                                                   "ext":  ".pdf",
+                                                                   "path":  "QA Evidence Gallery\\Jira\\Reports\\Report - Pie Chart Assigne Report - Jira.pdf"
+                                                               },
+                                                               {
+                                                                   "name":  "Report - Pie Chart Issue Type  Report - Jira.pdf",
+                                                                   "type":  "file",
+                                                                   "ext":  ".pdf",
+                                                                   "path":  "QA Evidence Gallery\\Jira\\Reports\\Report - Pie Chart Issue Type  Report - Jira.pdf"
+                                                               },
+                                                               {
+                                                                   "name":  "Report - Pie Chart leble Report - Jira.pdf",
+                                                                   "type":  "file",
+                                                                   "ext":  ".pdf",
+                                                                   "path":  "QA Evidence Gallery\\Jira\\Reports\\Report - Pie Chart leble Report - Jira.pdf"
+                                                               },
+                                                               {
+                                                                   "name":  "Report - Pie Chart Project Report - Jira.pdf",
+                                                                   "type":  "file",
+                                                                   "ext":  ".pdf",
+                                                                   "path":  "QA Evidence Gallery\\Jira\\Reports\\Report - Pie Chart Project Report - Jira.pdf"
+                                                               },
+                                                               {
+                                                                   "name":  "Report - Pie Chart Report - Jira.pdf",
+                                                                   "type":  "file",
+                                                                   "ext":  ".pdf",
+                                                                   "path":  "QA Evidence Gallery\\Jira\\Reports\\Report - Pie Chart Report - Jira.pdf"
+                                                               },
+                                                               {
+                                                                   "name":  "Report - Recently Created Issues Report - Jira.pdf",
+                                                                   "type":  "file",
+                                                                   "ext":  ".pdf",
+                                                                   "path":  "QA Evidence Gallery\\Jira\\Reports\\Report - Recently Created Issues Report - Jira.pdf"
+                                                               },
+                                                               {
+                                                                   "name":  "Report - Resolution Time Report - Jira.pdf",
+                                                                   "type":  "file",
+                                                                   "ext":  ".pdf",
+                                                                   "path":  "QA Evidence Gallery\\Jira\\Reports\\Report - Resolution Time Report - Jira.pdf"
+                                                               },
+                                                               {
+                                                                   "name":  "Summary - EverShop-Bug-Tracking - Jira.pdf",
+                                                                   "type":  "file",
+                                                                   "ext":  ".pdf",
+                                                                   "path":  "QA Evidence Gallery\\Jira\\Reports\\Summary - EverShop-Bug-Tracking - Jira.pdf"
+                                                               }
+                                                           ]
+                                          },
+                                          {
+                                              "name":  "Sample-Bugs",
+                                              "type":  "folder",
+                                              "children":  [
+                                                               {
+                                                                   "name":  "[#ESBUG-1] Product image not displayed on Electronics category page.pdf",
+                                                                   "type":  "file",
+                                                                   "ext":  ".pdf",
+                                                                   "path":  "QA Evidence Gallery\\Jira\\Sample-Bugs\\[#ESBUG-1] Product image not displayed on Electronics category page.pdf"
+                                                               },
+                                                               {
+                                                                   "name":  "[#ESBUG-10] Cart allows negative quantity for products.pdf",
+                                                                   "type":  "file",
+                                                                   "ext":  ".pdf",
+                                                                   "path":  "QA Evidence Gallery\\Jira\\Sample-Bugs\\[#ESBUG-10] Cart allows negative quantity for products.pdf"
+                                                               },
+                                                               {
+                                                                   "name":  "[#ESBUG-2] Product image not displayed on Electronics category page.pdf",
+                                                                   "type":  "file",
+                                                                   "ext":  ".pdf",
+                                                                   "path":  "QA Evidence Gallery\\Jira\\Sample-Bugs\\[#ESBUG-2] Product image not displayed on Electronics category page.pdf"
+                                                               },
+                                                               {
+                                                                   "name":  "[#ESBUG-3] Add to Cart button does not respond on first click.pdf",
+                                                                   "type":  "file",
+                                                                   "ext":  ".pdf",
+                                                                   "path":  "QA Evidence Gallery\\Jira\\Sample-Bugs\\[#ESBUG-3] Add to Cart button does not respond on first click.pdf"
+                                                               },
+                                                               {
+                                                                   "name":  "[#ESBUG-4] Cart item count does not update immediately after adding product.pdf",
+                                                                   "type":  "file",
+                                                                   "ext":  ".pdf",
+                                                                   "path":  "QA Evidence Gallery\\Jira\\Sample-Bugs\\[#ESBUG-4] Cart item count does not update immediately after adding product.pdf"
+                                                               },
+                                                               {
+                                                                   "name":  "[#ESBUG-5] Checkout page loads indefinitely when proceeding from cart.pdf",
+                                                                   "type":  "file",
+                                                                   "ext":  ".pdf",
+                                                                   "path":  "QA Evidence Gallery\\Jira\\Sample-Bugs\\[#ESBUG-5] Checkout page loads indefinitely when proceeding from cart.pdf"
+                                                               },
+                                                               {
+                                                                   "name":  "[#ESBUG-6] Product price mismatch between product page and cart.pdf",
+                                                                   "type":  "file",
+                                                                   "ext":  ".pdf",
+                                                                   "path":  "QA Evidence Gallery\\Jira\\Sample-Bugs\\[#ESBUG-6] Product price mismatch between product page and cart.pdf"
+                                                               },
+                                                               {
+                                                                   "name":  "[#ESBUG-7] Search input placeholder text missing on mobile view.pdf",
+                                                                   "type":  "file",
+                                                                   "ext":  ".pdf",
+                                                                   "path":  "QA Evidence Gallery\\Jira\\Sample-Bugs\\[#ESBUG-7] Search input placeholder text missing on mobile view.pdf"
+                                                               },
+                                                               {
+                                                                   "name":  "[#ESBUG-8] Product filter does not update results correctly.pdf",
+                                                                   "type":  "file",
+                                                                   "ext":  ".pdf",
+                                                                   "path":  "QA Evidence Gallery\\Jira\\Sample-Bugs\\[#ESBUG-8] Product filter does not update results correctly.pdf"
+                                                               },
+                                                               {
+                                                                   "name":  "[#ESBUG-9] Broken link found in website footer section.pdf",
+                                                                   "type":  "file",
+                                                                   "ext":  ".pdf",
+                                                                   "path":  "QA Evidence Gallery\\Jira\\Sample-Bugs\\[#ESBUG-9] Broken link found in website footer section.pdf"
+                                                               }
+                                                           ]
+                                          },
+                                          {
+                                              "name":  "Workflow-Proof",
+                                              "type":  "folder",
+                                              "children":  [
+                                                               {
+                                                                   "name":  "01_All_Bugs_Logged_Status_TODO.png",
+                                                                   "type":  "file",
+                                                                   "ext":  ".png",
+                                                                   "path":  "QA Evidence Gallery\\Jira\\Workflow-Proof\\01_All_Bugs_Logged_Status_TODO.png"
+                                                               },
+                                                               {
+                                                                   "name":  "02_High_Priority_Bugs_In_Progress.png",
+                                                                   "type":  "file",
+                                                                   "ext":  ".png",
+                                                                   "path":  "QA Evidence Gallery\\Jira\\Workflow-Proof\\02_High_Priority_Bugs_In_Progress.png"
+                                                               },
+                                                               {
+                                                                   "name":  "03_Bugs_In_Review_And_Medium_In_Progress.png",
+                                                                   "type":  "file",
+                                                                   "ext":  ".png",
+                                                                   "path":  "QA Evidence Gallery\\Jira\\Workflow-Proof\\03_Bugs_In_Review_And_Medium_In_Progress.png"
+                                                               },
+                                                               {
+                                                                   "name":  "04_High_Priority_Bugs_Completed_Medium_In_Review.png",
+                                                                   "type":  "file",
+                                                                   "ext":  ".png",
+                                                                   "path":  "QA Evidence Gallery\\Jira\\Workflow-Proof\\04_High_Priority_Bugs_Completed_Medium_In_Review.png"
+                                                               },
+                                                               {
+                                                                   "name":  "Workflow Proof.pdf",
+                                                                   "type":  "file",
+                                                                   "ext":  ".pdf",
+                                                                   "path":  "QA Evidence Gallery\\Jira\\Workflow-Proof\\Workflow Proof.pdf"
+                                                               }
+                                                           ]
+                                          }
+                                      ]
+                     },
+                     {
+                         "name":  "Newman",
+                         "type":  "folder",
+                         "children":  [
+                                          {
+                                              "name":  "Newman Summary Report.pdf",
+                                              "type":  "file",
+                                              "ext":  ".pdf",
+                                              "path":  "QA Evidence Gallery\\Newman\\Newman Summary Report.pdf"
+                                          },
+                                          {
+                                              "name":  "ReqRes Automation Collection-2026-05-15-15-07-35-522-0.html",
+                                              "type":  "file",
+                                              "ext":  ".html",
+                                              "path":  "QA Evidence Gallery\\Newman\\ReqRes Automation Collection-2026-05-15-15-07-35-522-0.html"
+                                          }
+                                      ]
+                     },
+                     {
+                         "name":  "Postman",
+                         "type":  "folder",
+                         "children":  [
+                                          {
+                                              "name":  "EVERSHOP.postman_test_run.json",
+                                              "type":  "file",
+                                              "ext":  ".json",
+                                              "path":  "QA Evidence Gallery\\Postman\\EVERSHOP.postman_test_run.json"
+                                          },
+                                          {
+                                              "name":  "EVERSHOP-performance-report-1.pdf",
+                                              "type":  "file",
+                                              "ext":  ".pdf",
+                                              "path":  "QA Evidence Gallery\\Postman\\EVERSHOP-performance-report-1.pdf"
+                                          },
+                                          {
+                                              "name":  "ReqRes-Automation-Collection-performance-report-1.pdf",
+                                              "type":  "file",
+                                              "ext":  ".pdf",
+                                              "path":  "QA Evidence Gallery\\Postman\\ReqRes-Automation-Collection-performance-report-1.pdf"
+                                          },
+                                          {
+                                              "name":  "Swagger-Petstore-Project-performance-report-2.pdf",
+                                              "type":  "file",
+                                              "ext":  ".pdf",
+                                              "path":  "QA Evidence Gallery\\Postman\\Swagger-Petstore-Project-performance-report-2.pdf"
+                                          }
+                                      ]
+                     },
+                     {
+                         "name":  "Requirement Analysis",
+                         "type":  "folder",
+                         "children":  {
+                                          "name":  "Requirement Analysis.docx",
+                                          "type":  "file",
+                                          "ext":  ".docx",
+                                          "path":  "QA Evidence Gallery\\Requirement Analysis\\Requirement Analysis.docx"
+                                      }
+                     },
+                     {
+                         "name":  "selenum",
+                         "type":  "folder",
+                         "children":  {
+                                          "name":  "Mochawesome Report.pdf",
+                                          "type":  "file",
+                                          "ext":  ".pdf",
+                                          "path":  "QA Evidence Gallery\\selenum\\Mochawesome Report.pdf"
+                                      }
+                     },
+                     {
+                         "name":  "Test Plan",
+                         "type":  "folder",
+                         "children":  {
+                                          "name":  "Test_Plan_Petstore_v1.0.pdf",
+                                          "type":  "file",
+                                          "ext":  ".pdf",
+                                          "path":  "QA Evidence Gallery\\Test Plan\\Test_Plan_Petstore_v1.0.pdf"
+                                      }
+                     },
+                     {
+                         "name":  "TestCase-saucedemo",
+                         "type":  "folder",
+                         "children":  [
+                                          {
+                                              "name":  "Bug List",
+                                              "type":  "folder",
+                                              "children":  {
+                                                               "name":  "Bug List.xlsx",
+                                                               "type":  "file",
+                                                               "ext":  ".xlsx",
+                                                               "path":  "QA Evidence Gallery\\TestCase-saucedemo\\Bug List\\Bug List.xlsx"
+                                                           }
+                                          },
+                                          {
+                                              "name":  "Screenshot",
+                                              "type":  "folder",
+                                              "children":  [
+                                                               {
+                                                                   "name":  "Code_Generated_Image (1).png",
+                                                                   "type":  "file",
+                                                                   "ext":  ".png",
+                                                                   "path":  "QA Evidence Gallery\\TestCase-saucedemo\\Screenshot\\Code_Generated_Image (1).png"
+                                                               },
+                                                               {
+                                                                   "name":  "Code_Generated_Image (2).png",
+                                                                   "type":  "file",
+                                                                   "ext":  ".png",
+                                                                   "path":  "QA Evidence Gallery\\TestCase-saucedemo\\Screenshot\\Code_Generated_Image (2).png"
+                                                               },
+                                                               {
+                                                                   "name":  "Code_Generated_Image.png",
+                                                                   "type":  "file",
+                                                                   "ext":  ".png",
+                                                                   "path":  "QA Evidence Gallery\\TestCase-saucedemo\\Screenshot\\Code_Generated_Image.png"
+                                                               },
+                                                               {
+                                                                   "name":  "SauceDemo_Defect_Summary_-_Severity_and_Status_Distribution.png",
+                                                                   "type":  "file",
+                                                                   "ext":  ".png",
+                                                                   "path":  "QA Evidence Gallery\\TestCase-saucedemo\\Screenshot\\SauceDemo_Defect_Summary_-_Severity_and_Status_Distribution.png"
+                                                               },
+                                                               {
+                                                                   "name":  "screencapture-saucedemo-checkout-step-one-html-2026-01-06-08_16_21.jpg",
+                                                                   "type":  "file",
+                                                                   "ext":  ".jpg",
+                                                                   "path":  "QA Evidence Gallery\\TestCase-saucedemo\\Screenshot\\screencapture-saucedemo-checkout-step-one-html-2026-01-06-08_16_21.jpg"
+                                                               },
+                                                               {
+                                                                   "name":  "screencapture-saucedemo-checkout-step-one-html-2026-01-06-08_20_46.jpg",
+                                                                   "type":  "file",
+                                                                   "ext":  ".jpg",
+                                                                   "path":  "QA Evidence Gallery\\TestCase-saucedemo\\Screenshot\\screencapture-saucedemo-checkout-step-one-html-2026-01-06-08_20_46.jpg"
+                                                               },
+                                                               {
+                                                                   "name":  "screencapture-saucedemo-inventory-html-2026-01-06-07_23_21.jpg",
+                                                                   "type":  "file",
+                                                                   "ext":  ".jpg",
+                                                                   "path":  "QA Evidence Gallery\\TestCase-saucedemo\\Screenshot\\screencapture-saucedemo-inventory-html-2026-01-06-07_23_21.jpg"
+                                                               },
+                                                               {
+                                                                   "name":  "Screenshot 2026-01-06 030742.png",
+                                                                   "type":  "file",
+                                                                   "ext":  ".png",
+                                                                   "path":  "QA Evidence Gallery\\TestCase-saucedemo\\Screenshot\\Screenshot 2026-01-06 030742.png"
+                                                               },
+                                                               {
+                                                                   "name":  "Screenshot 2026-01-06 030832.png",
+                                                                   "type":  "file",
+                                                                   "ext":  ".png",
+                                                                   "path":  "QA Evidence Gallery\\TestCase-saucedemo\\Screenshot\\Screenshot 2026-01-06 030832.png"
+                                                               },
+                                                               {
+                                                                   "name":  "Screenshot 2026-01-06 030920.png",
+                                                                   "type":  "file",
+                                                                   "ext":  ".png",
+                                                                   "path":  "QA Evidence Gallery\\TestCase-saucedemo\\Screenshot\\Screenshot 2026-01-06 030920.png"
+                                                               },
+                                                               {
+                                                                   "name":  "Screenshot 2026-01-06 030938.png",
+                                                                   "type":  "file",
+                                                                   "ext":  ".png",
+                                                                   "path":  "QA Evidence Gallery\\TestCase-saucedemo\\Screenshot\\Screenshot 2026-01-06 030938.png"
+                                                               },
+                                                               {
+                                                                   "name":  "Screenshot 2026-01-06 030950.png",
+                                                                   "type":  "file",
+                                                                   "ext":  ".png",
+                                                                   "path":  "QA Evidence Gallery\\TestCase-saucedemo\\Screenshot\\Screenshot 2026-01-06 030950.png"
+                                                               },
+                                                               {
+                                                                   "name":  "Screenshot 2026-01-06 030957.png",
+                                                                   "type":  "file",
+                                                                   "ext":  ".png",
+                                                                   "path":  "QA Evidence Gallery\\TestCase-saucedemo\\Screenshot\\Screenshot 2026-01-06 030957.png"
+                                                               },
+                                                               {
+                                                                   "name":  "Screenshot 2026-01-06 065448.png",
+                                                                   "type":  "file",
+                                                                   "ext":  ".png",
+                                                                   "path":  "QA Evidence Gallery\\TestCase-saucedemo\\Screenshot\\Screenshot 2026-01-06 065448.png"
+                                                               },
+                                                               {
+                                                                   "name":  "Test_Execution_Status_by_Module.png",
+                                                                   "type":  "file",
+                                                                   "ext":  ".png",
+                                                                   "path":  "QA Evidence Gallery\\TestCase-saucedemo\\Screenshot\\Test_Execution_Status_by_Module.png"
+                                                               },
+                                                               {
+                                                                   "name":  "test_execution_summary.png",
+                                                                   "type":  "file",
+                                                                   "ext":  ".png",
+                                                                   "path":  "QA Evidence Gallery\\TestCase-saucedemo\\Screenshot\\test_execution_summary.png"
+                                                               }
+                                                           ]
+                                          },
+                                          {
+                                              "name":  "Test Case",
+                                              "type":  "folder",
+                                              "children":  [
+                                                               {
+                                                                   "name":  "Authentication \u0026 Session Management.xlsx",
+                                                                   "type":  "file",
+                                                                   "ext":  ".xlsx",
+                                                                   "path":  "QA Evidence Gallery\\TestCase-saucedemo\\Test Case\\Authentication \u0026 Session Management.xlsx"
+                                                               },
+                                                               {
+                                                                   "name":  "Cart Functionality.xlsx",
+                                                                   "type":  "file",
+                                                                   "ext":  ".xlsx",
+                                                                   "path":  "QA Evidence Gallery\\TestCase-saucedemo\\Test Case\\Cart Functionality.xlsx"
+                                                               },
+                                                               {
+                                                                   "name":  "Checkout.xlsx",
+                                                                   "type":  "file",
+                                                                   "ext":  ".xlsx",
+                                                                   "path":  "QA Evidence Gallery\\TestCase-saucedemo\\Test Case\\Checkout.xlsx"
+                                                               },
+                                                               {
+                                                                   "name":  "End-to-End \u0026 System Edge Cases.xlsx",
+                                                                   "type":  "file",
+                                                                   "ext":  ".xlsx",
+                                                                   "path":  "QA Evidence Gallery\\TestCase-saucedemo\\Test Case\\End-to-End \u0026 System Edge Cases.xlsx"
+                                                               },
+                                                               {
+                                                                   "name":  "Inventory Page (Product Listing).xlsx",
+                                                                   "type":  "file",
+                                                                   "ext":  ".xlsx",
+                                                                   "path":  "QA Evidence Gallery\\TestCase-saucedemo\\Test Case\\Inventory Page (Product Listing).xlsx"
+                                                               },
+                                                               {
+                                                                   "name":  "Product Detail.xlsx",
+                                                                   "type":  "file",
+                                                                   "ext":  ".xlsx",
+                                                                   "path":  "QA Evidence Gallery\\TestCase-saucedemo\\Test Case\\Product Detail.xlsx"
+                                                               },
+                                                               {
+                                                                   "name":  "TestCase_All in one.xlsx",
+                                                                   "type":  "file",
+                                                                   "ext":  ".xlsx",
+                                                                   "path":  "QA Evidence Gallery\\TestCase-saucedemo\\Test Case\\TestCase_All in one.xlsx"
+                                                               }
+                                                           ]
+                                          },
+                                          {
+                                              "name":  "Test Execution Report",
+                                              "type":  "folder",
+                                              "children":  [
+                                                               {
+                                                                   "name":  "Quick Reference_Test Execution Summary.pdf",
+                                                                   "type":  "file",
+                                                                   "ext":  ".pdf",
+                                                                   "path":  "QA Evidence Gallery\\TestCase-saucedemo\\Test Execution Report\\Quick Reference_Test Execution Summary.pdf"
+                                                               },
+                                                               {
+                                                                   "name":  "Test Execution Report.pdf",
+                                                                   "type":  "file",
+                                                                   "ext":  ".pdf",
+                                                                   "path":  "QA Evidence Gallery\\TestCase-saucedemo\\Test Execution Report\\Test Execution Report.pdf"
+                                                               }
+                                                           ]
+                                          },
+                                          {
+                                              "name":  "Test Plan",
+                                              "type":  "folder",
+                                              "children":  {
+                                                               "name":  "Test Plan_SauceDemo E-Commerce Application.pdf",
+                                                               "type":  "file",
+                                                               "ext":  ".pdf",
+                                                               "path":  "QA Evidence Gallery\\TestCase-saucedemo\\Test Plan\\Test Plan_SauceDemo E-Commerce Application.pdf"
+                                                           }
+                                          },
+                                          {
+                                              "name":  "Test Scenarios",
+                                              "type":  "folder",
+                                              "children":  {
+                                                               "name":  "Test Scenarios_SauceDemo E-Commerce Application.pdf",
+                                                               "type":  "file",
+                                                               "ext":  ".pdf",
+                                                               "path":  "QA Evidence Gallery\\TestCase-saucedemo\\Test Scenarios\\Test Scenarios_SauceDemo E-Commerce Application.pdf"
+                                                           }
+                                          }
+                                      ]
+                     },
+                     {
+                         "name":  "TestRail",
+                         "type":  "folder",
+                         "children":  [
+                                          {
+                                              "name":  "Project Summary",
+                                              "type":  "folder",
+                                              "children":  {
+                                                               "name":  "Project Summary.pdf",
+                                                               "type":  "file",
+                                                               "ext":  ".pdf",
+                                                               "path":  "QA Evidence Gallery\\TestRail\\Project Summary\\Project Summary.pdf"
+                                                           }
+                                          },
+                                          {
+                                              "name":  "Test Plan",
+                                              "type":  "folder",
+                                              "children":  {
+                                                               "name":  "Test_Plan_Petstore_v1.0.pdf",
+                                                               "type":  "file",
+                                                               "ext":  ".pdf",
+                                                               "path":  "QA Evidence Gallery\\TestRail\\Test Plan\\Test_Plan_Petstore_v1.0.pdf"
+                                                           }
+                                          },
+                                          {
+                                              "name":  "Test-Cases",
+                                              "type":  "folder",
+                                              "children":  [
+                                                               {
+                                                                   "name":  "Test_Cases_Petstore_v1.0.pdf",
+                                                                   "type":  "file",
+                                                                   "ext":  ".pdf",
+                                                                   "path":  "QA Evidence Gallery\\TestRail\\Test-Cases\\Test_Cases_Petstore_v1.0.pdf"
+                                                               },
+                                                               {
+                                                                   "name":  "Testrail-activity-01-01-2026.xlsx",
+                                                                   "type":  "file",
+                                                                   "ext":  ".xlsx",
+                                                                   "path":  "QA Evidence Gallery\\TestRail\\Test-Cases\\Testrail-activity-01-01-2026.xlsx"
+                                                               }
+                                                           ]
+                                          },
+                                          {
+                                              "name":  "Test-Closure",
+                                              "type":  "folder",
+                                              "children":  {
+                                                               "name":  "Test_Summary_and_Closure_Report_Petstore_v1.0.pdf",
+                                                               "type":  "file",
+                                                               "ext":  ".pdf",
+                                                               "path":  "QA Evidence Gallery\\TestRail\\Test-Closure\\Test_Summary_and_Closure_Report_Petstore_v1.0.pdf"
+                                                           }
+                                          },
+                                          {
+                                              "name":  "Test-Execution",
+                                              "type":  "folder",
+                                              "children":  [
+                                                               {
+                                                                   "name":  "Petstore – Functional Test Run - TestRail.pdf",
+                                                                   "type":  "file",
+                                                                   "ext":  ".pdf",
+                                                                   "path":  "QA Evidence Gallery\\TestRail\\Test-Execution\\Petstore – Functional Test Run - TestRail.pdf"
+                                                               },
+                                                               {
+                                                                   "name":  "QA_Metrics_Petstore.xlsx",
+                                                                   "type":  "file",
+                                                                   "ext":  ".xlsx",
+                                                                   "path":  "QA Evidence Gallery\\TestRail\\Test-Execution\\QA_Metrics_Petstore.xlsx"
+                                                               },
+                                                               {
+                                                                   "name":  "TestCase_Status_Matrix_Petstore_Dashboard.xlsx",
+                                                                   "type":  "file",
+                                                                   "ext":  ".xlsx",
+                                                                   "path":  "QA Evidence Gallery\\TestRail\\Test-Execution\\TestCase_Status_Matrix_Petstore_Dashboard.xlsx"
+                                                               },
+                                                               {
+                                                                   "name":  "Testrail-activity-12-27-2025-01-01-2026.png",
+                                                                   "type":  "file",
+                                                                   "ext":  ".png",
+                                                                   "path":  "QA Evidence Gallery\\TestRail\\Test-Execution\\Testrail-activity-12-27-2025-01-01-2026.png"
+                                                               },
+                                                               {
+                                                                   "name":  "testrail-report-5.pdf",
+                                                                   "type":  "file",
+                                                                   "ext":  ".pdf",
+                                                                   "path":  "QA Evidence Gallery\\TestRail\\Test-Execution\\testrail-report-5.pdf"
+                                                               },
+                                                               {
+                                                                   "name":  "testrail-report-6.pdf",
+                                                                   "type":  "file",
+                                                                   "ext":  ".pdf",
+                                                                   "path":  "QA Evidence Gallery\\TestRail\\Test-Execution\\testrail-report-6.pdf"
+                                                               },
+                                                               {
+                                                                   "name":  "testrail-report-7.pdf",
+                                                                   "type":  "file",
+                                                                   "ext":  ".pdf",
+                                                                   "path":  "QA Evidence Gallery\\TestRail\\Test-Execution\\testrail-report-7.pdf"
+                                                               },
+                                                               {
+                                                                   "name":  "TestRail-stats-2-20260101170030.csv",
+                                                                   "type":  "file",
+                                                                   "ext":  ".csv",
+                                                                   "path":  "QA Evidence Gallery\\TestRail\\Test-Execution\\TestRail-stats-2-20260101170030.csv"
+                                                               },
+                                                               {
+                                                                   "name":  "TestRail-stats-2-20260101170030.png",
+                                                                   "type":  "file",
+                                                                   "ext":  ".png",
+                                                                   "path":  "QA Evidence Gallery\\TestRail\\Test-Execution\\TestRail-stats-2-20260101170030.png"
+                                                               }
+                                                           ]
+                                          }
+                                      ]
+                     }
+                 ]
+}
