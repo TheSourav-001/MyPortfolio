@@ -206,13 +206,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 })();
 
-/* ── Elegant Brand Preloader (3s Minimum Display) ── */
+/* ── Elegant Brand Preloader ── */
 window.addEventListener('load', () => {
   const preloader = document.getElementById('preloader');
   if (preloader) {
+    // Fade out immediately after load (with small 100ms buffer for smooth transition)
     setTimeout(() => {
       preloader.classList.add('fade-out');
-    }, 3000);
+    }, 100);
   }
 });
 
@@ -1533,3 +1534,233 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 })();
 
+/* ── Real-Time Contact Form Validation & Submission ── */
+(function() {
+  const form = document.getElementById('contact-form');
+  const emailInput = document.getElementById('form-email');
+  const submitBtn = document.querySelector('.submit-btn');
+
+  if (emailInput) {
+    emailInput.addEventListener('input', (e) => {
+      const email = e.target.value;
+      const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      if (email.length > 0) {
+        if (isValid) {
+          emailInput.style.borderColor = '#10b981'; // Valid green
+        } else {
+          emailInput.style.borderColor = '#ef4444'; // Error red
+        }
+      } else {
+        emailInput.style.borderColor = ''; // Reset
+      }
+    });
+  }
+
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const formData = new FormData(form);
+      const object = Object.fromEntries(formData);
+      const json = JSON.stringify(object);
+
+      const originalBtnText = submitBtn.innerHTML;
+      submitBtn.innerHTML = 'Executing... <div class="spinner" style="display:inline-block;width:12px;height:12px;border-width:2px;margin-left:8px;"></div>';
+      submitBtn.disabled = true;
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: json
+      })
+      .then(async (response) => {
+        let json = await response.json();
+        if (response.status == 200) {
+          submitBtn.innerHTML = '[PASS] Message Sent! ✓';
+          submitBtn.style.backgroundColor = '#10b981';
+          submitBtn.style.borderColor = '#10b981';
+          form.reset();
+          emailInput.style.borderColor = '';
+          setTimeout(() => {
+            submitBtn.innerHTML = originalBtnText;
+            submitBtn.style.backgroundColor = '';
+            submitBtn.style.borderColor = '';
+            submitBtn.disabled = false;
+          }, 4000);
+        } else {
+          console.log(response);
+          submitBtn.innerHTML = '[FAIL] Defect Logged';
+          submitBtn.style.backgroundColor = '#ef4444';
+          submitBtn.style.borderColor = '#ef4444';
+          setTimeout(() => {
+            submitBtn.innerHTML = originalBtnText;
+            submitBtn.style.backgroundColor = '';
+            submitBtn.style.borderColor = '';
+            submitBtn.disabled = false;
+          }, 3000);
+        }
+      })
+      .catch(error => {
+        console.log(error);
+        submitBtn.innerHTML = '[FAIL] API Timeout';
+        submitBtn.style.backgroundColor = '#ef4444';
+        setTimeout(() => {
+          submitBtn.innerHTML = originalBtnText;
+          submitBtn.style.backgroundColor = '';
+          submitBtn.disabled = false;
+        }, 3000);
+      });
+    });
+  }
+})();
+
+/* ── Live Automation Terminal Simulation ── */
+(function() {
+  const terminalBody = document.getElementById('qa-logs');
+  if (!terminalBody) return;
+
+  const mPass = document.getElementById('m-pass');
+  const mTime = document.getElementById('m-time');
+  const mPercent = document.getElementById('m-percent');
+  const mRing = document.getElementById('m-ring');
+  const mStatus = document.getElementById('m-status-text');
+  const mStatusPulse = document.querySelector('.status-indicator');
+  const mFail = document.getElementById('m-fail');
+  const mTotal = document.getElementById('m-total');
+
+  let totalTests = 42;
+  let failedTests = 0;
+  
+  // Extract values dynamically from Case Study section
+  const impactVals = document.querySelectorAll('.cs-impact-val');
+  if (impactVals && impactVals.length >= 2) {
+    totalTests = parseInt(impactVals[0].textContent) || 266;
+    failedTests = parseInt(impactVals[1].textContent) || 17;
+  }
+  
+  const passedTests = totalTests - failedTests;
+  const targetPct = Math.round((passedTests / totalTests) * 100);
+
+  // Initialize total immediately
+  if(mTotal) mTotal.textContent = totalTests;
+
+  const commands = [
+    { type: 'cmd', text: 'npm run test:e2e' },
+    { type: 'info', text: `Running End-to-End Test Suite (${totalTests} tests)...`, delay: 600, update: { status: 'EXECUTING TESTS', time: '0.00s' } },
+    { type: 'pass', text: '✓ [PASS] Login API Validation (23ms)', delay: 400, update: { pass: Math.floor(passedTests * 0.1), pct: Math.floor(targetPct * 0.1), time: '0.42s' } },
+    { type: 'pass', text: '✓ [PASS] Checkout Flow Integrity (145ms)', delay: 300, update: { pass: Math.floor(passedTests * 0.3), pct: Math.floor(targetPct * 0.3), time: '0.74s' } },
+    { type: 'pass', text: '✓ [PASS] Payment Gateway Sandbox (210ms)', delay: 500, update: { pass: Math.floor(passedTests * 0.6), pct: Math.floor(targetPct * 0.6), time: '1.24s' } },
+    { type: 'pass', text: '✓ [PASS] Multi-currency Checkout (89ms)', delay: 250, update: { pass: Math.floor(passedTests * 0.8), pct: Math.floor(targetPct * 0.8), time: '1.93s' } },
+    { type: 'fail', text: '✗ [FAIL] Cart allows negative quantity (12ms)', delay: 400, update: { pass: passedTests, fail: failedTests, pct: targetPct, time: '2.56s' } },
+    { type: 'pass', text: '✓ [PASS] Order Receipt Generation (55ms)', delay: 150, update: { time: '3.14s' } },
+    { type: 'info', text: ' ', delay: 200 },
+    { type: 'info', text: 'Test Suites: 9 passed, 9 total', delay: 100 },
+    { type: 'info', text: `Tests:       ${passedTests} passed, ${failedTests} failed, ${totalTests} total`, delay: 100 },
+    { type: 'info', text: 'Snapshots:   0 total', delay: 100 },
+    { type: 'info', text: 'Time:        3.415s', delay: 100 },
+    { type: 'info', text: 'Done in 3.82s.', delay: 2000, update: { status: 'COMPLETED', pulse: false } },
+    { type: 'clear', delay: 500 }
+  ];
+
+  let currentStep = 0;
+  
+  function updateDashboard(data) {
+    if(!data) return;
+    if(data.status) mStatus.textContent = data.status;
+    if(data.time) mTime.textContent = data.time;
+    if(data.pass !== undefined) mPass.textContent = data.pass;
+    if(data.fail !== undefined) mFail.textContent = data.fail;
+    if(data.pct !== undefined) {
+      mPercent.textContent = data.pct + '%';
+      mRing.setAttribute('stroke-dasharray', `${data.pct}, 100`);
+    }
+    if(data.pulse === false) {
+      mStatusPulse.classList.remove('pulse');
+      mStatusPulse.style.background = 'var(--term-pass)';
+      mStatus.style.color = 'var(--term-pass)';
+    } else if (data.status === 'EXECUTING TESTS') {
+      mStatusPulse.classList.add('pulse');
+      mStatusPulse.style.background = 'var(--term-info)';
+      mStatus.style.color = 'var(--term-info)';
+    }
+  }
+  
+  function resetDashboard() {
+    updateDashboard({ status: 'AWAITING EXECUTION', time: '0.00s', pass: 0, fail: 0, pct: 0 });
+    mStatusPulse.classList.remove('pulse');
+    mStatusPulse.style.background = 'var(--text-muted)';
+    mStatus.style.color = 'var(--text-muted)';
+  }
+  
+  function createLine() {
+    const line = document.createElement('div');
+    line.className = 't-line';
+    return line;
+  }
+
+  function typeCommand(text, callback) {
+    resetDashboard();
+    const line = createLine();
+    line.innerHTML = `<span class="t-prompt">sourav@qa:~$</span> <span class="t-command"></span><span class="t-cursor"></span>`;
+    terminalBody.appendChild(line);
+    
+    const cmdSpan = line.querySelector('.t-command');
+    let i = 0;
+    
+    function typeChar() {
+      if (i < text.length) {
+        cmdSpan.textContent += text.charAt(i);
+        i++;
+        setTimeout(typeChar, 40 + Math.random() * 60);
+      } else {
+        line.querySelector('.t-cursor').remove();
+        setTimeout(callback, 300);
+      }
+    }
+    typeChar();
+  }
+
+  function printLine(step, callback) {
+    setTimeout(() => {
+      const line = createLine();
+      if (step.type === 'pass') {
+        line.innerHTML = `<span class="t-pass">${step.text}</span>`;
+      } else {
+        line.innerHTML = `<span class="t-info">${step.text}</span>`;
+      }
+      terminalBody.appendChild(line);
+      
+      updateDashboard(step.update);
+      callback();
+    }, step.delay);
+  }
+
+  function runSequence() {
+    if (currentStep >= commands.length) return;
+    const step = commands[currentStep];
+    currentStep++;
+
+    if (step.type === 'cmd') {
+      typeCommand(step.text, runSequence);
+    } else if (step.type === 'clear') {
+      setTimeout(() => {
+        terminalBody.innerHTML = '';
+        currentStep = 0;
+        runSequence();
+      }, step.delay);
+    } else {
+      printLine(step, runSequence);
+    }
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting && currentStep === 0) {
+      setTimeout(runSequence, 600);
+    }
+  }, { threshold: 0.1 });
+
+  observer.observe(terminalBody);
+})();
