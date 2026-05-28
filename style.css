@@ -4937,106 +4937,143 @@ html[data-theme="light"] .reader-meta {
     font-size: 11px;
   }
 
-  /* QA Dashboard Layout for Mobile - FACEBOOK COVER STYLE */
+  /* ─── TERMINAL: FACEBOOK COVER STYLE FIX ─── */
+
+  /* Step 1: Fix the terminal to a strict cover height */
   .hero-cover-terminal {
-    height: 220px !important;
-    min-height: 220px !important;
-    padding-bottom: 0 !important;
-    overflow: hidden;
+    position: absolute !important;
+    top: var(--nav-height) !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 200px !important;
+    min-height: unset !important;
+    overflow: hidden !important;
   }
-  
-  /* Adjusted Hero padding to clear the 220px terminal */
+
+  /* Step 2: Terminal container fills that 200px exactly */
+  .full-width-terminal {
+    height: 200px !important;
+    min-height: unset !important;
+  }
+
+  /* Step 3: Dashboard fills remaining space after the ~30px header */
+  .qa-dashboard {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    padding: 6px 16px !important;
+    height: calc(200px - 34px) !important; /* 200px total - ~34px header */
+    overflow: hidden !important;
+  }
+
+  /* Step 4: Hide the typing logs panel entirely on mobile */
+  .qa-logs {
+    display: none !important;
+  }
+
+  /* Step 5: Metrics panel fills the dashboard flex space */
+  .qa-metrics {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 16px !important;
+    border-left: none !important;
+    padding-left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  /* Step 6: The ring and stats sit side by side in a row */
+  .metrics-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 20px !important;
+    width: 100% !important;
+    flex-wrap: nowrap !important;
+  }
+
+  /* Step 7: Ring box — compact fixed size */
+  .m-box {
+    width: 90px !important;
+    flex-shrink: 0 !important;
+    text-align: center !important;
+  }
+
+  /* Step 8: Ring SVG shrinks to fit */
+  .circular-chart {
+    width: 80px !important;
+    height: 80px !important;
+    max-height: 80px !important;
+  }
+
+  /* Step 9: Ring label "Test Pass Rate" — hide it to save space */
+  .m-title {
+    display: none !important;
+  }
+
+  /* Step 10: Stats column beside the ring */
+  .m-stats {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 4px !important;
+    flex: 1 !important;
+    max-width: 200px !important;
+  }
+
+  /* Step 11: Each stat row is a compact horizontal pair */
+  .s-row {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    font-size: 11px !important;
+    padding: 3px 0 !important;
+    border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+    gap: 8px !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  /* Step 12: Live status badge — pin to bottom of terminal */
+  .live-status {
+    display: none !important;
+  }
+
+  /* Step 13: Hero section starts BELOW the terminal, photo overlaps */
   .hero {
-    padding-top: calc(var(--nav-height) + 220px) !important;
-    min-height: auto;
-    padding-bottom: 50px;
+    padding-top: calc(var(--nav-height) + 200px) !important;
+    min-height: auto !important;
+    padding-bottom: 50px !important;
   }
-  
-  /* Pull the profile image up to overlap the terminal bottom edge */
+
+  /* Step 14: Profile photo overlaps terminal by 50% of its height */
   .hero-photo-wrapper {
     width: 140px !important;
     height: 140px !important;
-    margin: -70px auto 20px !important; /* -70px brings it exactly halfway into the terminal */
+    margin-top: -70px !important;
+    margin-bottom: 16px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
     border-width: 4px !important;
-    z-index: 10;
+    z-index: 20 !important;
+    position: relative !important;
   }
-  
+
   .hero h1 {
     font-size: clamp(22px, 6vw, 32px) !important;
-    word-wrap: break-word;
+    word-wrap: break-word !important;
   }
-  
+
   .hero-subtitle {
     font-size: 14px !important;
   }
 
-  .qa-dashboard {
-    grid-template-columns: 1fr;
-    padding: 10px;
-    height: calc(100% - 30px); /* Fill the rest of the 220px terminal */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  /* Hide logs on small screens to save space */
-  .qa-logs {
-    display: none;
-  }
-  
-  .qa-metrics {
-    border-left: none;
-    padding-left: 0;
-    width: 100%;
-  }
-  
-  /* FORCE ROW LAYOUT so it fits inside the fixed 220px terminal height */
-  .metrics-grid {
-    display: flex;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    justify-content: center;
-    align-items: center;
-    gap: 15px !important;
-    width: 100%;
-  }
-  
-  .m-box {
-    width: 70px !important;
-    flex-shrink: 0;
-  }
-  
-  .circular-chart {
-    max-height: 70px !important;
-  }
-
-  .m-stats {
-    flex: 1;
-    max-width: 180px;
-  }
-  
-  .s-row {
-    font-size: 11px !important;
-    display: flex;
-    flex-direction: row !important; /* Never stack the stats row */
-    justify-content: space-between !important;
-    width: 100% !important;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    padding-bottom: 3px;
-    margin-bottom: 3px;
-    gap: 0 !important;
-  }
-  
-  .live-status {
-    position: absolute;
-    bottom: 5px;
-    left: 50%;
-    transform: translateX(-50%);
-    margin: 0;
-    font-size: 9px;
-    padding: 4px 8px;
-    background: rgba(0,0,0,0.5);
-  }
+  /* ─── OTHER SECTIONS ─── */
 
   /* Fix all Grids overlapping/stretching on mobile */
   .about-grid,
@@ -5054,7 +5091,6 @@ html[data-theme="light"] .reader-meta {
     gap: 20px !important;
   }
   
-  /* Fix Typography and Sections on Mobile */
   .section {
     padding: 60px 0 !important;
   }
@@ -5063,8 +5099,7 @@ html[data-theme="light"] .reader-meta {
     margin-bottom: 30px !important;
     word-wrap: break-word;
   }
-  
-  /* Timeline Adjustments */
+
   .timeline::before {
     left: 15px !important;
   }
@@ -5076,7 +5111,6 @@ html[data-theme="light"] .reader-meta {
     left: 15px !important;
   }
 
-  /* Buttons & Images Scaling */
   .hero-buttons {
     flex-direction: column;
     width: 100%;
@@ -5086,8 +5120,5 @@ html[data-theme="light"] .reader-meta {
   .hero-buttons .btn {
     width: 100%;
     justify-content: center;
-  }
-  img, svg, video {
-    max-width: 100%;
   }
 }
