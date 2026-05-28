@@ -4937,31 +4937,32 @@ html[data-theme="light"] .reader-meta {
     font-size: 11px;
   }
 
-  /* QA Dashboard Layout for Mobile */
+  /* QA Dashboard Layout for Mobile - FACEBOOK COVER STYLE */
   .hero-cover-terminal {
-    height: auto !important;
-    min-height: 220px;
-    padding-bottom: 20px;
+    height: 220px !important;
+    min-height: 220px !important;
+    padding-bottom: 0 !important;
+    overflow: hidden;
   }
   
-  /* Adjusted Hero padding to clear the terminal dynamically */
+  /* Adjusted Hero padding to clear the 220px terminal */
   .hero {
-    padding-top: calc(var(--nav-height) + 240px) !important;
+    padding-top: calc(var(--nav-height) + 220px) !important;
     min-height: auto;
     padding-bottom: 50px;
   }
   
   /* Pull the profile image up to overlap the terminal bottom edge */
   .hero-photo-wrapper {
-    width: 130px !important;
-    height: 130px !important;
-    margin: -80px auto 20px !important; 
+    width: 140px !important;
+    height: 140px !important;
+    margin: -70px auto 20px !important; /* -70px brings it exactly halfway into the terminal */
     border-width: 4px !important;
     z-index: 10;
   }
   
   .hero h1 {
-    font-size: clamp(24px, 6vw, 32px) !important;
+    font-size: clamp(22px, 6vw, 32px) !important;
     word-wrap: break-word;
   }
   
@@ -4971,10 +4972,14 @@ html[data-theme="light"] .reader-meta {
 
   .qa-dashboard {
     grid-template-columns: 1fr;
-    padding: 15px;
+    padding: 10px;
+    height: calc(100% - 30px); /* Fill the rest of the 220px terminal */
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
-  /* Hide logs on small screens to save space and focus on core metrics */
+  /* Hide logs on small screens to save space */
   .qa-logs {
     display: none;
   }
@@ -4985,27 +4990,52 @@ html[data-theme="light"] .reader-meta {
     width: 100%;
   }
   
+  /* FORCE ROW LAYOUT so it fits inside the fixed 220px terminal height */
   .metrics-grid {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 15px !important;
+    width: 100%;
   }
   
   .m-box {
-    width: 80px;
+    width: 70px !important;
+    flex-shrink: 0;
+  }
+  
+  .circular-chart {
+    max-height: 70px !important;
+  }
+
+  .m-stats {
+    flex: 1;
+    max-width: 180px;
   }
   
   .s-row {
-    font-size: 12px;
+    font-size: 11px !important;
+    display: flex;
+    flex-direction: row !important; /* Never stack the stats row */
+    justify-content: space-between !important;
+    width: 100% !important;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 3px;
+    margin-bottom: 3px;
+    gap: 0 !important;
   }
   
   .live-status {
-    margin-top: 15px;
-    font-size: 10px;
-    padding: 6px 12px;
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    font-size: 9px;
+    padding: 4px 8px;
+    background: rgba(0,0,0,0.5);
   }
 
   /* Fix all Grids overlapping/stretching on mobile */
@@ -5059,25 +5089,5 @@ html[data-theme="light"] .reader-meta {
   }
   img, svg, video {
     max-width: 100%;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero {
-    padding-top: calc(var(--nav-height) + 220px) !important;
-  }
-  .metrics-grid {
-    flex-direction: column; /* Stack vertically on very small phones */
-    gap: 15px;
-  }
-  .m-box {
-    width: 90px;
-  }
-  .s-row {
-    font-size: 11px;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 220px;
-    margin: 0 auto;
   }
 }
