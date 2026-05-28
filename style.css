@@ -4902,3 +4902,75 @@ html[data-theme="light"] .reader-meta {
   vertical-align: text-bottom;
   margin-left: 4px;
 }
+
+/* ══════════════════════════════════
+   MOBILE RESPONSIVENESS FIXES
+   ══════════════════════════════════ */
+@media (max-width: 768px) {
+  /* Navbar Fixes */
+  .logo-subtext {
+    display: none;
+  }
+  .logo-text {
+    font-size: 1.1rem;
+    white-space: nowrap;
+  }
+  
+  /* Terminal Header Fixes */
+  .terminal-title {
+    max-width: 140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 11px;
+  }
+
+  /* QA Dashboard Layout for Mobile */
+  .hero-cover-terminal {
+    height: 30vh;
+    min-height: 240px;
+  }
+  .hero {
+    padding-top: calc(var(--nav-height) + 30vh - 65px);
+  }
+  .hero-photo-wrapper {
+    width: 130px;
+    height: 130px;
+    border-width: 4px;
+  }
+  
+  .qa-dashboard {
+    grid-template-columns: 1fr;
+    padding: 15px;
+  }
+  
+  /* Hide logs on small screens to save space and focus on core metrics */
+  .qa-logs {
+    display: none;
+  }
+  
+  .qa-metrics {
+    border-left: none;
+    padding-left: 0;
+    width: 100%;
+  }
+  
+  .metrics-grid {
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .m-box {
+    width: 80px;
+  }
+  
+  .s-row {
+    font-size: 12px;
+  }
+  
+  .live-status {
+    margin-top: 15px;
+    font-size: 10px;
+    padding: 6px 12px;
+  }
+}
