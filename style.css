@@ -533,10 +533,12 @@ html[data-theme="light"] .hero h1 {
     border-color: var(--accent-color);
     box-shadow: 0 0 4px rgba(var(--accent-rgba), 0.25);
   }
+
   50% {
     border-color: var(--accent-hover);
     box-shadow: 0 0 14px rgba(var(--accent-rgba), 0.55);
   }
+
   100% {
     border-color: var(--accent-color);
     box-shadow: 0 0 4px rgba(var(--accent-rgba), 0.25);
@@ -1682,7 +1684,7 @@ a.contact-card-item:hover {
   text-align: center;
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 900;
-  font-size: clamp(48px, 12vw, 130px);
+  font-size: clamp(46px, 12vw, 128px);
   letter-spacing: -0.04em;
   line-height: 1;
   text-transform: uppercase;
@@ -1691,6 +1693,7 @@ a.contact-card-item:hover {
   user-select: none;
   pointer-events: none;
   z-index: 1;
+  white-space: nowrap;
 }
 
 /* ══════════════════════════════════
@@ -3192,9 +3195,12 @@ a.contact-card-item:hover {
 
 /* Blinking glow animation for active contribution days (optimized for GPU) */
 @keyframes glowingBlink {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.6;
   }
@@ -3520,9 +3526,17 @@ a.contact-card-item:hover {
   opacity: 0.7;
 }
 
-.dot-red { background: #ef4444; }
-.dot-yellow { background: #eab308; }
-.dot-green { background: #22c55e; }
+.dot-red {
+  background: #ef4444;
+}
+
+.dot-yellow {
+  background: #eab308;
+}
+
+.dot-green {
+  background: #22c55e;
+}
 
 .explorer-grid {
   display: grid;
@@ -3566,9 +3580,9 @@ a.contact-card-item:hover {
   overflow: hidden;
   cursor: pointer;
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-              background-color 0.2s,
-              border-color 0.2s,
-              box-shadow 0.25s;
+    background-color 0.2s,
+    border-color 0.2s,
+    box-shadow 0.25s;
 }
 
 .explorer-node:hover {
@@ -3603,12 +3617,14 @@ a.contact-card-item:hover {
 }
 
 .node-folder .node-icon-wrapper svg {
-  color: #f59e0b; /* Amber */
+  color: #f59e0b;
+  /* Amber */
   filter: drop-shadow(0 2px 8px rgba(245, 158, 11, 0.3));
 }
 
 .node-file .node-icon-wrapper svg {
-  color: #10b981; /* Emerald/Cyan-Green */
+  color: #10b981;
+  /* Emerald/Cyan-Green */
   filter: drop-shadow(0 2px 8px rgba(16, 185, 129, 0.3));
 }
 
@@ -3867,18 +3883,18 @@ a.contact-card-item:hover {
     padding: 16px;
     gap: 16px;
   }
-  
+
   .explorer-header {
     flex-direction: column;
     align-items: stretch;
     gap: 12px;
     padding: 14px 16px;
   }
-  
+
   .explorer-window-controls {
     display: none;
   }
-  
+
   .lightbox-content {
     width: 95%;
     height: 90%;
@@ -3922,12 +3938,15 @@ a.contact-card-item:hover {
 html[data-theme="light"] .sun-icon {
   display: none;
 }
+
 html[data-theme="light"] .moon-icon {
   display: block;
 }
+
 html:not([data-theme="light"]) .sun-icon {
   display: block;
 }
+
 html:not([data-theme="light"]) .moon-icon {
   display: none;
 }
@@ -4313,9 +4332,23 @@ html[data-theme="light"] .reader-meta {
   letter-spacing: 0.5px;
 }
 
-.bug-severity.critical { background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); }
-.bug-severity.high { background: rgba(249, 115, 22, 0.15); color: #f97316; border: 1px solid rgba(249, 115, 22, 0.3); }
-.bug-severity.medium { background: rgba(234, 179, 8, 0.15); color: #eab308; border: 1px solid rgba(234, 179, 8, 0.3); }
+.bug-severity.critical {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.bug-severity.high {
+  background: rgba(249, 115, 22, 0.15);
+  color: #f97316;
+  border: 1px solid rgba(249, 115, 22, 0.3);
+}
+
+.bug-severity.medium {
+  background: rgba(234, 179, 8, 0.15);
+  color: #eab308;
+  border: 1px solid rgba(234, 179, 8, 0.3);
+}
 
 .bug-title {
   font-size: 14px;
@@ -4490,9 +4523,12 @@ html[data-theme="light"] .reader-meta {
 
 /* Responsive */
 @media (max-width: 992px) {
-  .cs-stats-grid, .cs-impact-grid {
+
+  .cs-stats-grid,
+  .cs-impact-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .cs-grid-2col {
     grid-template-columns: 1fr;
     gap: 24px;
@@ -4503,6 +4539,7 @@ html[data-theme="light"] .reader-meta {
   .case-study-card {
     padding: 24px;
   }
+
   .cs-timeline::before {
     top: 0;
     bottom: 0;
@@ -4511,18 +4548,22 @@ html[data-theme="light"] .reader-meta {
     width: 2px;
     height: auto;
   }
+
   .cs-timeline {
     flex-direction: column;
     align-items: flex-start;
     gap: 24px;
   }
+
   .cs-timeline-step {
     flex-direction: row;
     width: 100%;
   }
+
   .cs-stats-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .cs-impact-grid {
     grid-template-columns: 1fr;
   }
