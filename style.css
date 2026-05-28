@@ -4904,9 +4904,21 @@ html[data-theme="light"] .reader-meta {
 }
 
 /* ══════════════════════════════════
-   MOBILE RESPONSIVENESS FIXES
+   GLOBAL COMPREHENSIVE MOBILE RESPONSIVENESS FIX
    ══════════════════════════════════ */
 @media (max-width: 768px) {
+  /* Prevent horizontal overflow globally */
+  body, html {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  .container {
+    width: 100%;
+    padding: 0 15px;
+    overflow-x: hidden;
+  }
+
   /* Navbar Fixes */
   .logo-subtext {
     display: none;
@@ -4918,7 +4930,7 @@ html[data-theme="light"] .reader-meta {
   
   /* Terminal Header Fixes */
   .terminal-title {
-    max-width: 140px;
+    max-width: 130px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -4927,18 +4939,36 @@ html[data-theme="light"] .reader-meta {
 
   /* QA Dashboard Layout for Mobile */
   .hero-cover-terminal {
-    height: 30vh;
-    min-height: 240px;
-  }
-  .hero {
-    padding-top: calc(var(--nav-height) + 30vh - 65px);
-  }
-  .hero-photo-wrapper {
-    width: 130px;
-    height: 130px;
-    border-width: 4px;
+    height: auto !important;
+    min-height: 220px;
+    padding-bottom: 20px;
   }
   
+  /* Adjusted Hero padding to clear the terminal dynamically */
+  .hero {
+    padding-top: calc(var(--nav-height) + 240px) !important;
+    min-height: auto;
+    padding-bottom: 50px;
+  }
+  
+  /* Pull the profile image up to overlap the terminal bottom edge */
+  .hero-photo-wrapper {
+    width: 130px !important;
+    height: 130px !important;
+    margin: -80px auto 20px !important; 
+    border-width: 4px !important;
+    z-index: 10;
+  }
+  
+  .hero h1 {
+    font-size: clamp(24px, 6vw, 32px) !important;
+    word-wrap: break-word;
+  }
+  
+  .hero-subtitle {
+    font-size: 14px !important;
+  }
+
   .qa-dashboard {
     grid-template-columns: 1fr;
     padding: 15px;
@@ -4956,7 +4986,11 @@ html[data-theme="light"] .reader-meta {
   }
   
   .metrics-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
     gap: 20px;
   }
   
@@ -4972,5 +5006,78 @@ html[data-theme="light"] .reader-meta {
     margin-top: 15px;
     font-size: 10px;
     padding: 6px 12px;
+  }
+
+  /* Fix all Grids overlapping/stretching on mobile */
+  .about-grid,
+  .skills-category-grid,
+  .projects-grid,
+  .education-grid,
+  .contact-grid,
+  .cs-grid-2col,
+  .cs-stats-grid,
+  .cs-impact-grid,
+  .gh-stats-grid,
+  .articles-grid,
+  .explorer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  
+  /* Fix Typography and Sections on Mobile */
+  .section {
+    padding: 60px 0 !important;
+  }
+  .section-title {
+    font-size: 28px !important;
+    margin-bottom: 30px !important;
+    word-wrap: break-word;
+  }
+  
+  /* Timeline Adjustments */
+  .timeline::before {
+    left: 15px !important;
+  }
+  .timeline-item {
+    padding-left: 45px !important;
+    width: 100% !important;
+  }
+  .timeline-dot {
+    left: 15px !important;
+  }
+
+  /* Buttons & Images Scaling */
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+    padding: 0 20px;
+    gap: 15px;
+  }
+  .hero-buttons .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  img, svg, video {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding-top: calc(var(--nav-height) + 220px) !important;
+  }
+  .metrics-grid {
+    flex-direction: column; /* Stack vertically on very small phones */
+    gap: 15px;
+  }
+  .m-box {
+    width: 90px;
+  }
+  .s-row {
+    font-size: 11px;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 220px;
+    margin: 0 auto;
   }
 }
