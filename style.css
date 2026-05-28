@@ -4904,130 +4904,287 @@ html[data-theme="light"] .reader-meta {
 }
 
 /* ══════════════════════════════════
-   GLOBAL MOBILE RESPONSIVENESS FIX
+   GLOBAL RESPONSIVE SCALING SYSTEM
+   Philosophy: Preserve desktop composition.
+   Scale proportionally. Never redesign.
    ══════════════════════════════════ */
+
+/* ── Fluid Base Typography ── */
+html {
+  font-size: clamp(14px, 1.5vw, 16px);
+}
+
+/* ── 1280px: Large Desktop ── */
+@media (max-width: 1280px) {
+  .container { max-width: 1060px; }
+  .projects-grid { grid-template-columns: repeat(3, 1fr); }
+  .education-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ── 1024px: Small Laptop / Tablet Landscape ── */
+@media (max-width: 1024px) {
+  .container { max-width: 900px; padding: 0 20px; }
+  .about-grid { grid-template-columns: 1fr; gap: 36px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  .projects-grid { grid-template-columns: repeat(2, 1fr); }
+  .education-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .skills-categories { grid-template-columns: repeat(2, 1fr); }
+  .gh-stats-grid { grid-template-columns: repeat(2, 1fr); }
+  
+  /* QA Workflow: scale for tablet */
+  .workflow-network-wrapper {
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 24px;
+    padding: 40px 0;
+  }
+  .workflow-svg, .workflow-core-hub { display: none; }
+  .workflow-card { position: static !important; transform: none !important; width: auto !important; }
+  
+  /* Case Study: collapse 2-col */
+  .cs-grid-2col { grid-template-columns: 1fr; gap: 24px; }
+  .cs-stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .cs-impact-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ── 768px: Tablet Portrait / Large Mobile ── */
 @media (max-width: 768px) {
-  /* Prevent horizontal overflow globally */
-  body, html {
-    overflow-x: hidden;
+  /* ─ Global ─ */
+  html, body { overflow-x: hidden; width: 100%; }
+  .container { max-width: 100%; padding: 0 16px; }
+  .section { padding: 60px 0; }
+  .section-title {
+    font-size: clamp(24px, 6vw, 32px) !important;
+    margin-bottom: 32px;
+  }
+  
+  /* ─ Navbar ─ */
+  .logo-subtext { display: none; }
+  .logo-text { font-size: 1.1rem; white-space: nowrap; }
+  .navbar { overflow: visible; }
+  .hamburger { display: flex; position: relative; z-index: 99999; }
+  .nav-links {
+    position: fixed;
+    top: 0; right: 0;
+    width: 85%; max-width: 320px;
+    height: 100vh; height: 100dvh;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 28px;
+    padding: 120px 32px 40px;
+    background: var(--bg-nav-links);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-left: 1px solid var(--border-color);
+    overflow-y: auto; overflow-x: hidden;
+    transform: translateX(120%);
+    opacity: 0; visibility: hidden;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease, visibility 0.35s ease;
+    z-index: 99998;
+  }
+  .nav-links.active {
+    transform: translateX(0) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  .nav-links::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 95px;
+    background: var(--bg-nav-links-before);
+    border-bottom: 1px solid rgba(var(--accent-rgba), 0.12);
+    z-index: -1;
+  }
+  .nav-links a {
     width: 100%;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    padding-bottom: 8px;
+    position: relative; z-index: 5;
   }
+  .nav-links a:hover, .nav-links a.active { color: var(--text-primary); }
 
-  .container {
-    width: 100%;
-    padding: 0 15px;
-    overflow-x: hidden;
-  }
-
-  /* Navbar Fixes */
-  .logo-subtext {
-    display: none;
-  }
-  .logo-text {
-    font-size: 1.1rem;
-    white-space: nowrap;
-  }
-
-  /* ─────────────────────────────────────────
-     TERMINAL: PROPORTIONAL SCALE (zoom)
-     Like a Facebook cover photo — same desktop
-     composition, uniformly shrunk on mobile.
-     All animations, layout, dots stay intact.
-  ───────────────────────────────────────── */
-
-  /* Container clips to the scaled visual height */
+  /* ─ TERMINAL: CSS zoom proportional scale ─
+     Same desktop composition, just 70% size.
+     All animations, dots, text stay identical. */
   .hero-cover-terminal {
     height: 155px !important;
     min-height: 155px !important;
     overflow: hidden !important;
   }
-
-  /* Scale the ENTIRE terminal uniformly with CSS zoom.
-     zoom: 0.7 → everything is 70% of desktop size.
-     Width & height are pre-compensated so after zoom
-     the terminal still fills 100% viewport width and
-     fits exactly in the 155px clipping container. */
   .full-width-terminal {
     zoom: 0.7 !important;
-    width: calc(100% / 0.7) !important;  /* 143% → after zoom = 100% */
-    height: calc(155px / 0.7) !important; /* 221px → after zoom = 155px */
+    width: calc(100% / 0.7) !important;
+    height: calc(155px / 0.7) !important;
   }
 
-  /* Hero content starts just below the 155px terminal */
+  /* ─ Hero ─ */
   .hero {
     padding-top: calc(var(--nav-height) + 155px) !important;
     min-height: auto !important;
     padding-bottom: 50px !important;
   }
-
-  /* Profile photo overlaps the bottom edge of the terminal
-     exactly halfway — Facebook cover photo style */
   .hero-photo-wrapper {
-    width: 140px !important;
-    height: 140px !important;
-    margin-top: -70px !important;
-    margin-bottom: 16px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
+    width: 140px !important; height: 140px !important;
+    margin-top: -70px !important; margin-bottom: 16px !important;
+    margin-left: auto !important; margin-right: auto !important;
     border-width: 4px !important;
-    z-index: 20 !important;
-    position: relative !important;
+    z-index: 20 !important; position: relative !important;
+  }
+  .hero h1 { font-size: clamp(22px, 6vw, 32px) !important; word-wrap: break-word; }
+  .hero-subtitle { font-size: 14px !important; }
+  .hero-buttons { flex-direction: column; width: 100%; padding: 0 20px; gap: 15px; }
+  .hero-buttons .btn { width: 100%; justify-content: center; }
+  .hero-socials { gap: 12px; flex-wrap: wrap; justify-content: center; }
+
+  /* ─ About ─ */
+  .about-grid { grid-template-columns: 1fr; gap: 30px; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .stat-number { font-size: clamp(24px, 7vw, 36px); }
+
+  /* ─ Skills Marquee: preserve animation, just compact ─ */
+  .marquee-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px; padding: 14px;
+  }
+  .marquee-label {
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding-right: 0; padding-bottom: 10px;
+    min-width: auto;
   }
 
-  .hero h1 {
-    font-size: clamp(22px, 6vw, 32px) !important;
-    word-wrap: break-word !important;
-  }
+  /* ─ Skills Categories ─ */
+  .skills-categories { grid-template-columns: 1fr; }
 
-  .hero-subtitle {
-    font-size: 14px !important;
-  }
+  /* ─ Case Study ─ */
+  .cs-stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .cs-impact-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .cs-grid-2col { grid-template-columns: 1fr !important; gap: 20px; }
 
-  /* ─── OTHER SECTIONS ─── */
-
-  .about-grid,
-  .skills-category-grid,
-  .projects-grid,
-  .education-grid,
-  .contact-grid,
-  .cs-grid-2col,
-  .cs-stats-grid,
-  .cs-impact-grid,
-  .gh-stats-grid,
-  .articles-grid,
-  .explorer-grid {
+  /* ─ QA Workflow: zoom proportional scale ─ */
+  .workflow-network-wrapper {
+    height: auto !important;
+    display: grid !important;
     grid-template-columns: 1fr !important;
     gap: 20px !important;
+    padding: 20px 0 !important;
+  }
+  .workflow-svg, .workflow-core-hub { display: none !important; }
+  .workflow-card {
+    position: static !important;
+    transform: none !important;
+    width: auto !important;
+    max-width: 100% !important;
   }
 
-  .section {
-    padding: 60px 0 !important;
+  /* ─ Experience / Timeline ─ */
+  .timeline { padding-left: 20px; }
+  .timeline::before { left: 4px !important; }
+  .timeline-item::before { left: -20px; width: 8px; height: 8px; top: 6px; }
+  .timeline-title { font-size: clamp(15px, 4vw, 18px); }
+
+  /* ─ Projects ─ */
+  .projects-grid { grid-template-columns: 1fr !important; }
+
+  /* ─ GitHub ─ */
+  .gh-stats-grid { grid-template-columns: 1fr !important; gap: 16px; }
+
+  /* ─ Articles ─ */
+  .article-card { min-width: 260px; }
+  .articles-grid { padding-bottom: 16px; }
+
+  /* ─ Education ─ */
+  .education-grid { grid-template-columns: 1fr !important; }
+
+  /* ─ Contact ─ */
+  .contact-grid { grid-template-columns: 1fr !important; gap: 40px; }
+  .contact-card-item { flex-direction: column; text-align: center; gap: 12px; }
+  .contact-card-item .item-details { display: flex; flex-direction: column; align-items: center; }
+
+  /* ─ Case Study modal / explorer ─ */
+  .explorer-grid { grid-template-columns: 1fr !important; padding: 16px; gap: 16px; }
+  .explorer-header { flex-direction: column; align-items: stretch; gap: 12px; }
+
+  /* ─ Footer ─ */
+  .footer { padding: 60px 0 30px; }
+  .footer-bottom { flex-direction: column; align-items: center; gap: 16px; text-align: center; }
+
+  /* ─ Global: ensure no fixed pixel widths cause overflow ─ */
+  img, video, iframe { max-width: 100%; }
+  table { display: block; overflow-x: auto; }
+}
+
+/* ── 576px: Standard Mobile ── */
+@media (max-width: 576px) {
+  .container { padding: 0 14px; }
+
+  /* Terminal scales further on very small phones */
+  .hero-cover-terminal {
+    height: 130px !important;
+    min-height: 130px !important;
   }
-  .section-title {
-    font-size: 28px !important;
-    margin-bottom: 30px !important;
-    word-wrap: break-word;
+  .full-width-terminal {
+    zoom: 0.58 !important;
+    width: calc(100% / 0.58) !important;
+    height: calc(130px / 0.58) !important;
+  }
+  .hero {
+    padding-top: calc(var(--nav-height) + 130px) !important;
+  }
+  .hero-photo-wrapper {
+    width: 120px !important; height: 120px !important;
+    margin-top: -60px !important;
   }
 
-  .timeline::before {
-    left: 15px !important;
-  }
-  .timeline-item {
-    padding-left: 45px !important;
-    width: 100% !important;
-  }
-  .timeline-dot {
-    left: 15px !important;
-  }
+  .stats-grid { grid-template-columns: 1fr; }
+  .cs-stats-grid { grid-template-columns: 1fr !important; }
+  .cs-impact-grid { grid-template-columns: 1fr !important; }
 
-  .hero-buttons {
-    flex-direction: column;
-    width: 100%;
-    padding: 0 20px;
-    gap: 15px;
+  .btn { padding: 10px 18px; font-size: 13px; }
+}
+
+/* ── 400px: Small Foldable Phones ── */
+@media (max-width: 400px) {
+  .hero-cover-terminal {
+    height: 115px !important;
+    min-height: 115px !important;
   }
-  .hero-buttons .btn {
-    width: 100%;
-    justify-content: center;
+  .full-width-terminal {
+    zoom: 0.52 !important;
+    width: calc(100% / 0.52) !important;
+    height: calc(115px / 0.52) !important;
+  }
+  .hero {
+    padding-top: calc(var(--nav-height) + 115px) !important;
+  }
+  .hero-photo-wrapper {
+    width: 110px !important; height: 110px !important;
+    margin-top: -55px !important;
+  }
+  .hero h1 { font-size: clamp(20px, 7vw, 26px) !important; }
+  .section { padding: 40px 0; }
+}
+
+/* ── Tablet Landscape / Specific Fixes ── */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .cs-stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .cs-impact-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+/* ── Touch Device: disable hover-only effects for performance ── */
+@media (hover: none) and (pointer: coarse) {
+  .logo-card:hover,
+  .glow-card:hover,
+  .skill-badge:hover,
+  .project-card:hover,
+  .explorer-node:hover {
+    transform: none;
   }
 }
