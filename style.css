@@ -441,6 +441,39 @@ button {
   transform: rotate(-45deg) translate(4px, -4px);
 }
 
+/* ── Nav Close Button (Mobile Drawer) ── */
+.nav-close-btn {
+  display: none; /* hidden on desktop */
+  position: absolute;
+  top: 28px;
+  right: 28px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+  z-index: 100;
+  flex-shrink: 0;
+}
+
+.nav-close-btn:hover {
+  background: rgba(167, 139, 250, 0.1);
+  border-color: rgba(167, 139, 250, 0.4);
+  color: #a78bfa;
+}
+
+/* Show close button only when nav is open on mobile */
+@media (max-width: 768px) {
+  .nav-close-btn {
+    display: flex;
+  }
+}
+
 /* ══════════════════════════════════
    HERO
    ══════════════════════════════════ */
@@ -4957,7 +4990,22 @@ html {
   .section { padding: 60px 0; }
   .section-title {
     font-size: clamp(24px, 6vw, 32px) !important;
-    margin-bottom: 32px;
+    margin-bottom: 40px;   /* was 48px — slightly less on mobile */
+
+    /* ─ FIX: Change from inline-block to block on mobile.
+       When display:inline-block, the element's width equals the text,
+       and the absolute ::after line can extend beyond it and overlap
+       sibling text below. display:block makes width = 100% of container,
+       the ::after line stays contained underneath the title properly. ─ */
+    display: block;
+  }
+
+  /* ─ FIX: Constrain the underline to stay within the section title
+     on mobile so it never overlaps the subtitle/description text. ─ */
+  .section:not(#contact) .section-title::after {
+    width: 100%;         /* fills block-width naturally */
+    max-width: 320px;    /* cap so it doesn't stretch too wide on tablet */
+    bottom: -8px;        /* slightly less offset on mobile */
   }
   
   /* ─ Navbar ─ */

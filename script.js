@@ -523,6 +523,7 @@ window.addEventListener('load', () => {
 (function () {
   const hamburger = document.getElementById('hamburger');
   const navLinks = document.getElementById('navLinks');
+  const navCloseBtn = document.getElementById('navCloseBtn');
 
   function toggleMenu(forceClose = false) {
     if (forceClose) {
@@ -547,6 +548,14 @@ window.addEventListener('load', () => {
       e.stopPropagation();
       toggleMenu();
     });
+
+    // Close button inside nav drawer
+    if (navCloseBtn) {
+      navCloseBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMenu(true);
+      });
+    }
 
     // Close menu when clicking a link
     const links = navLinks.querySelectorAll('a');
