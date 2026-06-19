@@ -1773,3 +1773,30 @@ window.addEventListener('DOMContentLoaded', () => {
 
   observer.observe(terminalBody);
 })();
+
+/* ══════════════════════════════════
+   FLOATING RESUME BUTTON SCROLL LOGIC
+   ══════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', () => {
+  const heroSection = document.getElementById('hero');
+  const floatingBtn = document.querySelector('.floating-resume-btn');
+  
+  if (heroSection && floatingBtn) {
+    const heroObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        // If the hero section is out of view (scrolled down past it)
+        if (!entry.isIntersecting) {
+          floatingBtn.classList.add('visible');
+        } else {
+          // If the hero section is in view (scrolled up to it)
+          floatingBtn.classList.remove('visible');
+        }
+      });
+    }, {
+      // Trigger when the hero section is completely out of view
+      threshold: 0
+    });
+    
+    heroObserver.observe(heroSection);
+  }
+});
