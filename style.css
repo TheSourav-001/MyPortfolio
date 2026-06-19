@@ -1274,59 +1274,174 @@ html[data-theme="light"] .hero h1 {
 /* ══════════════════════════════════
    CERTIFICATIONS
    ══════════════════════════════════ */
-.certs-grid {
+.new-certs-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
 }
 
-.cert-card {
+.cert-card-v2 {
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
   border-radius: var(--radius);
-  padding: 20px;
+  overflow: hidden;
   transition: var(--transition);
   display: flex;
-  align-items: center;
-  gap: 16px;
-  will-change: border-color;
+  flex-direction: column;
 }
 
-.cert-card:hover {
+.cert-card-v2:hover {
   border-color: rgba(167, 139, 250, 0.4);
-  box-shadow: 0 10px 30px rgba(167, 139, 250, 0.07);
+  box-shadow: 0 12px 35px rgba(167, 139, 250, 0.08);
+  transform: translateY(-4px);
 }
 
-.cert-icon {
-  width: 36px;
-  height: 36px;
-  min-width: 36px;
+.cert-preview {
+  width: 100%;
+  height: 200px;
+  background: var(--bg-primary);
+  border-bottom: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radius-sm);
-  background: var(--bg-primary);
-  border: 1px solid var(--border-color);
-  color: var(--text-secondary);
 }
 
-.cert-icon svg {
-  width: 16px;
-  height: 16px;
+.cert-preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 16px;
+  transition: transform var(--transition);
 }
 
-.cert-info h3 {
-  font-size: 14px;
-  font-weight: 500;
+.cert-pdf-preview {
+  width: 100%;
+  height: 280px;
+  border: none;
+  pointer-events: none;
+  transform: scale(0.85);
+  transform-origin: top center;
+}
+
+.cert-preview-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.cert-card-v2:hover .cert-preview-img {
+  transform: scale(1.05);
+}
+
+.cert-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.cert-body h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
   color: var(--text-primary);
-  margin-bottom: 2px;
+  margin-bottom: 8px;
+  line-height: 1.4;
 }
 
-.cert-info p {
-  font-size: 12px;
+.cert-issuer {
+  font-size: 13px;
   color: var(--text-muted);
+  margin-bottom: 24px;
+  flex-grow: 1;
 }
 
+.cert-actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: auto;
+}
+
+.cert-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 10px 4px;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+
+.view-btn {
+  background: rgba(167, 139, 250, 0.1);
+  color: #a78bfa;
+  border-color: rgba(167, 139, 250, 0.2);
+}
+
+.view-btn:hover {
+  background: #a78bfa;
+  color: #000;
+}
+
+.download-btn {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+.download-btn:hover {
+  border-color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.verify-btn {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+.verify-btn:hover {
+  background: #10b981;
+  color: #000;
+}
+
+html[data-theme="light"] .view-btn {
+  background: rgba(124, 58, 237, 0.1);
+  color: #7c3aed;
+  border-color: rgba(124, 58, 237, 0.2);
+}
+
+html[data-theme="light"] .view-btn:hover {
+  background: #7c3aed;
+  color: #fff;
+}
+
+html[data-theme="light"] .verify-btn {
+  background: rgba(5, 150, 105, 0.1);
+  color: #059669;
+  border-color: rgba(5, 150, 105, 0.2);
+}
+
+html[data-theme="light"] .verify-btn:hover {
+  background: #059669;
+  color: #fff;
+}
+
+html[data-theme="light"] .download-btn:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
 /* ══════════════════════════════════
    INSIGHTS & ARTICLES
    ══════════════════════════════════ */
