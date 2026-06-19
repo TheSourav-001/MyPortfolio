@@ -5461,48 +5461,17 @@ html[data-theme="light"] .floating-btn {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-/* =========================================
-   OVERLAP PREVENTION FOR FLOATING ACTION MENU 
-   ========================================= */
-
-/* Desktop & Large Laptops (1025px and up)
-   Dynamically calculates exactly how much padding is needed to maintain 210px of safe space 
-   on the right side, without adding excessive whitespace on screens like 1366px or 1440px. */
-@media (min-width: 1025px) {
-  .container {
-    padding-right: calc(max(24px, 210px - max(0px, (100vw - 1100px) / 2))) !important;
-  }
-}
-
-/* Tablets (769px to 1024px)
-   Buttons shrink to 44px circles. Safe space required is 70px. */
-@media (max-width: 1024px) {
-  .container {
-    padding-right: calc(max(20px, 70px - max(0px, (100vw - 900px) / 2))) !important;
-  }
+@media (max-width: 768px) {
   .floating-action-menu {
-    right: 16px;
-    bottom: 24px;
+    bottom: 20px;
+    right: 20px;
   }
   .floating-btn {
-    width: 44px !important;
-    height: 44px !important;
-    padding: 0 !important;
-    justify-content: center !important;
+    width: 44px;
+    padding: 0;
+    justify-content: center;
   }
   .floating-btn-text {
-    display: none !important;
-  }
-}
-
-/* Mobile Devices (<= 768px)
-   Safe space required is 70px, completely overriding margins. */
-@media (max-width: 768px) {
-  .container {
-    padding-right: 70px !important;
-  }
-  .floating-action-menu {
-    right: 12px;
-    bottom: 20px;
+    display: none;
   }
 }
