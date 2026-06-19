@@ -1779,7 +1779,7 @@ window.addEventListener('DOMContentLoaded', () => {
    ══════════════════════════════════ */
 document.addEventListener('DOMContentLoaded', () => {
   const heroSection = document.getElementById('hero');
-  const floatingBtn = document.querySelector('.floating-resume-btn');
+  const floatingBtn = document.querySelector('.floating-action-menu');
   
   if (heroSection && floatingBtn) {
     const heroObserver = new IntersectionObserver((entries) => {
