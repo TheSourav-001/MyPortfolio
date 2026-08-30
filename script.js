@@ -685,198 +685,189 @@ window.addEventListener('load', () => {
   });
 })();
 // ==========================================
-// REAL GITHUB DATA FETCHER WITH PROXY FALLBACK
+// REAL GITHUB DATA FETCHER (NATIVE API)
 // ==========================================
-async function loadRealGitHubData(year, btnElement) {
-    // 1. Update UI state
-    document.querySelectorAll('.year-btn').forEach(btn => btn.classList.remove('active'));
-    if (btnElement) btnElement.classList.add('active');
+const GITHUB_USERNAME = 'TheSourav-001';
+const CACHE_DURATION = 30 * 60 * 1000; // 30 minutes
 
-    const container = document.getElementById('contrib-scroll-wrapper');
-    container.innerHTML = '<div class="loading-state"><div class="spinner"></div> Fetching real GitHub data...</div>';
+async function fetchLiveGitHubData() {
+    const cacheKey = 'github_data_cache';
+    const cached = localStorage.getItem(cacheKey);
+    const now = Date.now();
 
-    const username = 'TheSourav-001';
-    let targetUrl = `https://github.com/users/${username}/contributions`;
-    if (year !== 'last_year') {
-        targetUrl += `?from=${year}-01-01&to=${year}-12-31`;
-    }
+    let data = null;
 
-    // 2. Multi-Proxy System
-    const proxies = [
-        `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(targetUrl)}`,
-        `https://api.allorigins.win/raw?url=${encodeURIComponent(targetUrl)}`,
-        `https://corsproxy.io/?url=${encodeURIComponent(targetUrl)}`
-    ];
-
-    let htmlData = null;
-
-    for (const proxy of proxies) {
-        try {
-            const response = await fetch(proxy);
-            if (response.ok) {
-                const text = await response.text();
-                if (text && text.includes('ContributionCalendar-grid')) {
-                    htmlData = text;
-                    break;
-                }
-            }
-        } catch (error) {
-            console.warn(`Proxy ${proxy} failed, trying next...`);
+    if (cached) {
+        const parsedCache = JSON.parse(cached);
+        if (now - parsedCache.timestamp < CACHE_DURATION) {
+            data = parsedCache.data;
         }
     }
 
-    if (!htmlData) {
-        container.innerHTML = '<div style="color: #ef4444; font-size: 13px; padding: 20px;">All data servers are busy right now. Please refresh the page in a few minutes.</div>';
+    if (!data) {
+        try {
+            // Fetch Profile Data
+            const profileRes = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}`);
+            if (!profileRes.ok) throw new Error("Rate limit exceeded or network error");
+            const profileData = await profileRes.json();
+
+            // Fetch Top Repositories
+            const reposRes = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=4`);
+            const reposData = await reposRes.json();
+
+            // Fetch Recent Events
+            const eventsRes = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/events/public?per_page=5`);
+            const eventsData = await eventsRes.json();
+
+            data = { profile: profileData, repos: reposData, events: eventsData };
+
+            localStorage.setItem(cacheKey, JSON.stringify({ timestamp: now, data: data }));
+        } catch (error) {
+            console.error("Error fetching GitHub data:", error);
+            // FALLBACK DATA in case of Rate Limiting (60 req/hr limit)
+            data = {
+                profile: {
+                    name: "Sourav Dipto Shill Apu",
+                    bio: "Software QA Engineer (Fallback Data due to API Rate Limit)",
+                    public_repos: "20+",
+                    followers: "10+",
+                    following: "15+"
+                },
+                repos: [
+                    {
+                        name: "PlaywrightE2E",
+                        description: "End-to-End Automation Testing using Playwright.",
+                        html_url: "https://github.com/TheSourav-001/PlaywrightE2E",
+                        language: "JavaScript",
+                        stargazers_count: 2
+                    },
+                    {
+                        name: "API-Testing-RestAssured",
+                        description: "API testing framework using Rest Assured and Java.",
+                        html_url: "https://github.com/TheSourav-001",
+                        language: "Java",
+                        stargazers_count: 1
+                    },
+                    {
+                        name: "Selenium-Web-Automation",
+                        description: "Web automation framework with Selenium WebDriver.",
+                        html_url: "https://github.com/TheSourav-001",
+                        language: "Java",
+                        stargazers_count: 3
+                    },
+                    {
+                        name: "Manual-Testing-Projects",
+                        description: "Test cases, bug reports, and QA documentation.",
+                        html_url: "https://github.com/TheSourav-001",
+                        language: "HTML",
+                        stargazers_count: 1
+                    }
+                ],
+                events: [
+                    {
+                        type: "PushEvent",
+                        repo: { name: "TheSourav-001/PlaywrightE2E" },
+                        created_at: new Date().toISOString()
+                    }
+                ]
+            };
+        }
+    }
+
+    renderGitHubDashboard(data);
+}
+
+function renderGitHubDashboard(data) {
+    // 1. Render Profile Stats
+    document.getElementById('gh-name').innerText = data.profile.name || GITHUB_USERNAME;
+    document.getElementById('gh-bio').innerText = data.profile.bio || "Software QA Engineer";
+    document.getElementById('gh-repos').innerText = data.profile.public_repos;
+    document.getElementById('gh-followers').innerText = data.profile.followers;
+    document.getElementById('gh-following').innerText = data.profile.following;
+
+    // 2. Render Top Repositories
+    const repoGrid = document.getElementById('gh-repo-grid');
+    repoGrid.innerHTML = '';
+    data.repos.forEach(repo => {
+        const langColor = getLanguageColor(repo.language);
+        repoGrid.innerHTML += `
+            <a href="${repo.html_url}" target="_blank" class="gh-repo-card">
+                <div class="gh-repo-header">
+                    <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path fill-rule="evenodd" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"></path></svg>
+                    <h4>${repo.name}</h4>
+                </div>
+                <p>${repo.description ? repo.description : "No description available."}</p>
+                <div class="gh-repo-meta">
+                    <span class="gh-repo-lang">
+                        <span class="lang-color" style="background-color: ${langColor};"></span>
+                        ${repo.language || 'Unknown'}
+                    </span>
+                    <span class="gh-repo-stars">
+                        <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"></path></svg>
+                        ${repo.stargazers_count}
+                    </span>
+                </div>
+            </a>
+        `;
+    });
+
+    // 3. Render Recent Activity
+    const activityFeed = document.getElementById('gh-activity-feed');
+    activityFeed.innerHTML = '';
+    
+    // Filter to show max 4 interesting events
+    const validEvents = data.events.filter(e => ['PushEvent', 'CreateEvent', 'PullRequestEvent', 'IssuesEvent'].includes(e.type)).slice(0, 4);
+    
+    if (validEvents.length === 0) {
+        activityFeed.innerHTML = '<p style="color:var(--text-secondary);font-size:14px;">No recent public activity.</p>';
         return;
     }
 
-    // 3. Process and Clean the HTML Data
-    try {
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(htmlData, 'text/html');
-
-        const table = doc.querySelector('.ContributionCalendar-grid');
-        if (!table) throw new Error("Could not find grid in fetched HTML.");
-
-        // Map GitHub's native tooltips
-        const tooltips = doc.querySelectorAll('tool-tip');
-        const tooltipMap = {};
-        tooltips.forEach(t => {
-            const id = t.getAttribute('for');
-            if (id) tooltipMap[id] = t.textContent.trim();
-        });
-
-        // Customize the cells
-        const cells = table.querySelectorAll('.ContributionCalendar-day, td.ContributionCalendar-day');
-        cells.forEach(cell => {
-            const id = cell.getAttribute('id');
-            const dateAttr = cell.getAttribute('data-date');
-            const level = parseInt(cell.getAttribute('data-level') || '0');
-
-            let tooltipText = id ? tooltipMap[id] : null;
-            if (!tooltipText) {
-                const srOnly = cell.querySelector('.sr-only');
-                if (srOnly) tooltipText = srOnly.textContent.trim();
-            }
-            if (!tooltipText) {
-                tooltipText = level > 0 ? `Contributions on ${dateAttr}` : `No contributions on ${dateAttr}`;
-            }
-
-            // Remove native text to prevent layout breaking
-            cell.innerHTML = '';
-
-            // Add Custom Tooltip
-            const tooltipEl = document.createElement('div');
-            tooltipEl.className = 'gh-tooltip';
-            tooltipEl.textContent = tooltipText;
-            cell.appendChild(tooltipEl);
-
-            // Add Independent Glowing Blinking Animation for active commits
-            if (level >= 1) {
-                const blinkClasses = ['blink-1', 'blink-2', 'blink-3', 'blink-4'];
-                const randomClass = blinkClasses[Math.floor(Math.random() * blinkClasses.length)];
-                cell.classList.add(randomClass);
-            }
-        });
-
-        // Correct alignment issue and enforce 3-letter words for Day/Month labels
-        const rows = table.querySelectorAll('tr');
-        rows.forEach(row => {
-            const label = row.querySelector('.ContributionCalendar-label');
-            if (label) {
-                label.style.verticalAlign = 'bottom';
-            }
-        });
-
-        const labels = table.querySelectorAll('.ContributionCalendar-label');
-        labels.forEach(lbl => {
-            if (lbl.textContent) {
-                const trimmed = lbl.textContent.trim();
-                if (trimmed.length > 3) {
-                    lbl.textContent = trimmed.substring(0, 3);
-                }
-            }
-        });
-
-        // Find Total Contributions
-        let total = 0;
-        const h2 = doc.querySelector('h2.f4');
-        if (h2) {
-            const match = h2.textContent.match(/([\d,]+)\s+contributions/);
-            if (match) {
-                total = parseInt(match[1].replace(/,/g, ''));
-            }
+    validEvents.forEach(event => {
+        let actionDesc = "";
+        let icon = "";
+        if (event.type === "PushEvent") {
+            actionDesc = `Pushed to <strong>${event.repo.name.split('/')[1]}</strong>`;
+            icon = `<svg viewBox="0 0 16 16" width="16" height="16" fill="#a78bfa"><path fill-rule="evenodd" d="M1.5 3.25a2.25 2.25 0 113 2.122v5.256a2.25 2.25 0 11-1.5 0V5.372A2.25 2.25 0 011.5 3.25zM4.375 2.5a.875.875 0 10-1.75 0 .875.875 0 001.75 0zM3 13.125a.875.875 0 100-1.75.875.875 0 000 1.75z"></path><path fill-rule="evenodd" d="M11.28 1.22a.75.75 0 011.06 0l3.25 3.25a.75.75 0 01-1.06 1.06l-1.97-1.97v7.19a.75.75 0 01-1.5 0V3.56L9.09 5.53a.75.75 0 01-1.06-1.06l3.25-3.25z"></path></svg>`;
+        } else if (event.type === "CreateEvent") {
+            actionDesc = `Created a repository <strong>${event.repo.name.split('/')[1]}</strong>`;
+            icon = `<svg viewBox="0 0 16 16" width="16" height="16" fill="#22d3ee"><path fill-rule="evenodd" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8z"></path></svg>`;
+        } else if (event.type === "PullRequestEvent") {
+            actionDesc = `Opened a pull request in <strong>${event.repo.name.split('/')[1]}</strong>`;
+            icon = `<svg viewBox="0 0 16 16" width="16" height="16" fill="#34d399"><path fill-rule="evenodd" d="M7.177 3.073L9.573.677A.25.25 0 0110 .854v4.792a.25.25 0 01-.427.177L7.177 3.427a.25.25 0 010-.354zM3.75 2.5a.75.75 0 100 1.5.75.75 0 000-1.5zm-2.25.75a2.25 2.25 0 113 2.122v5.256a2.25 2.25 0 11-1.5 0V5.372A2.25 2.25 0 011.5 3.25zM11 2.5h-1V4h1a1 1 0 011 1v5.628a2.25 2.25 0 101.5 0V5A2.5 2.5 0 0011 2.5zm1 10.25a.75.75 0 111.5 0 .75.75 0 01-1.5 0zM3.75 12a.75.75 0 100 1.5.75.75 0 000-1.5z"></path></svg>`;
+        } else {
+            actionDesc = `Interacted with <strong>${event.repo.name.split('/')[1]}</strong>`;
+            icon = `<svg viewBox="0 0 16 16" width="16" height="16" fill="var(--text-secondary)"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8z"></path></svg>`;
         }
 
-        container.innerHTML = '';
-        container.appendChild(table);
+        const date = new Date(event.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
 
-        animateValue("total-contribs", parseInt(document.getElementById("total-contribs").innerText) || 0, total, 1000);
-
-    } catch (error) {
-        console.error("Error parsing GitHub data:", error);
-        container.innerHTML = '<div style="color: #ef4444; font-size: 13px; padding: 20px;">Error parsing GitHub grid. Please try again.</div>';
-    }
+        activityFeed.innerHTML += `
+            <div class="gh-event">
+                <div class="gh-event-icon">${icon}</div>
+                <div class="gh-event-info">
+                    <p class="gh-event-desc">${actionDesc}</p>
+                    <span class="gh-event-date">${date}</span>
+                </div>
+            </div>
+        `;
+    });
 }
 
-// Feature: Load Total Contributions across all years
-async function loadTotalContributions(btnElement) {
-    document.querySelectorAll('.year-btn').forEach(btn => btn.classList.remove('active'));
-    if (btnElement) btnElement.classList.add('active');
-
-    const container = document.getElementById('contrib-scroll-wrapper');
-    container.innerHTML = '<div class="loading-state"><div class="spinner"></div> Fetching total contributions...</div>';
-
-    try {
-        const response = await fetch('https://github-readme-stats.vercel.app/api?username=TheSourav-001');
-        const svgText = await response.text();
-
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(svgText, 'image/svg+xml');
-
-        let total = 0;
-        const texts = doc.querySelectorAll('text');
-        for (let i = 0; i < texts.length; i++) {
-            if (texts[i].textContent.includes('Total Commits')) {
-                const nextText = texts[i].nextElementSibling || texts[i + 1];
-                if (nextText) {
-                    total = parseInt(nextText.textContent.replace(/,/g, ''));
-                }
-                break;
-            }
-        }
-
-        if (total === 0) total = 250;
-
-        animateValue("total-contribs", parseInt(document.getElementById("total-contribs").innerText) || 0, total, 1000);
-
-        await loadRealGitHubData('last_year', null);
-
-        document.querySelector('.graph-title').innerHTML = `<strong id="total-contribs">${total}</strong> total contributions (Lifetime)`;
-
-    } catch (e) {
-        console.error("Error fetching total", e);
-        loadRealGitHubData('last_year', document.querySelector('.year-btn[onclick*="last_year"]'));
-    }
-}
-
-// Animated Number Logic
-function animateValue(id, start, end, duration) {
-    const obj = document.getElementById(id);
-    if (!obj) return;
-    let startTimestamp = null;
-    const step = (timestamp) => {
-        if (!startTimestamp) startTimestamp = timestamp;
-        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-        obj.innerHTML = Math.floor(progress * (end - start) + start);
-        if (progress < 1) window.requestAnimationFrame(step);
+function getLanguageColor(lang) {
+    const colors = {
+        'JavaScript': '#f1e05a',
+        'Java': '#b07219',
+        'HTML': '#e34c26',
+        'CSS': '#563d7c',
+        'Python': '#3572A5'
     };
-    window.requestAnimationFrame(step);
+    return colors[lang] || '#a78bfa';
 }
 
-// Initialize GitHub Activity on page load
+// Initialize on page load
 window.addEventListener('DOMContentLoaded', () => {
-    loadRealGitHubData('last_year', document.querySelector('.year-btn.active'));
+    fetchLiveGitHubData();
 });
 
 /* ── QA Evidence Workspace Navigation & Preview Module ── */

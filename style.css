@@ -3197,268 +3197,243 @@ a.contact-card-item:hover {
   }
 }
 
-.github-dashboard {
+/* ── NEW CUSTOM GITHUB DASHBOARD ── */
+.gh-dashboard-custom {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  margin-bottom: 48px;
 }
 
-.gh-card {
+/* Profile Card */
+.gh-profile-card {
   background: rgba(18, 18, 21, 0.6);
-  border: 1px solid var(--border-color);
+  border: 1px solid rgba(167, 139, 250, 0.15);
   border-radius: var(--radius);
-  padding: 20px;
-  backdrop-filter: blur(10px);
-  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  position: relative;
-}
-
-.gh-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(167, 139, 250, 0.4);
-  box-shadow: 0 10px 30px rgba(167, 139, 250, 0.08);
-}
-
-.gh-card img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  object-fit: contain;
-  display: block;
-}
-
-.gh-stats-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.gh-full-width {
-  width: 100%;
   padding: 24px;
-  box-sizing: border-box;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.live-graph-container {
-  background: #0d1117;
-  border: 1px solid #30363d;
-}
-
-.graph-header {
-  width: 100%;
+  backdrop-filter: blur(10px);
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 24px;
-}
-
-.graph-title strong {
-  color: #39d353;
-}
-
-.year-selector {
-  display: flex;
-  gap: 8px;
+  align-items: center;
   flex-wrap: wrap;
+  gap: 20px;
+  transition: transform var(--transition), border-color var(--transition);
 }
-
-.year-btn {
-  background: transparent;
-  border: 1px solid transparent;
+.gh-profile-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(167, 139, 250, 0.4);
+}
+.gh-profile-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.gh-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 2px solid #a78bfa;
+  object-fit: cover;
+}
+.gh-profile-info h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.gh-profile-info a {
+  color: #c084fc;
+  font-size: 14px;
+  text-decoration: none;
+}
+.gh-profile-info a:hover {
+  text-decoration: underline;
+}
+.gh-profile-info p {
   color: var(--text-secondary);
-  font-size: 12px;
-  padding: 6px 14px;
-  border-radius: 20px;
-  cursor: pointer;
+  font-size: 13px;
+  margin-top: 6px;
 }
 
-.year-btn.active {
-  background: #238636;
+.gh-profile-stats {
+  display: flex;
+  gap: 24px;
+}
+.gh-stat {
+  text-align: center;
+}
+.gh-stat-value {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
   color: #fff;
 }
+.gh-stat-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
 
-.contrib-scroll-wrapper {
-  width: 100%;
-  overflow-x: auto;
-  padding-bottom: 16px;
+/* Grid Layout */
+.gh-dashboard-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+}
+
+/* Section Titles */
+.gh-section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+}
+.gh-section-title svg {
+  color: #a78bfa;
+}
+
+/* Repositories */
+.gh-repo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.gh-repo-card {
+  background: rgba(18, 18, 21, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  transition: transform var(--transition), border-color var(--transition);
+}
+.gh-repo-card:hover {
+  transform: translateY(-4px);
+  border-color: #a78bfa;
+}
+.gh-repo-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  color: #c084fc;
+}
+.gh-repo-header h4 {
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.gh-repo-card p {
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  flex: 1;
+}
+.gh-repo-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+.gh-repo-lang, .gh-repo-stars {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.lang-color {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+/* Activity Feed */
+.gh-activity-section {
+  background: rgba(18, 18, 21, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 20px;
+}
+.gh-activity-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.gh-event {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.gh-event-icon {
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.gh-event-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.gh-event-desc {
+  font-size: 13px;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+.gh-event-desc strong {
+  color: #a78bfa;
+}
+.gh-event-date {
+  font-size: 11px;
+  color: var(--text-secondary);
 }
 
 .loading-state {
   color: var(--text-secondary);
   font-size: 14px;
-  padding: 40px 0;
   display: flex;
   align-items: center;
   gap: 12px;
 }
-
 .spinner {
   width: 16px;
   height: 16px;
   border: 2px solid rgba(255, 255, 255, 0.1);
-  border-top-color: #39d353;
+  border-top-color: #a78bfa;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
-  to {
-    transform: rotate(360deg);
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 900px) {
+  .gh-dashboard-grid {
+    grid-template-columns: 1fr;
   }
 }
-
-.ContributionCalendar-grid {
-  border-collapse: separate;
-  border-spacing: 4px;
-  margin-top: 10px;
-  width: 100%;
-}
-
-.ContributionCalendar-label {
-  font-size: 11px;
-  color: var(--text-secondary);
-  padding: 0 8px 0 0;
-  font-family: 'Inter', sans-serif;
-  vertical-align: bottom;
-}
-
-.ContributionCalendar-day {
-  width: 14px;
-  height: 14px;
-  border-radius: 3px;
-  background-color: #161b22;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  cursor: pointer;
-  position: relative;
-  transition: transform 0.1s, border-color 0.1s;
-}
-
-.ContributionCalendar-day:hover {
-  border-color: rgba(255, 255, 255, 0.8);
-  transform: scale(1.2);
-  z-index: 10;
-}
-
-.ContributionCalendar-day[data-level="1"] {
-  background-color: #0e4429;
-}
-
-.ContributionCalendar-day[data-level="2"] {
-  background-color: #006d32;
-}
-
-.ContributionCalendar-day[data-level="3"] {
-  background-color: #26a641;
-}
-
-.ContributionCalendar-day[data-level="4"] {
-  background-color: #39d353;
-}
-
-/* Blinking glow animation for active contribution days (optimized for GPU) */
-@keyframes glowingBlink {
-
-  0%,
-  100% {
-    opacity: 1;
+@media (max-width: 600px) {
+  .gh-repo-grid {
+    grid-template-columns: 1fr;
   }
-
-  50% {
-    opacity: 0.6;
+  .gh-profile-card {
+    flex-direction: column;
+    align-items: flex-start;
   }
-}
-
-.blink-1 {
-  animation: glowingBlink 1.5s infinite ease-in-out;
-  will-change: opacity;
-}
-
-.blink-2 {
-  animation: glowingBlink 1.5s infinite ease-in-out 0.3s;
-  will-change: opacity;
-}
-
-.blink-3 {
-  animation: glowingBlink 1.5s infinite ease-in-out 0.6s;
-  will-change: opacity;
-}
-
-.blink-4 {
-  animation: glowingBlink 1.5s infinite ease-in-out 0.9s;
-  will-change: opacity;
-}
-
-/* Custom hover tooltip for contribution days */
-.gh-tooltip {
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-8px);
-  background: #24292f;
-  color: #c9d1d9;
-  font-size: 11px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-  padding: 6px 10px;
-  border-radius: 6px;
-  white-space: nowrap;
-  pointer-events: none;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.2s, transform 0.2s;
-  z-index: 20;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-}
-
-.gh-tooltip::after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  border-width: 5px;
-  border-style: solid;
-  border-color: #24292f transparent transparent transparent;
-}
-
-.ContributionCalendar-day:hover .gh-tooltip {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(-4px);
-}
-
-.graph-footer {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 16px;
-  font-size: 11px;
-  color: var(--text-secondary);
-}
-
-.legend {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.legend-item {
-  width: 11px;
-  height: 11px;
-  border-radius: 2px;
-}
-
-.gh-trophies img {
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
+  .gh-profile-stats {
+    width: 100%;
+    justify-content: space-between;
+  }
 }
 
 .btn-container {
@@ -3496,67 +3471,6 @@ a.contact-card-item:hover {
 
 .btn-github-cta:hover svg {
   transform: scale(1.1) translateX(2px);
-}
-
-.year-btn:hover {
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--text-primary);
-}
-
-.year-btn.active {
-  background: #238636;
-  color: #ffffff;
-  font-weight: 600;
-  border-color: #2ea043;
-  box-shadow: 0 0 10px rgba(46, 160, 67, 0.4);
-}
-
-.contrib-scroll-wrapper::-webkit-scrollbar {
-  height: 6px;
-}
-
-.contrib-scroll-wrapper::-webkit-scrollbar-thumb {
-  background: #30363d;
-  border-radius: 4px;
-}
-
-@media (max-width: 900px) {
-  .gh-stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .gh-stats-grid .gh-card:last-child {
-    grid-column: span 2;
-  }
-}
-
-@media (max-width: 768px) {
-  .gh-stats-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .gh-stats-grid .gh-card:last-child {
-    grid-column: span 1;
-  }
-
-  .gh-card {
-    padding: 16px;
-  }
-
-  .graph-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-  }
-
-  .gh-trophies {
-    overflow-x: auto;
-  }
-
-  .gh-trophies img {
-    width: 200%;
-    max-width: none;
-  }
 }
 
 /* ── QA EVIDENCE WORKSPACE ── */
