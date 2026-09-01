@@ -1978,6 +1978,82 @@ a.contact-card-item:hover {
 }
 
 /* ══════════════════════════════════
+   LIVE VISITOR COUNTER
+   ══════════════════════════════════ */
+.visitor-counter-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.visitor-counter-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 22px;
+  background: rgba(167, 139, 250, 0.06);
+  border: 1px solid rgba(167, 139, 250, 0.2);
+  border-radius: 100px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 0 20px rgba(167, 139, 250, 0.08), inset 0 0 12px rgba(167, 139, 250, 0.04);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.visitor-counter-badge:hover {
+  border-color: rgba(167, 139, 250, 0.45);
+  box-shadow: 0 0 32px rgba(167, 139, 250, 0.18), inset 0 0 16px rgba(167, 139, 250, 0.06);
+}
+
+.visitor-live-dot {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22d3a0;
+  box-shadow: 0 0 6px rgba(34, 211, 160, 0.8);
+  flex-shrink: 0;
+}
+
+.visitor-live-dot::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: rgba(34, 211, 160, 0.25);
+  animation: livePulse 2s ease-in-out infinite;
+}
+
+@keyframes livePulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.9); opacity: 0; }
+}
+
+.visitor-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+}
+
+.visitor-count-num {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  min-width: 48px;
+  text-align: right;
+  background: linear-gradient(135deg, #a78bfa, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+}
+
+/* ══════════════════════════════════
 /* ══════════════════════════════════
    RESPONSIVE OVERHAUL (1440px to 400px)
    ══════════════════════════════════ */
