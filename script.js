@@ -1792,36 +1792,3 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-/* -- Live Visitor Counter (CountAPI) -- */
-(function () {
-  const NAMESPACE = 'thesourav-portfolio';
-  const KEY       = 'visits-v1';
-  const display   = document.getElementById('visitor-count-display');
-  if (!display) return;
-
-  // Smooth animated count-up
-  function animateCount(from, to, duration) {
-    const start = performance.now();
-    function tick(now) {
-      const progress = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3); // cubic ease-out
-      const current = Math.round(from + (to - from) * eased);
-      display.textContent = current.toLocaleString();
-      if (progress < 1) requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
-  }
-
-  fetch(`https://api.countapi.xyz/hit/${NAMESPACE}/${KEY}`)
-    .then(res => res.json())
-    .then(data => {
-      if (data && typeof data.value === 'number') {
-        animateCount(0, data.value, 1800);
-      } else {
-        display.textContent = '—';
-      }
-    })
-    .catch(() => {
-      display.textContent = '—';
-    });
-})();

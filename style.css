@@ -2038,19 +2038,19 @@ a.contact-card-item:hover {
   color: var(--text-muted);
 }
 
-.visitor-count-num {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--text-primary);
-  letter-spacing: -0.5px;
-  min-width: 48px;
-  text-align: right;
-  background: linear-gradient(135deg, #a78bfa, #7c3aed);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-shadow: none;
+.visitor-hits-badge {
+  height: 26px;
+  width: auto;
+  border-radius: 4px;
+  display: block;
+  filter: drop-shadow(0 0 8px rgba(124, 58, 237, 0.5));
+  image-rendering: -webkit-optimize-contrast;
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.visitor-hits-badge:hover {
+  filter: drop-shadow(0 0 14px rgba(124, 58, 237, 0.85));
+  transform: scale(1.04);
 }
 
 /* ══════════════════════════════════
