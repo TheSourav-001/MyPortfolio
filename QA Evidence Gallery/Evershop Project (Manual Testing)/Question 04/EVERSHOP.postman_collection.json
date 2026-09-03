@@ -1,0 +1,269 @@
+{
+  "info": {
+    "_postman_id": "8d15cf65-208f-4fee-b11d-a334b973636b",
+    "name": "EVERSHOP",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "51202975"
+  },
+  "item": [
+    {
+      "name": "Search - Stainless Steel Thermos",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept-Language",
+            "value": "en-US,en;q=0.9"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          },
+          {
+            "key": "Origin",
+            "value": "https://demo.evershop.io"
+          },
+          {
+            "key": "Referer",
+            "value": "https://demo.evershop.io/"
+          },
+          {
+            "key": "Sec-Fetch-Dest",
+            "value": "empty"
+          },
+          {
+            "key": "Sec-Fetch-Mode",
+            "value": "cors"
+          },
+          {
+            "key": "Sec-Fetch-Site",
+            "value": "same-origin"
+          },
+          {
+            "key": "User-Agent",
+            "value": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Mobile Safari/537.36"
+          },
+          {
+            "key": "accept",
+            "value": "multipart/mixed, application/graphql-response+json, application/graphql+json, application/json"
+          },
+          {
+            "key": "content-type",
+            "value": "application/json"
+          },
+          {
+            "key": "sec-ch-ua",
+            "value": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\""
+          },
+          {
+            "key": "sec-ch-ua-mobile",
+            "value": "?1"
+          },
+          {
+            "key": "sec-ch-ua-platform",
+            "value": "\"Android\""
+          },
+          {
+            "key": "Cookie",
+            "value": "_ga=GA1.1.2052879214.1768053719; sid=s%3A-IyjvGt9qfLexw3EMi5rEkb56AcLQAC6.zY1cff%2BAVIKsDaSnud0Kvyn2HGEDx%2FlvADF2NCgmx6A; _ga_54D6B5061F=GS2.1.s1768730538$o13$g0$t1768730547$j51$l0$h0; __stripe_mid=2b52ba3a-e497-45c5-afae-83062813180e97321c"
+          }
+        ],
+        "body": {
+          "mode": "graphql",
+          "graphql": {
+            "query": "fragment Product on Product {\n  productId\n  name\n  sku\n  price {\n    regular {\n      value\n      text\n      __typename\n    }\n    special {\n      value\n      text\n      __typename\n    }\n    __typename\n  }\n  image {\n    url\n    alt\n    __typename\n  }\n  url\n  inventory {\n    isInStock\n    __typename\n  }\n}\nquery Query($filters: [FilterInput]) {\n  products(filters: $filters) {\n    items {\n      ...Product\n      __typename\n    }\n    __typename\n  }\n}",
+            "variables": "{\n  \"filters\": [\n    {\n      \"key\": \"keyword\",\n      \"operation\": \"eq\",\n      \"value\": \"Stainless Steel Thermos\"\n    },\n    {\n      \"key\": \"limit\",\n      \"operation\": \"eq\",\n      \"value\": \"10\"\n    }\n  ]\n}"
+          }
+        },
+        "url": {
+          "raw": "https://demo.evershop.io/api/graphql",
+          "protocol": "https",
+          "host": [
+            "demo",
+            "evershop",
+            "io"
+          ],
+          "path": [
+            "api",
+            "graphql"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "AddToCart",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "*/*"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "en-US,en;q=0.9"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Origin",
+            "value": "https://demo.evershop.io"
+          },
+          {
+            "key": "Referer",
+            "value": "https://demo.evershop.io/accessories/stainless-steel-thermos-black?color=2"
+          },
+          {
+            "key": "Sec-Fetch-Dest",
+            "value": "empty"
+          },
+          {
+            "key": "Sec-Fetch-Mode",
+            "value": "cors"
+          },
+          {
+            "key": "Sec-Fetch-Site",
+            "value": "same-origin"
+          },
+          {
+            "key": "User-Agent",
+            "value": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Mobile Safari/537.36"
+          },
+          {
+            "key": "sec-ch-ua",
+            "value": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\""
+          },
+          {
+            "key": "sec-ch-ua-mobile",
+            "value": "?1"
+          },
+          {
+            "key": "sec-ch-ua-platform",
+            "value": "\"Android\""
+          },
+          {
+            "key": "Cookie",
+            "value": "_ga=GA1.1.2052879214.1768053719; sid=s%3A-IyjvGt9qfLexw3EMi5rEkb56AcLQAC6.zY1cff%2BAVIKsDaSnud0Kvyn2HGEDx%2FlvADF2NCgmx6A; _ga_54D6B5061F=GS2.1.s1768730538$o13$g0$t1768730547$j51$l0$h0; __stripe_mid=2b52ba3a-e497-45c5-afae-83062813180e97321c"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"sku\":\"THERMO-005-BLK\",\"qty\":3}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://demo.evershop.io/api/cart/44d0e2c0-47c6-4f78-9e40-0294e87e37ed/items",
+          "protocol": "https",
+          "host": [
+            "demo",
+            "evershop",
+            "io"
+          ],
+          "path": [
+            "api",
+            "cart",
+            "44d0e2c0-47c6-4f78-9e40-0294e87e37ed",
+            "items"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "MyCart",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept-Language",
+            "value": "en-US,en;q=0.9"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          },
+          {
+            "key": "Origin",
+            "value": "https://demo.evershop.io"
+          },
+          {
+            "key": "Referer",
+            "value": "https://demo.evershop.io/cart"
+          },
+          {
+            "key": "Sec-Fetch-Dest",
+            "value": "empty"
+          },
+          {
+            "key": "Sec-Fetch-Mode",
+            "value": "cors"
+          },
+          {
+            "key": "Sec-Fetch-Site",
+            "value": "same-origin"
+          },
+          {
+            "key": "User-Agent",
+            "value": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Mobile Safari/537.36"
+          },
+          {
+            "key": "accept",
+            "value": "multipart/mixed, application/graphql-response+json, application/graphql+json, application/json"
+          },
+          {
+            "key": "content-type",
+            "value": "application/json"
+          },
+          {
+            "key": "sec-ch-ua",
+            "value": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\""
+          },
+          {
+            "key": "sec-ch-ua-mobile",
+            "value": "?1"
+          },
+          {
+            "key": "sec-ch-ua-platform",
+            "value": "\"Android\""
+          },
+          {
+            "key": "Cookie",
+            "value": "_ga=GA1.1.2052879214.1768053719; sid=s%3A-IyjvGt9qfLexw3EMi5rEkb56AcLQAC6.zY1cff%2BAVIKsDaSnud0Kvyn2HGEDx%2FlvADF2NCgmx6A; _ga_54D6B5061F=GS2.1.s1768730538$o13$g0$t1768730547$j51$l0$h0; __stripe_mid=2b52ba3a-e497-45c5-afae-83062813180e97321c; __stripe_sid=61d33825-3633-4051-83b6-08a4f84aecffb7bdb6"
+          }
+        ],
+        "body": {
+          "mode": "graphql",
+          "graphql": {
+            "query": "query Query {\n  myCart {\n    ...ShoppingCart\n    addItemApi\n    addPaymentMethodApi\n    addShippingMethodApi\n    addContactInfoApi\n    addAddressApi\n    addNoteApi\n    checkoutApi\n    applyCouponApi\n    removeCouponApi\n    availableShippingMethods {\n      code\n      name\n      cost {\n        value\n        text\n        __typename\n      }\n      __typename\n    }\n    availablePaymentMethods {\n      code\n      name\n      __typename\n    }\n    items {\n      ...ShoppingCartItem\n      cartItemId\n      removeApi\n      updateQtyApi\n      errors\n      __typename\n    }\n    __typename\n  }\n  customer: currentCustomer {\n    customerId\n    uuid\n    email\n    fullName\n    groupId\n    createdAt {\n      value\n      text\n      __typename\n    }\n    addAddressApi\n    addresses {\n      addressId\n      uuid\n      fullName\n      telephone\n      address1\n      address2\n      city\n      province {\n        code\n        name\n        __typename\n      }\n      country {\n        code\n        name\n        __typename\n      }\n      postcode\n      isDefault\n      updateApi\n      deleteApi\n      __typename\n    }\n    orders {\n      ...ShoppingCart\n      orderId\n      status {\n        name\n        code\n        badge\n        __typename\n      }\n      orderNumber\n      shipmentStatus {\n        name\n        code\n        badge\n        __typename\n      }\n      paymentStatus {\n        name\n        code\n        badge\n        __typename\n      }\n      items {\n        ...ShoppingCartItem\n        orderItemId\n        __typename\n      }\n      __typename\n    }\n    __typename\n  }\n  themeConfig {\n    copyRight\n    __typename\n  }\n  addMineCartItemApi: url(routeId: \n\"addMineCartItem\")\n  loginApi: url(routeId: \n\"customerLoginJson\")\n  registerApi: url(routeId: \n\"createCustomer\")\n  logoutApi: url(routeId: \n\"customerLogoutJson\")\n}\nfragment ShoppingCart on ShoppingCart {\n  uuid\n  currency\n  customerId\n  customerGroupId\n  customerEmail\n  customerFullName\n  coupon\n  shippingMethod\n  shippingMethodName\n  paymentMethod\n  paymentMethodName\n  shippingNote\n  taxAmount {\n    value\n    text\n    __typename\n  }\n  totalTaxAmount {\n    value\n    text\n    __typename\n  }\n  discountAmount {\n    value\n    text\n    __typename\n  }\n  shippingFeeExclTax {\n    value\n    text\n    __typename\n  }\n  shippingFeeInclTax {\n    value\n    text\n    __typename\n  }\n  shippingTaxAmount {\n    value\n    text\n    __typename\n  }\n  subTotal {\n    value\n    text\n    __typename\n  }\n  subTotalInclTax {\n    value\n    text\n    __typename\n  }\n  subTotalWithDiscount {\n    value\n    text\n    __typename\n  }\n  subTotalWithDiscountInclTax {\n    value\n    text\n    __typename\n  }\n  totalQty\n  totalWeight {\n    value\n    unit\n    __typename\n  }\n  taxAmountBeforeDiscount {\n    value\n    text\n    __typename\n  }\n  grandTotal {\n    value\n    text\n    __typename\n  }\n  billingAddress {\n    fullName\n    telephone\n    address1\n    address2\n    city\n    province {\n      name\n      code\n      __typename\n    }\n    country {\n      name\n      code\n      __typename\n    }\n    postcode\n    __typename\n  }\n  shippingAddress {\n    fullName\n    telephone\n    address1\n    address2\n    city\n    province {\n      name\n      code\n      __typename\n    }\n    country {\n      name\n      code\n      __typename\n    }\n    postcode\n    __typename\n  }\n  createdAt {\n    value\n    text\n    __typename\n  }\n  updatedAt {\n    value\n    text\n    __typename\n  }\n}\nfragment ShoppingCartItem on ShoppingCartItem {\n  uuid\n  productId\n  productSku\n  productName\n  thumbnail\n  productWeight {\n    value\n    unit\n    __typename\n  }\n  productPrice {\n    value\n    text\n    __typename\n  }\n  productPriceInclTax {\n    value\n    text\n    __typename\n  }\n  qty\n  finalPrice {\n    value\n    text\n    __typename\n  }\n  finalPriceInclTax {\n    value\n    text\n    __typename\n  }\n  taxPercent\n  taxAmount {\n    value\n    text\n    __typename\n  }\n  taxAmountBeforeDiscount {\n    value\n    text\n    __typename\n  }\n  discountAmount {\n    value\n    text\n    __typename\n  }\n  lineTotal {\n    value\n    text\n    __typename\n  }\n  subTotal {\n    value\n    text\n    __typename\n  }\n  lineTotalWithDiscount {\n    value\n    text\n    __typename\n  }\n  lineTotalWithDiscountInclTax {\n    value\n    text\n    __typename\n  }\n  lineTotalInclTax {\n    value\n    text\n    __typename\n  }\n  total {\n    value\n    text\n    __typename\n  }\n  variantGroupId\n  variantOptions {\n    attributeCode\n    attributeName\n    attributeId\n    optionId\n    optionText\n    __typename\n  }\n  productUrl\n}",
+            "variables": ""
+          }
+        },
+        "url": {
+          "raw": "https://demo.evershop.io/api/graphql",
+          "protocol": "https",
+          "host": [
+            "demo",
+            "evershop",
+            "io"
+          ],
+          "path": [
+            "api",
+            "graphql"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

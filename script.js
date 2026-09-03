@@ -1118,6 +1118,459 @@ window.addEventListener('DOMContentLoaded', () => {
           ]
         }
       ]
+    },
+    {
+        "name": "AwesomeQA_Automation",
+        "type": "folder",
+        "desc": "AwesomeQA_Automation evidence",
+        "children": [
+            {
+                "name": ".gitignore",
+                "type": "file",
+                "ext": "",
+                "path": "QA Evidence Gallery/AwesomeQA_Automation/.gitignore"
+            },
+            {
+                "name": "config",
+                "type": "folder",
+                "children": [
+                    {
+                        "name": "config.js",
+                        "type": "file",
+                        "ext": ".js",
+                        "path": "QA Evidence Gallery/AwesomeQA_Automation/config/config.js"
+                    }
+                ]
+            },
+            {
+                "name": "LICENSE",
+                "type": "file",
+                "ext": "",
+                "path": "QA Evidence Gallery/AwesomeQA_Automation/LICENSE"
+            },
+            {
+                "name": "mochawesome-report",
+                "type": "folder",
+                "children": [
+                    {
+                        "name": "assets",
+                        "type": "folder",
+                        "children": [
+                            {
+                                "name": "app.css",
+                                "type": "file",
+                                "ext": ".css",
+                                "path": "QA Evidence Gallery/AwesomeQA_Automation/mochawesome-report/assets/app.css"
+                            },
+                            {
+                                "name": "app.js",
+                                "type": "file",
+                                "ext": ".js",
+                                "path": "QA Evidence Gallery/AwesomeQA_Automation/mochawesome-report/assets/app.js"
+                            },
+                            {
+                                "name": "app.js.LICENSE.txt",
+                                "type": "file",
+                                "ext": ".txt",
+                                "path": "QA Evidence Gallery/AwesomeQA_Automation/mochawesome-report/assets/app.js.LICENSE.txt"
+                            },
+                            {
+                                "name": "MaterialIcons-Regular.woff",
+                                "type": "file",
+                                "ext": ".woff",
+                                "path": "QA Evidence Gallery/AwesomeQA_Automation/mochawesome-report/assets/MaterialIcons-Regular.woff"
+                            },
+                            {
+                                "name": "MaterialIcons-Regular.woff2",
+                                "type": "file",
+                                "ext": ".woff2",
+                                "path": "QA Evidence Gallery/AwesomeQA_Automation/mochawesome-report/assets/MaterialIcons-Regular.woff2"
+                            },
+                            {
+                                "name": "roboto-light-webfont.woff",
+                                "type": "file",
+                                "ext": ".woff",
+                                "path": "QA Evidence Gallery/AwesomeQA_Automation/mochawesome-report/assets/roboto-light-webfont.woff"
+                            },
+                            {
+                                "name": "roboto-light-webfont.woff2",
+                                "type": "file",
+                                "ext": ".woff2",
+                                "path": "QA Evidence Gallery/AwesomeQA_Automation/mochawesome-report/assets/roboto-light-webfont.woff2"
+                            },
+                            {
+                                "name": "roboto-medium-webfont.woff",
+                                "type": "file",
+                                "ext": ".woff",
+                                "path": "QA Evidence Gallery/AwesomeQA_Automation/mochawesome-report/assets/roboto-medium-webfont.woff"
+                            },
+                            {
+                                "name": "roboto-medium-webfont.woff2",
+                                "type": "file",
+                                "ext": ".woff2",
+                                "path": "QA Evidence Gallery/AwesomeQA_Automation/mochawesome-report/assets/roboto-medium-webfont.woff2"
+                            },
+                            {
+                                "name": "roboto-regular-webfont.woff",
+                                "type": "file",
+                                "ext": ".woff",
+                                "path": "QA Evidence Gallery/AwesomeQA_Automation/mochawesome-report/assets/roboto-regular-webfont.woff"
+                            },
+                            {
+                                "name": "roboto-regular-webfont.woff2",
+                                "type": "file",
+                                "ext": ".woff2",
+                                "path": "QA Evidence Gallery/AwesomeQA_Automation/mochawesome-report/assets/roboto-regular-webfont.woff2"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "mochawesome.html",
+                        "type": "file",
+                        "ext": ".html",
+                        "path": "QA Evidence Gallery/AwesomeQA_Automation/mochawesome-report/mochawesome.html"
+                    },
+                    {
+                        "name": "mochawesome.json",
+                        "type": "file",
+                        "ext": ".json",
+                        "path": "QA Evidence Gallery/AwesomeQA_Automation/mochawesome-report/mochawesome.json"
+                    }
+                ]
+            },
+            {
+                "name": "mochawesome_report",
+                "type": "folder",
+                "children": [
+                    {
+                        "name": "mochawesome.html",
+                        "type": "file",
+                        "ext": ".html",
+                        "path": "QA Evidence Gallery/AwesomeQA_Automation/mochawesome_report/mochawesome.html"
+                    }
+                ]
+            },
+            {
+                "name": "package-lock.json",
+                "type": "file",
+                "ext": ".json",
+                "path": "QA Evidence Gallery/AwesomeQA_Automation/package-lock.json"
+            },
+            {
+                "name": "package.json",
+                "type": "file",
+                "ext": ".json",
+                "path": "QA Evidence Gallery/AwesomeQA_Automation/package.json"
+            },
+            {
+                "name": "pages",
+                "type": "folder",
+                "children": [
+                    {
+                        "name": "LoginPage.js",
+                        "type": "file",
+                        "ext": ".js",
+                        "path": "QA Evidence Gallery/AwesomeQA_Automation/pages/LoginPage.js"
+                    },
+                    {
+                        "name": "RegisterPage.js",
+                        "type": "file",
+                        "ext": ".js",
+                        "path": "QA Evidence Gallery/AwesomeQA_Automation/pages/RegisterPage.js"
+                    }
+                ]
+            },
+            {
+                "name": "README.md",
+                "type": "file",
+                "ext": ".md",
+                "path": "QA Evidence Gallery/AwesomeQA_Automation/README.md"
+            },
+            {
+                "name": "tests",
+                "type": "folder",
+                "children": [
+                    {
+                        "name": "Login.test.js",
+                        "type": "file",
+                        "ext": ".js",
+                        "path": "QA Evidence Gallery/AwesomeQA_Automation/tests/Login.test.js"
+                    },
+                    {
+                        "name": "registration.test.js",
+                        "type": "file",
+                        "ext": ".js",
+                        "path": "QA Evidence Gallery/AwesomeQA_Automation/tests/registration.test.js"
+                    }
+                ]
+            },
+            {
+                "name": "TEST_STRATEGY.md",
+                "type": "file",
+                "ext": ".md",
+                "path": "QA Evidence Gallery/AwesomeQA_Automation/TEST_STRATEGY.md"
+            },
+            {
+                "name": "utils",
+                "type": "folder",
+                "children": [
+                    {
+                        "name": "driverSetup.js",
+                        "type": "file",
+                        "ext": ".js",
+                        "path": "QA Evidence Gallery/AwesomeQA_Automation/utils/driverSetup.js"
+                    },
+                    {
+                        "name": "testData.json",
+                        "type": "file",
+                        "ext": ".json",
+                        "path": "QA Evidence Gallery/AwesomeQA_Automation/utils/testData.json"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Evershop Project (Manual Testing)",
+        "type": "folder",
+        "desc": "Evershop Project (Manual Testing) evidence",
+        "children": [
+            {
+                "name": "Question 01",
+                "type": "folder",
+                "children": [
+                    {
+                        "name": "Question 01.docx",
+                        "type": "file",
+                        "ext": ".docx",
+                        "path": "QA Evidence Gallery/Evershop Project (Manual Testing)/Question 01/Question 01.docx"
+                    }
+                ]
+            },
+            {
+                "name": "Question 02 and 03 (Test case and execution)",
+                "type": "folder",
+                "children": [
+                    {
+                        "name": "Bug List of Search.xlsx",
+                        "type": "file",
+                        "ext": ".xlsx",
+                        "path": "QA Evidence Gallery/Evershop Project (Manual Testing)/Question 02 and 03 (Test case and execution)/Bug List of Search.xlsx"
+                    },
+                    {
+                        "name": "Question 2 (TestCase and Execution).xlsx",
+                        "type": "file",
+                        "ext": ".xlsx",
+                        "path": "QA Evidence Gallery/Evershop Project (Manual Testing)/Question 02 and 03 (Test case and execution)/Question 2 (TestCase and Execution).xlsx"
+                    }
+                ]
+            },
+            {
+                "name": "Question 04",
+                "type": "folder",
+                "children": [
+                    {
+                        "name": "EVERSHOP.postman_collection.json",
+                        "type": "file",
+                        "ext": ".json",
+                        "path": "QA Evidence Gallery/Evershop Project (Manual Testing)/Question 04/EVERSHOP.postman_collection.json"
+                    },
+                    {
+                        "name": "Test Analysis Feedback.docx",
+                        "type": "file",
+                        "ext": ".docx",
+                        "path": "QA Evidence Gallery/Evershop Project (Manual Testing)/Question 04/Test Analysis Feedback.docx"
+                    },
+                    {
+                        "name": "UI & API TestCase and defect log.xlsx",
+                        "type": "file",
+                        "ext": ".xlsx",
+                        "path": "QA Evidence Gallery/Evershop Project (Manual Testing)/Question 04/UI & API TestCase and defect log.xlsx"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "demoqa-selenium-automation-js",
+        "type": "folder",
+        "desc": "demoqa-selenium-automation-js evidence",
+        "children": [
+            {
+                "name": ".gitignore",
+                "type": "file",
+                "ext": "",
+                "path": "QA Evidence Gallery/demoqa-selenium-automation-js/.gitignore"
+            },
+            {
+                "name": "mochawesome-report",
+                "type": "folder",
+                "children": [
+                    {
+                        "name": "assets",
+                        "type": "folder",
+                        "children": [
+                            {
+                                "name": "app.css",
+                                "type": "file",
+                                "ext": ".css",
+                                "path": "QA Evidence Gallery/demoqa-selenium-automation-js/mochawesome-report/assets/app.css"
+                            },
+                            {
+                                "name": "app.js",
+                                "type": "file",
+                                "ext": ".js",
+                                "path": "QA Evidence Gallery/demoqa-selenium-automation-js/mochawesome-report/assets/app.js"
+                            },
+                            {
+                                "name": "app.js.LICENSE.txt",
+                                "type": "file",
+                                "ext": ".txt",
+                                "path": "QA Evidence Gallery/demoqa-selenium-automation-js/mochawesome-report/assets/app.js.LICENSE.txt"
+                            },
+                            {
+                                "name": "MaterialIcons-Regular.woff",
+                                "type": "file",
+                                "ext": ".woff",
+                                "path": "QA Evidence Gallery/demoqa-selenium-automation-js/mochawesome-report/assets/MaterialIcons-Regular.woff"
+                            },
+                            {
+                                "name": "MaterialIcons-Regular.woff2",
+                                "type": "file",
+                                "ext": ".woff2",
+                                "path": "QA Evidence Gallery/demoqa-selenium-automation-js/mochawesome-report/assets/MaterialIcons-Regular.woff2"
+                            },
+                            {
+                                "name": "roboto-light-webfont.woff",
+                                "type": "file",
+                                "ext": ".woff",
+                                "path": "QA Evidence Gallery/demoqa-selenium-automation-js/mochawesome-report/assets/roboto-light-webfont.woff"
+                            },
+                            {
+                                "name": "roboto-light-webfont.woff2",
+                                "type": "file",
+                                "ext": ".woff2",
+                                "path": "QA Evidence Gallery/demoqa-selenium-automation-js/mochawesome-report/assets/roboto-light-webfont.woff2"
+                            },
+                            {
+                                "name": "roboto-medium-webfont.woff",
+                                "type": "file",
+                                "ext": ".woff",
+                                "path": "QA Evidence Gallery/demoqa-selenium-automation-js/mochawesome-report/assets/roboto-medium-webfont.woff"
+                            },
+                            {
+                                "name": "roboto-medium-webfont.woff2",
+                                "type": "file",
+                                "ext": ".woff2",
+                                "path": "QA Evidence Gallery/demoqa-selenium-automation-js/mochawesome-report/assets/roboto-medium-webfont.woff2"
+                            },
+                            {
+                                "name": "roboto-regular-webfont.woff",
+                                "type": "file",
+                                "ext": ".woff",
+                                "path": "QA Evidence Gallery/demoqa-selenium-automation-js/mochawesome-report/assets/roboto-regular-webfont.woff"
+                            },
+                            {
+                                "name": "roboto-regular-webfont.woff2",
+                                "type": "file",
+                                "ext": ".woff2",
+                                "path": "QA Evidence Gallery/demoqa-selenium-automation-js/mochawesome-report/assets/roboto-regular-webfont.woff2"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "mochawesome.html",
+                        "type": "file",
+                        "ext": ".html",
+                        "path": "QA Evidence Gallery/demoqa-selenium-automation-js/mochawesome-report/mochawesome.html"
+                    },
+                    {
+                        "name": "mochawesome.json",
+                        "type": "file",
+                        "ext": ".json",
+                        "path": "QA Evidence Gallery/demoqa-selenium-automation-js/mochawesome-report/mochawesome.json"
+                    }
+                ]
+            },
+            {
+                "name": "package-lock.json",
+                "type": "file",
+                "ext": ".json",
+                "path": "QA Evidence Gallery/demoqa-selenium-automation-js/package-lock.json"
+            },
+            {
+                "name": "package.json",
+                "type": "file",
+                "ext": ".json",
+                "path": "QA Evidence Gallery/demoqa-selenium-automation-js/package.json"
+            },
+            {
+                "name": "README.md",
+                "type": "file",
+                "ext": ".md",
+                "path": "QA Evidence Gallery/demoqa-selenium-automation-js/README.md"
+            },
+            {
+                "name": "src",
+                "type": "folder",
+                "children": [
+                    {
+                        "name": "pages",
+                        "type": "folder",
+                        "children": [
+                            {
+                                "name": "BasePage.js",
+                                "type": "file",
+                                "ext": ".js",
+                                "path": "QA Evidence Gallery/demoqa-selenium-automation-js/src/pages/BasePage.js"
+                            },
+                            {
+                                "name": "BrowserWindows.js",
+                                "type": "file",
+                                "ext": ".js",
+                                "path": "QA Evidence Gallery/demoqa-selenium-automation-js/src/pages/BrowserWindows.js"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "testData",
+                        "type": "folder",
+                        "children": [
+                            {
+                                "name": "testData.json",
+                                "type": "file",
+                                "ext": ".json",
+                                "path": "QA Evidence Gallery/demoqa-selenium-automation-js/src/testData/testData.json"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "tests",
+                        "type": "folder",
+                        "children": [
+                            {
+                                "name": "browserWindows.test.js",
+                                "type": "file",
+                                "ext": ".js",
+                                "path": "QA Evidence Gallery/demoqa-selenium-automation-js/src/tests/browserWindows.test.js"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "utils",
+                        "type": "folder",
+                        "children": [
+                            {
+                                "name": "driverSetup.js",
+                                "type": "file",
+                                "ext": ".js",
+                                "path": "QA Evidence Gallery/demoqa-selenium-automation-js/src/utils/driverSetup.js"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
     }
   ];
 
