@@ -1,0 +1,21 @@
+{
+  "name": "demoqa-selenium-automation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha src/tests/**/*.js --timeout 30000 --reporter mochawesome"
+  },
+  "keywords": [],
+  "author": "Sourav Dipto Apu",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "selenium-webdriver": "^4.43.0"
+  },
+  "devDependencies": {
+    "chai": "^6.2.2",
+    "mocha": "^11.7.5",
+    "mochawesome": "^7.1.4"
+  }
+}
