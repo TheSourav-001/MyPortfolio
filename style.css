@@ -2782,7 +2782,7 @@ a.contact-card-item:hover {
 .workflow-network-wrapper {
   position: relative;
   width: 100%;
-  height: 600px;
+  height: 620px;
   margin-top: 20px;
 }
 
@@ -2794,6 +2794,59 @@ a.contact-card-item:hover {
   height: 100%;
   pointer-events: none;
   z-index: 1;
+}
+
+.workflow-svg .spoke-line {
+  stroke: rgba(167, 139, 250, 0.3);
+  stroke-width: 1.25;
+  transition: stroke 0.3s ease, stroke-width 0.3s ease, opacity 0.3s ease;
+}
+
+.workflow-svg .spoke-line.is-active {
+  stroke: rgba(192, 132, 252, 0.9);
+  stroke-width: 2;
+}
+
+.workflow-svg .route-base {
+  fill: none;
+  stroke: rgba(167, 139, 250, 0.18);
+  stroke-width: 2;
+}
+
+.workflow-svg .route-edge {
+  stroke: rgba(167, 139, 250, 0.2);
+  stroke-width: 1.5;
+  transition: stroke 0.3s ease, stroke-width 0.3s ease;
+}
+
+.workflow-svg .route-edge.is-active {
+  stroke: rgba(192, 132, 252, 0.85);
+  stroke-width: 2.5;
+}
+
+.workflow-svg .route-flow {
+  fill: none;
+  stroke: url(#flow-gradient);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-dasharray: 8 20;
+  animation: flowPulse 4s linear infinite paused;
+}
+
+.workflow-network-wrapper.is-in-view .route-flow {
+  animation-play-state: running;
+}
+
+.workflow-network-wrapper:not(.is-in-view) .core-outer-ring,
+.workflow-network-wrapper:not(.is-in-view) .core-middle-ring,
+.workflow-network-wrapper:not(.is-in-view) .core-inner-ring,
+.workflow-network-wrapper:not(.is-in-view) .core-pulse-glow {
+  animation-play-state: paused;
+}
+
+.workflow-svg .flow-packet {
+  fill: #e9d5ff;
+  filter: url(#packet-glow);
 }
 
 /* Central Core Hub */
@@ -2935,25 +2988,34 @@ a.contact-card-item:hover {
   transform: translate(-50%, -50%);
   /* Centered anchor for perfect mathematical layout */
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  cursor: default;
+  cursor: pointer;
 }
 
 /* Specific reveal rules to prevent global .reveal class from breaking centered transform anchor */
 .workflow-card.reveal {
   opacity: 0;
-  transform: translate(-50%, -50%) translateY(40px) !important;
-  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transform: translate(-50%, -50%) !important;
+  transition: opacity 0.7s ease !important;
 }
 
 .workflow-card.reveal.visible {
   opacity: 1 !important;
-  transform: translate(-50%, -50%) translateY(0) !important;
+  transform: translate(-50%, -50%) !important;
 }
 
 .workflow-card:hover {
   border-color: rgba(167, 139, 250, 0.5);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(167, 139, 250, 0.25);
-  /* Transform movement removed completely as requested so the shape never moves */
+}
+
+.workflow-card.is-active {
+  border-color: rgba(192, 132, 252, 0.8);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45), 0 0 26px rgba(167, 139, 250, 0.28);
+}
+
+.workflow-card:focus-visible {
+  outline: 2px solid #c084fc;
+  outline-offset: 4px;
 }
 
 .card-step-badge {
@@ -3031,7 +3093,8 @@ a.contact-card-item:hover {
   border-color: rgba(167, 139, 250, 0.3) transparent transparent transparent;
 }
 
-.workflow-card:hover .card-tooltip {
+.workflow-card:hover .card-tooltip,
+.workflow-card:focus .card-tooltip {
   opacity: 1;
   visibility: visible;
   transform: translateX(-50%) scale(1);
@@ -3064,6 +3127,62 @@ a.contact-card-item:hover {
   padding: 2px 6px;
   border-radius: 4px;
   border: 1px solid rgba(167, 139, 250, 0.15);
+}
+
+.workflow-details {
+  display: none;
+  max-width: 720px;
+  margin: 20px auto 0;
+  padding: 18px 20px;
+  border: 1px solid rgba(167, 139, 250, 0.24);
+  border-radius: 14px;
+  background: var(--bg-card);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16);
+}
+
+.workflow-hint {
+  display: none;
+  margin: -20px 0 0;
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.workflow-details-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.workflow-details-step {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  height: 30px;
+  border-radius: 999px;
+  background: rgba(167, 139, 250, 0.14);
+  color: var(--accent-color);
+  font: 700 11px 'Space Grotesk', sans-serif;
+}
+
+.workflow-details-heading h3 {
+  margin: 0;
+  color: var(--text-primary);
+  font: 700 16px 'Space Grotesk', sans-serif;
+}
+
+.workflow-details p {
+  margin: 0 0 14px;
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.workflow-detail-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
 }
 
 /* Mathematically perfect circular/ellipse distribution around the hub */
@@ -3193,82 +3312,178 @@ a.contact-card-item:hover {
   }
 }
 
-/* Tablet (Grid layout) */
+/* Keep the connected layout on tablets; use a taller orbit as width narrows. */
 @media (max-width: 1024px) {
   .workflow-network-wrapper {
-    height: auto;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 32px 24px;
-    padding: 40px 0;
+    height: 760px;
+    display: block;
+    padding: 0;
   }
 
-  .workflow-svg,
+  .workflow-svg {
+    display: block;
+  }
+
   .workflow-core-hub {
-    display: none !important;
-    /* Hide topology lines and core on tablet/mobile for readability */
-  }
-
-  .workflow-card,
-  .workflow-card.reveal,
-  .workflow-card.reveal.visible {
-    position: relative !important;
-    left: auto !important;
-    top: auto !important;
-    width: 100%;
+    display: flex;
   }
 
   .workflow-card {
-    transform: none !important;
+    position: absolute;
+    width: min(210px, 26vw);
+    padding: 12px 14px;
   }
 
-  .workflow-card.reveal {
-    transform: translateY(40px) !important;
+  .workflow-core-hub {
+    width: 126px;
+    height: 126px;
   }
 
-  .workflow-card.reveal.visible {
-    transform: translateY(0) !important;
+  #wf-step-1 {
+    left: 16%;
+    top: 28%;
   }
 
-  .workflow-card:hover,
-  .workflow-card.reveal.visible:hover {
-    transform: translateY(-5px) !important;
+  #wf-step-2 {
+    left: 50%;
+    top: 12%;
   }
 
-  .card-tooltip {
-    bottom: auto;
-    top: calc(100% + 10px);
-    left: 50% !important;
-    transform: translateX(-50%) scale(0.95);
+  #wf-step-3 {
+    left: 84%;
+    top: 28%;
   }
 
-  .card-tooltip::after {
-    top: auto;
-    bottom: 100%;
-    border-color: transparent transparent rgba(167, 139, 250, 0.3) transparent;
+  #wf-step-4 {
+    left: 87%;
+    top: 57%;
   }
 
-  .workflow-card:hover .card-tooltip {
-    transform: translateX(-50%) scale(1);
+  #wf-step-5 {
+    left: 69%;
+    top: 82%;
+  }
+
+  #wf-step-6 {
+    left: 31%;
+    top: 82%;
+  }
+
+  #wf-step-7 {
+    left: 13%;
+    top: 57%;
+  }
+
+  .workflow-card .card-desc,
+  .workflow-card .card-tooltip {
+    display: none;
+  }
+
+  .workflow-hint {
+    display: block;
+  }
+
+  .workflow-details {
+    display: block;
   }
 }
 
-/* Mobile (Vertical stack) */
+/* Mobile: compact seven-node orbit with readable selected-step details below. */
 @media (max-width: 768px) {
   .workflow-network-wrapper {
-    grid-template-columns: 1fr;
-    gap: 28px;
+    height: 900px;
+    display: block;
+    padding: 0;
   }
 
   .workflow-card {
-    padding: 16px 20px;
-    border-left: 3px solid #a78bfa;
+    width: min(150px, calc(50% - 22px));
+    min-height: 72px;
+    padding: 24px 12px 10px;
+    border-left: 1px solid rgba(167, 139, 250, 0.2);
+  }
+
+  .workflow-card .card-header-wrapper {
+    gap: 8px;
+    margin: 0;
+  }
+
+  .workflow-card .card-icon {
+    flex: 0 0 28px;
+  }
+
+  .workflow-card .card-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .workflow-card .card-title {
+    font-size: 11px;
+    line-height: 1.25;
+  }
+
+  .workflow-core-hub {
+    width: 76px;
+    height: 76px;
+  }
+
+  .workflow-core-hub .core-node {
+    width: 64px;
+    height: 64px;
+  }
+
+  .workflow-core-hub .core-icon-wrapper svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  #wf-step-1 {
+    left: 50%;
+    top: 9%;
+  }
+
+  #wf-step-2 {
+    left: 75%;
+    top: 23%;
+  }
+
+  #wf-step-3 {
+    left: 82%;
+    top: 51%;
+    width: min(110px, calc(38% - 8px));
+  }
+
+  #wf-step-4 {
+    left: 50%;
+    top: 85%;
+  }
+
+  #wf-step-5 {
+    left: 25%;
+    top: 76%;
+  }
+
+  #wf-step-6 {
+    left: 18%;
+    top: 49%;
+    width: min(110px, calc(38% - 8px));
+  }
+
+  #wf-step-7 {
+    left: 25%;
+    top: 22%;
   }
 
   .card-step-badge {
     left: auto;
-    right: 20px;
-    top: 16px;
+    right: 10px;
+    top: 8px;
+    font-size: 8px;
+    padding: 2px 6px;
+  }
+
+  .workflow-details {
+    margin-top: 8px;
   }
 }
 
@@ -5069,17 +5284,6 @@ html {
   .skills-categories { grid-template-columns: repeat(2, 1fr); }
   .gh-stats-grid { grid-template-columns: repeat(2, 1fr); }
   
-  /* QA Workflow: scale for tablet */
-  .workflow-network-wrapper {
-    height: auto;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 32px 24px;
-    padding: 40px 0;
-  }
-  .workflow-svg, .workflow-core-hub { display: none; }
-  .workflow-card { position: static !important; transform: none !important; width: auto !important; }
-  
   /* Case Study: collapse 2-col */
   .cs-grid-2col { grid-template-columns: 1fr; gap: 24px; }
   .cs-stats-grid { grid-template-columns: repeat(2, 1fr); }
@@ -5219,22 +5423,6 @@ html {
   .cs-stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
   .cs-impact-grid { grid-template-columns: repeat(2, 1fr) !important; }
   .cs-grid-2col { grid-template-columns: 1fr !important; gap: 20px; }
-
-  /* ─ QA Workflow: zoom proportional scale ─ */
-  .workflow-network-wrapper {
-    height: auto !important;
-    display: grid !important;
-    grid-template-columns: 1fr !important;
-    gap: 20px !important;
-    padding: 20px 0 !important;
-  }
-  .workflow-svg, .workflow-core-hub { display: none !important; }
-  .workflow-card {
-    position: static !important;
-    transform: none !important;
-    width: auto !important;
-    max-width: 100% !important;
-  }
 
   /* ─ Experience / Timeline ─ */
   .timeline { padding-left: 20px; }
@@ -5462,5 +5650,34 @@ html[data-theme="light"] .floating-btn {
   }
   .floating-btn-text {
     display: none;
+  }
+}
+
+html[data-theme="light"] #qa-workflow .workflow-card.is-active {
+  background: #fff;
+  border-color: rgba(124, 58, 237, 0.65);
+  box-shadow: 0 12px 30px rgba(124, 58, 237, 0.16);
+}
+
+@media (hover: none) and (pointer: coarse) {
+  #qa-workflow .workflow-details {
+    display: block;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #qa-workflow .core-outer-ring,
+  #qa-workflow .core-middle-ring,
+  #qa-workflow .core-inner-ring,
+  #qa-workflow .core-pulse-glow,
+  #qa-workflow .route-flow {
+    animation: none !important;
+  }
+
+  #qa-workflow .workflow-card.reveal,
+  #qa-workflow .workflow-card.reveal.visible {
+    opacity: 1 !important;
+    transform: translate(-50%, -50%) !important;
+    transition: none !important;
   }
 }

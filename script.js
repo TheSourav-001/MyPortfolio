@@ -578,111 +578,272 @@ window.addEventListener('load', () => {
 (function () {
   const container = document.querySelector('.workflow-network-wrapper');
   const svg = document.getElementById('workflow-svg-connections');
-
-  if (!container || !svg) return;
-
+  const section = document.getElementById('qa-workflow');
+  const coreHub = document.getElementById('workflow-core');
   const bgLinesGroup = document.getElementById('svg-bg-lines');
   const flowPathsGroup = document.getElementById('svg-flow-paths');
   const packetsGroup = document.getElementById('svg-packets');
-  const coreHub = document.getElementById('workflow-core');
+  const cards = Array.from(document.querySelectorAll('#qa-workflow .workflow-card'));
+  const detailTitle = document.getElementById('workflow-detail-title');
+  const detailStep = document.getElementById('workflow-detail-step');
+  const detailDescription = document.getElementById('workflow-detail-description');
+  const detailTools = document.getElementById('workflow-detail-tools');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const svgNamespace = 'http://www.w3.org/2000/svg';
 
-  const steps = [];
-  for (let i = 1; i <= 7; i++) {
-    const el = document.getElementById(`wf-step-${i}`);
-    if (el) steps.push(el);
+  if (!container || !svg || !section || !coreHub || !bgLinesGroup || !flowPathsGroup ||
+      !packetsGroup || !cards.length || !detailTitle || !detailStep || !detailDescription ||
+      !detailTools) return;
+
+  let selectedCard = cards[0];
+  let activeCard = selectedCard;
+  let isInViewport = false;
+
+  function createSvgElement(tagName, attributes) {
+    const element = document.createElementNS(svgNamespace, tagName);
+    Object.keys(attributes).forEach((name) => element.setAttribute(name, attributes[name]));
+    return element;
   }
 
-  function getElementCenter(el, parentRect) {
-    const rect = el.getBoundingClientRect();
+  function clearChildren(element) {
+    while (element.firstChild) element.removeChild(element.firstChild);
+  }
+
+  function getElementCenter(element, containerRect) {
+    const rect = element.getBoundingClientRect();
     return {
-      x: rect.left - parentRect.left + rect.width / 2,
-      y: rect.top - parentRect.top + rect.height / 2
+      x: rect.left - containerRect.left + rect.width / 2,
+      y: rect.top - containerRect.top + rect.height / 2
     };
   }
 
   function updateConnections() {
-    // If screen is smaller than 1025px (tablet or mobile), don't draw lines
-    if (window.innerWidth <= 1024) {
-      bgLinesGroup.innerHTML = '';
-      flowPathsGroup.innerHTML = '';
-      packetsGroup.innerHTML = '';
-      return;
-    }
-
     const containerRect = container.getBoundingClientRect();
+    const width = Math.round(containerRect.width);
+    const height = Math.round(containerRect.height);
+
+    if (!width || !height) return;
+
+    svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+    svg.setAttribute('preserveAspectRatio', 'none');
+    clearChildren(bgLinesGroup);
+    clearChildren(flowPathsGroup);
+    clearChildren(packetsGroup);
+
     const coreCenter = getElementCenter(coreHub, containerRect);
-    const stepCenters = steps.map(step => getElementCenter(step, containerRect));
+    const stepCenters = cards.map((card) => getElementCenter(card, containerRect));
 
-    // 1. Draw background star lines connecting core to each card
-    let bgLinesHTML = '';
-    stepCenters.forEach((pt) => {
-      bgLinesHTML += `<line x1="${coreCenter.x}" y1="${coreCenter.y}" x2="${pt.x}" y2="${pt.y}" stroke="rgba(167, 139, 250, 0.45)" stroke-width="1.5" stroke-dasharray="4 6" class="glow-path-bg" />`;
+    const previousDefs = svg.querySelector('defs');
+    if (previousDefs) previousDefs.parentNode.removeChild(previousDefs);
+
+    stepCenters.forEach((point, index) => {
+      bgLinesGroup.appendChild(createSvgElement('line', {
+        x1: coreCenter.x,
+        y1: coreCenter.y,
+        x2: point.x,
+        y2: point.y,
+        class: 'spoke-line',
+        'data-step': index + 1
+      }));
     });
-    bgLinesGroup.innerHTML = bgLinesHTML;
 
-    // 2. Draw sequential path: Step 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7
-    let pathD = `M ${stepCenters[0].x} ${stepCenters[0].y}`;
-    for (let i = 1; i < stepCenters.length; i++) {
-      pathD += ` L ${stepCenters[i].x} ${stepCenters[i].y}`;
+    const pathData = stepCenters.map((point, index) =>
+      `${index === 0 ? 'M' : 'L'} ${point.x} ${point.y}`).join(' ');
+    const basePath = createSvgElement('path', {
+      d: pathData,
+      class: 'route-base',
+      'marker-end': 'url(#workflow-arrow)'
+    });
+    const flowPath = createSvgElement('path', {
+      d: pathData,
+      class: 'route-flow'
+    });
+
+    stepCenters.slice(0, -1).forEach((point, index) => {
+      flowPathsGroup.appendChild(createSvgElement('line', {
+        x1: point.x,
+        y1: point.y,
+        x2: stepCenters[index + 1].x,
+        y2: stepCenters[index + 1].y,
+        class: 'route-edge',
+        'data-from': index + 1,
+        'data-to': index + 2
+      }));
+    });
+    flowPathsGroup.appendChild(basePath);
+    flowPathsGroup.appendChild(flowPath);
+
+    const defs = createSvgElement('defs', {});
+    const gradient = createSvgElement('linearGradient', {
+      id: 'flow-gradient',
+      x1: '0%',
+      y1: '0%',
+      x2: '100%',
+      y2: '0%'
+    });
+    gradient.appendChild(createSvgElement('stop', {
+      offset: '0%',
+      'stop-color': '#8b5cf6',
+      'stop-opacity': '0.1'
+    }));
+    gradient.appendChild(createSvgElement('stop', {
+      offset: '50%',
+      'stop-color': '#e9d5ff',
+      'stop-opacity': '1'
+    }));
+    gradient.appendChild(createSvgElement('stop', {
+      offset: '100%',
+      'stop-color': '#8b5cf6',
+      'stop-opacity': '0.1'
+    }));
+
+    const arrow = createSvgElement('marker', {
+      id: 'workflow-arrow',
+      viewBox: '0 0 10 10',
+      refX: '8',
+      refY: '5',
+      markerWidth: '5',
+      markerHeight: '5',
+      orient: 'auto-start-reverse'
+    });
+    arrow.appendChild(createSvgElement('path', {
+      d: 'M 0 0 L 10 5 L 0 10 z',
+      fill: '#a78bfa'
+    }));
+    defs.appendChild(gradient);
+    defs.appendChild(arrow);
+
+    const filter = createSvgElement('filter', {
+      id: 'packet-glow',
+      x: '-100%',
+      y: '-100%',
+      width: '300%',
+      height: '300%'
+    });
+    filter.appendChild(createSvgElement('feGaussianBlur', {
+      stdDeviation: '2.5',
+      result: 'glow'
+    }));
+    const merge = createSvgElement('feMerge', {});
+    merge.appendChild(createSvgElement('feMergeNode', { in: 'glow' }));
+    merge.appendChild(createSvgElement('feMergeNode', { in: 'SourceGraphic' }));
+    filter.appendChild(merge);
+    defs.appendChild(filter);
+    svg.insertBefore(defs, svg.firstChild);
+
+    if (!reducedMotion.matches) {
+      for (let index = 0; index < 3; index++) {
+        const packet = createSvgElement('circle', {
+          r: '3.5',
+          class: 'flow-packet'
+        });
+        const motion = createSvgElement('animateMotion', {
+          dur: '12s',
+          begin: `${index * 4}s`,
+          repeatCount: 'indefinite',
+          path: pathData
+        });
+        packet.appendChild(motion);
+        packetsGroup.appendChild(packet);
+      }
     }
 
-    // Create base path and flowing path
-    flowPathsGroup.innerHTML = `
-      <!-- Base connection track -->
-      <path d="${pathD}" stroke="rgba(167, 139, 250, 0.15)" stroke-width="2" fill="none" />
-      <!-- Glowing pulsing pulse lines -->
-      <path id="seq-flow-track" d="${pathD}" stroke="url(#flow-gradient)" stroke-width="3" fill="none" opacity="0.8" />
-    `;
-
-    // Make sure we have a gradient definition in the SVG
-    if (!svg.querySelector('defs')) {
-      svg.insertAdjacentHTML('afterbegin', `
-        <defs>
-          <linearGradient id="flow-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.2" />
-            <stop offset="50%" stop-color="#c084fc" stop-opacity="1" />
-            <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.2" />
-          </linearGradient>
-          <filter id="packet-glow">
-            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-            <feMerge>
-              <feMergeNode in="coloredBlur"/>
-              <feMergeNode in="SourceGraphic"/>
-            </feMerge>
-          </filter>
-        </defs>
-      `);
-    }
-
-    // 3. Inject glowing packets (SVG circles) moving along the sequential path using <animateMotion>
-    const duration = 8.5; // slow, beautiful cinematic flow
-    const packetCount = 4;
-    let packetsHTML = '';
-
-    for (let i = 0; i < packetCount; i++) {
-      const delay = (duration / packetCount) * i;
-      packetsHTML += `
-        <circle r="4.5" fill="#c084fc" filter="url(#packet-glow)" opacity="0.9">
-          <animateMotion 
-            dur="${duration}s" 
-            begin="${delay}s" 
-            repeatCount="indefinite" 
-            path="${pathD}" />
-        </circle>
-      `;
-    }
-    packetsGroup.innerHTML = packetsHTML;
+    updateActiveConnections(activeCard);
   }
 
-  // Draw initially and add listeners
-  // Wait slightly to let document render fully and cards settle
-  setTimeout(updateConnections, 500);
+  function updateActiveConnections(card) {
+    const stepNumber = Number(card.dataset.step);
+    bgLinesGroup.querySelectorAll('.spoke-line').forEach((line) => {
+      line.classList.toggle('is-active', Number(line.dataset.step) === stepNumber);
+    });
+    flowPathsGroup.querySelectorAll('.route-edge').forEach((line) => {
+      const from = Number(line.dataset.from);
+      const to = Number(line.dataset.to);
+      line.classList.toggle('is-active', from === stepNumber || to === stepNumber);
+    });
+  }
 
-  let resizeTimer;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(updateConnections, 150);
+  function updateDetails(card) {
+    const title = card.querySelector('.card-title');
+    const badge = card.querySelector('.card-step-badge');
+    const description = card.querySelector('.card-desc');
+    const tools = card.querySelectorAll('.card-tooltip .tool-tag');
+
+    detailTitle.textContent = title.textContent.trim();
+    detailStep.textContent = badge.textContent.trim();
+    detailDescription.textContent = description.textContent.trim();
+    clearChildren(detailTools);
+    tools.forEach((tool) => {
+      const tag = document.createElement('span');
+      tag.className = 'tool-tag';
+      tag.textContent = tool.textContent.trim();
+      detailTools.appendChild(tag);
+    });
+  }
+
+  function setActiveCard(card) {
+    activeCard = card;
+    cards.forEach((item) => item.classList.toggle('is-active', item === card));
+    updateActiveConnections(card);
+  }
+
+  function selectCard(card) {
+    selectedCard = card;
+    cards.forEach((item) => item.setAttribute('aria-pressed', String(item === card)));
+    setActiveCard(card);
+    updateDetails(card);
+  }
+
+  cards.forEach((card) => {
+    card.addEventListener('pointerenter', () => setActiveCard(card));
+    card.addEventListener('pointerleave', () => setActiveCard(selectedCard));
+    card.addEventListener('focus', () => selectCard(card));
+    card.addEventListener('click', () => selectCard(card));
+    card.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        selectCard(card);
+      }
+    });
   });
+
+  selectCard(selectedCard);
+
+  function setAnimationState(isVisible) {
+    isInViewport = isVisible;
+    container.classList.toggle('is-in-view', isVisible && !reducedMotion.matches);
+    if (typeof svg.pauseAnimations === 'function') {
+      if (isVisible && !reducedMotion.matches) svg.unpauseAnimations();
+      else svg.pauseAnimations();
+    }
+  }
+
+  if ('ResizeObserver' in window) {
+    const resizeObserver = new ResizeObserver(updateConnections);
+    resizeObserver.observe(container);
+  } else {
+    window.addEventListener('resize', updateConnections);
+  }
+
+  if ('IntersectionObserver' in window) {
+    const visibilityObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => setAnimationState(entry.isIntersecting));
+    }, { threshold: 0.05 });
+    visibilityObserver.observe(container);
+  } else {
+    setAnimationState(true);
+  }
+
+  const handleMotionPreferenceChange = () => {
+    updateConnections();
+    setAnimationState(isInViewport);
+  };
+  if (typeof reducedMotion.addEventListener === 'function') {
+    reducedMotion.addEventListener('change', handleMotionPreferenceChange);
+  } else if (typeof reducedMotion.addListener === 'function') {
+    reducedMotion.addListener(handleMotionPreferenceChange);
+  }
+  updateConnections();
 })();
 // ==========================================
 // REAL GITHUB DATA FETCHER (NATIVE API)
