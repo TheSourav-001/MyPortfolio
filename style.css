@@ -24,6 +24,7 @@
   --accent-rgba: 167, 139, 250;
   --accent-hover: #c084fc;
   --accent-hover-rgba: 192, 132, 252;
+  --page-grid-line: rgba(167, 139, 250, 0.02);
 
   --bg-navbar: rgba(9, 9, 11, 0.8);
   --bg-nav-links: rgba(18, 18, 21, 0.95);
@@ -61,6 +62,7 @@ html[data-theme="light"] {
   --accent-rgba: 124, 58, 237;
   --accent-hover: #6d28d9;
   --accent-hover-rgba: 109, 40, 217;
+  --page-grid-line: rgba(124, 58, 237, 0.035);
 
   --bg-navbar: rgba(244, 244, 245, 0.8);
   --bg-nav-links: rgba(255, 255, 255, 0.98);
@@ -108,7 +110,11 @@ html {
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  background: var(--bg-primary) !important;
+  background-color: var(--bg-primary) !important;
+  background-image:
+    linear-gradient(var(--page-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--page-grid-line) 1px, transparent 1px);
+  background-size: 30px 30px;
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden !important;
@@ -2753,25 +2759,10 @@ a.contact-card-item:hover {
 
 /* ── QA Process Workflow Section ── */
 #qa-workflow {
-  background: var(--bg-primary);
+  background: transparent;
   position: relative;
   overflow: hidden;
   padding: 60px 0;
-}
-
-/* Subtle grid overlay for high-tech dashboard look */
-#qa-workflow::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image:
-    linear-gradient(rgba(167, 139, 250, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(167, 139, 250, 0.02) 1px, transparent 1px);
-  background-size: 30px 30px;
-  pointer-events: none;
 }
 
 .workflow-container {
@@ -2781,9 +2772,10 @@ a.contact-card-item:hover {
 
 .workflow-network-wrapper {
   position: relative;
-  width: 100%;
-  height: 620px;
-  margin-top: 20px;
+  width: min(100%, 680px);
+  height: auto;
+  aspect-ratio: 1;
+  margin: 20px auto 0;
 }
 
 .workflow-svg {
@@ -2976,7 +2968,7 @@ a.contact-card-item:hover {
 /* Glassmorphism Cards */
 .workflow-card {
   position: absolute;
-  width: 240px;
+  width: 180px;
   background: rgba(18, 18, 21, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -3185,40 +3177,40 @@ a.contact-card-item:hover {
   gap: 6px;
 }
 
-/* Mathematically perfect circular/ellipse distribution around the hub */
+/* Seven evenly spaced workflow nodes on a circular orbit around the QA core. */
 #wf-step-1 {
-  left: 20.4%;
-  top: 28.1%;
+  left: 50%;
+  top: 16%;
 }
 
 #wf-step-2 {
-  left: 50.0%;
-  top: 15.0%;
+  left: 76.6%;
+  top: 28.8%;
 }
 
 #wf-step-3 {
-  left: 79.6%;
-  top: 28.1%;
+  left: 83.2%;
+  top: 57.6%;
 }
 
 #wf-step-4 {
-  left: 86.8%;
-  top: 57.7%;
+  left: 64.8%;
+  top: 80.6%;
 }
 
 #wf-step-5 {
-  left: 66.3%;
-  top: 81.5%;
+  left: 35.2%;
+  top: 80.6%;
 }
 
 #wf-step-6 {
-  left: 33.7%;
-  top: 81.5%;
+  left: 16.8%;
+  top: 57.6%;
 }
 
 #wf-step-7 {
-  left: 13.2%;
-  top: 57.7%;
+  left: 23.4%;
+  top: 28.8%;
 }
 
 /* Adjust individual cards tooltip arrow position to prevent edge cuts */
@@ -3267,59 +3259,14 @@ a.contact-card-item:hover {
 
 /* ── Responsive Design for QA Workflow ── */
 @media (max-width: 1200px) {
-  .workflow-network-wrapper {
-    height: 560px;
-  }
-
   .workflow-card {
-    width: 210px;
+    width: 180px;
     padding: 12px 14px;
-  }
-
-  #wf-step-1 {
-    left: 18%;
-    top: 28%;
-  }
-
-  #wf-step-2 {
-    left: 50%;
-    top: 16%;
-  }
-
-  #wf-step-3 {
-    left: 82%;
-    top: 28%;
-  }
-
-  #wf-step-4 {
-    left: 88%;
-    top: 57%;
-  }
-
-  #wf-step-5 {
-    left: 68%;
-    top: 80%;
-  }
-
-  #wf-step-6 {
-    left: 32%;
-    top: 80%;
-  }
-
-  #wf-step-7 {
-    left: 12%;
-    top: 57%;
   }
 }
 
-/* Keep the connected layout on tablets; use a taller orbit as width narrows. */
+/* Keep the same circular topology while adapting card size for touch screens. */
 @media (max-width: 1024px) {
-  .workflow-network-wrapper {
-    height: 760px;
-    display: block;
-    padding: 0;
-  }
-
   .workflow-svg {
     display: block;
   }
@@ -3330,48 +3277,13 @@ a.contact-card-item:hover {
 
   .workflow-card {
     position: absolute;
-    width: min(210px, 26vw);
+    width: min(160px, 25%);
     padding: 12px 14px;
   }
 
   .workflow-core-hub {
     width: 126px;
     height: 126px;
-  }
-
-  #wf-step-1 {
-    left: 16%;
-    top: 28%;
-  }
-
-  #wf-step-2 {
-    left: 50%;
-    top: 12%;
-  }
-
-  #wf-step-3 {
-    left: 84%;
-    top: 28%;
-  }
-
-  #wf-step-4 {
-    left: 87%;
-    top: 57%;
-  }
-
-  #wf-step-5 {
-    left: 69%;
-    top: 82%;
-  }
-
-  #wf-step-6 {
-    left: 31%;
-    top: 82%;
-  }
-
-  #wf-step-7 {
-    left: 13%;
-    top: 57%;
   }
 
   .workflow-card .card-desc,
@@ -3391,35 +3303,33 @@ a.contact-card-item:hover {
 /* Mobile: compact seven-node orbit with readable selected-step details below. */
 @media (max-width: 768px) {
   .workflow-network-wrapper {
-    height: 900px;
-    display: block;
-    padding: 0;
+    width: min(100%, 680px);
   }
 
   .workflow-card {
-    width: min(150px, calc(50% - 22px));
-    min-height: 72px;
-    padding: 24px 12px 10px;
-    border-left: 1px solid rgba(167, 139, 250, 0.2);
+    padding: 6px 4px;
   }
 
   .workflow-card .card-header-wrapper {
-    gap: 8px;
+    flex-direction: column;
+    gap: 3px;
     margin: 0;
+    text-align: center;
   }
 
   .workflow-card .card-icon {
-    flex: 0 0 28px;
+    flex: 0 0 16px;
   }
 
   .workflow-card .card-icon svg {
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
   }
 
   .workflow-card .card-title {
-    font-size: 11px;
-    line-height: 1.25;
+    font-size: clamp(8px, 2.4vw, 11px);
+    line-height: 1.1;
+    text-align: center;
   }
 
   .workflow-core-hub {
@@ -3437,47 +3347,10 @@ a.contact-card-item:hover {
     height: 24px;
   }
 
-  #wf-step-1 {
-    left: 50%;
-    top: 9%;
-  }
-
-  #wf-step-2 {
-    left: 75%;
-    top: 23%;
-  }
-
-  #wf-step-3 {
-    left: 82%;
-    top: 51%;
-    width: min(110px, calc(38% - 8px));
-  }
-
-  #wf-step-4 {
-    left: 50%;
-    top: 85%;
-  }
-
-  #wf-step-5 {
-    left: 25%;
-    top: 76%;
-  }
-
-  #wf-step-6 {
-    left: 18%;
-    top: 49%;
-    width: min(110px, calc(38% - 8px));
-  }
-
-  #wf-step-7 {
-    left: 25%;
-    top: 22%;
-  }
-
   .card-step-badge {
     left: auto;
-    right: 10px;
-    top: 8px;
+    right: 3px;
+    top: -7px;
     font-size: 8px;
     padding: 2px 6px;
   }
@@ -3765,7 +3638,7 @@ a.contact-card-item:hover {
 
 /* ── QA EVIDENCE WORKSPACE ── */
 #qa-workspace {
-  background: var(--bg-primary);
+  background: transparent;
   position: relative;
   overflow: hidden;
 }
